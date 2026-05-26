@@ -5,209 +5,267 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Command Center</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Lexend+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#060a0e;--s1:#0b1118;--s2:#0f1720;--s3:#141f2a;
-  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
-  --accent:#00e5a0;--accent2:#0099ff;--warn:#f0b429;--red:#ff4757;--purple:#a78bfa;
-  --text:#e2e8f0;--text2:#8a97a8;--text3:#3d4f63;
-  --mono:'IBM Plex Mono',monospace;--display:'Syne',sans-serif;
+  --bg:#f5f0e8;
+  --bg2:#ede8df;
+  --bg3:#e4ddd2;
+  --white:#ffffff;
+  --border:#d5cfc4;
+  --border2:#bfb8ac;
+  --accent:#1a7a4a;
+  --accent-light:#e8f5ee;
+  --accent-mid:#c8e6d5;
+  --warn:#b85c00;
+  --warn-light:#fff3e0;
+  --warn-mid:#ffd9a8;
+  --red:#c0392b;
+  --red-light:#fdecea;
+  --red-mid:#f5b7b1;
+  --blue:#1a5fa8;
+  --blue-light:#e8f0fb;
+  --purple:#6b3fa0;
+  --purple-light:#f0eaf8;
+  --text:#1a1814;
+  --text2:#4a4540;
+  --text3:#8a8278;
+  --text4:#b0a898;
+  --body:'Lexend',sans-serif;
+  --mono:'Lexend Mono',monospace;
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 24px rgba(0,0,0,0.10);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--mono);min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.025) 2px,rgba(0,0,0,0.025) 4px);pointer-events:none;z-index:9999}
-body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,160,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.015) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;z-index:0}
-.app{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 20px 80px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;font-size:16px;line-height:1.9;letter-spacing:0.01em;-webkit-font-smoothing:antialiased}
+.app{max-width:900px;margin:0 auto;padding:0 20px 80px}
 
 /* HEADER */
-.header{padding:28px 0 20px;border-bottom:1px solid var(--border);margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.header-left{display:flex;align-items:center;gap:16px}
-.logo-mark{width:36px;height:36px;border:1px solid var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--accent);flex-shrink:0}
-.header-text{}
-.header-eyebrow{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
-.header-title{font-family:var(--display);font-size:22px;font-weight:800;color:var(--text);letter-spacing:-0.02em;line-height:1}
-.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.pill{display:flex;align-items:center;gap:6px;font-size:11px;padding:6px 12px;border:1px solid var(--border);border-radius:20px;background:var(--s1);color:var(--text2);white-space:nowrap}
-.pill-dot{width:5px;height:5px;border-radius:50%;background:var(--red)}
-.pill-dot.open{background:var(--accent);animation:pulse 2s ease infinite}
-.header-date{font-size:10px;color:var(--text3);letter-spacing:0.05em}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
+.header{padding:32px 0 24px;border-bottom:2px solid var(--border);margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:44px;height:44px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.logo-text .eyebrow{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2px}
+.logo-text .title{font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
+.header-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.status-pill{display:flex;align-items:center;gap:7px;font-size:12px;padding:6px 14px;border:1.5px solid var(--border);border-radius:20px;background:var(--white);color:var(--text2);font-weight:500;white-space:nowrap}
+.sdot{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0}
+.sdot.open{background:var(--accent);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hdate{font-size:12px;color:var(--text3);letter-spacing:0.03em}
 
 /* API BANNER */
-.api-banner{background:var(--s1);border:1px solid rgba(240,180,41,0.25);border-radius:8px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.api-banner.set{border-color:rgba(0,229,160,0.25)}
-.api-lbl{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warn);white-space:nowrap;flex-shrink:0}
+.api-banner{border-radius:var(--radius);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:2px solid var(--warn-mid);background:var(--warn-light)}
+.api-banner.set{border-color:var(--accent-mid);background:var(--accent-light)}
+.api-lbl{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warn);font-weight:700;white-space:nowrap;flex-shrink:0}
 .api-lbl.set{color:var(--accent)}
-.api-row{display:flex;gap:8px;flex:1;min-width:180px}
-.api-inp{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:4px;padding:7px 11px;font-family:var(--mono);font-size:11px;color:var(--text);outline:none;transition:border-color 0.2s}
-.api-inp:focus{border-color:var(--warn)}
-.api-inp.set{border-color:rgba(0,229,160,0.3);color:var(--accent)}
-.api-hint{font-size:10px;color:var(--text3);line-height:1.5}
-.bsm{background:var(--s2);border:1px solid var(--border);border-radius:4px;color:var(--text2);font-family:var(--mono);font-size:10px;padding:7px 12px;cursor:pointer;transition:all 0.15s;white-space:nowrap;letter-spacing:0.05em}
-.bsm:hover{border-color:var(--accent);color:var(--accent)}
-.bsm.danger:hover{border-color:var(--red);color:var(--red)}
+.api-row{display:flex;gap:8px;flex:1;min-width:200px}
+.api-inp{flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:9px 13px;font-family:var(--body);font-size:13px;color:var(--text);outline:none;transition:border-color 0.2s}
+.api-inp:focus{border-color:var(--accent)}
+.api-inp.set{border-color:var(--accent);color:var(--accent);font-weight:500}
+.api-hint{font-size:11px;color:var(--text3);line-height:1.6;flex-shrink:0}
 
-/* TICKER SETUP ROW */
-.setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-weight:600;border-radius:var(--radius-sm);cursor:pointer;transition:all 0.18s;border:none;letter-spacing:0.02em;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff;padding:13px 22px;font-size:15px;width:100%;border:none}
+.btn-primary:hover{background:#155e3a;transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-primary:disabled{opacity:0.45;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-primary.warn{background:var(--warn)}
+.btn-primary.warn:hover{background:#8a4500}
+.btn-primary.blue{background:var(--blue)}
+.btn-primary.blue:hover{background:#144d8a}
+.btn-primary.purple{background:var(--purple)}
+.btn-primary.purple:hover{background:#522e80}
+.btn-sm{background:var(--white);border:1.5px solid var(--border);border-radius:6px;color:var(--text2);font-family:var(--body);font-size:12px;font-weight:500;padding:6px 13px;cursor:pointer;transition:all 0.15s}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm.danger:hover{border-color:var(--red);color:var(--red)}
+.btn-sm.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* SETUP GRID */
+.setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
 @media(max-width:580px){.setup-grid{grid-template-columns:1fr}}
-.setup-card{background:var(--s1);border:1px solid var(--border);border-radius:8px;padding:16px}
-.setup-title{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.setup-title.accent{color:var(--accent)}
-.setup-title.warn{color:var(--warn)}
-.count-b{font-size:9px;padding:1px 6px;background:var(--s2);border:1px solid var(--border);border-radius:10px;color:var(--text3)}
-.tags{display:flex;flex-wrap:wrap;gap:5px;min-height:28px;margin-bottom:10px}
-.tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:500;padding:3px 9px;border-radius:3px;background:var(--s2);border:1px solid var(--border);color:var(--text);letter-spacing:0.05em}
-.tag.ot{border-color:rgba(240,180,41,0.3);color:var(--warn);background:rgba(240,180,41,0.04)}
-.tag button{background:none;border:none;cursor:pointer;color:var(--text3);font-size:12px;line-height:1;padding:0;font-family:var(--mono);transition:color 0.15s}
+.setup-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.setup-card-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.setup-card-title.green{color:var(--accent)}
+.setup-card-title.amber{color:var(--warn)}
+.count-b{font-size:10px;padding:2px 7px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text3);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px;min-height:32px;margin-bottom:12px}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 11px;border-radius:6px;background:var(--bg2);border:1.5px solid var(--border);color:var(--text);letter-spacing:0.04em}
+.tag.ot{border-color:var(--warn-mid);color:var(--warn);background:var(--warn-light)}
+.tag button{background:none;border:none;cursor:pointer;color:var(--text3);font-size:14px;line-height:1;padding:0;font-weight:700;transition:color 0.15s}
 .tag button:hover{color:var(--red)}
-.irow{display:flex;gap:6px}
-.irow input{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:4px;padding:7px 10px;font-family:var(--mono);font-size:11px;color:var(--text);outline:none;transition:border-color 0.2s;text-transform:uppercase;letter-spacing:0.08em}
-.irow input::placeholder{color:var(--text3);text-transform:none;letter-spacing:normal}
+.irow{display:flex;gap:8px}
+.irow input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;font-family:var(--body);font-size:13px;color:var(--text);outline:none;transition:border-color 0.2s;text-transform:uppercase;letter-spacing:0.06em;font-weight:500}
+.irow input::placeholder{text-transform:none;letter-spacing:normal;color:var(--text4);font-weight:400}
 .irow input:focus{border-color:var(--accent)}
 .irow input.wf:focus{border-color:var(--warn)}
-.badd{background:var(--s2);border:1px solid var(--border);border-radius:4px;color:var(--text2);font-size:16px;padding:0 12px;cursor:pointer;transition:all 0.15s;line-height:1;font-family:var(--mono)}
+.badd{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-size:20px;padding:0 14px;cursor:pointer;transition:all 0.15s;line-height:1;font-weight:300}
 .badd:hover{border-color:var(--accent);color:var(--accent)}
 .badd.w:hover{border-color:var(--warn);color:var(--warn)}
-.empty-t{font-size:10px;color:var(--text3);font-style:italic}
+.empty-t{font-size:12px;color:var(--text4);font-style:italic}
 
-/* DASHBOARD GRID */
-.dash{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:700px){.dash{grid-template-columns:1fr}}
-.card-full{grid-column:1/-1}
+/* WHAT NOW BUTTON */
+.whatnow-wrap{margin-bottom:24px}
+.btn-whatnow{width:100%;background:linear-gradient(135deg,var(--accent),#1d9c5e);color:#fff;border:none;border-radius:var(--radius);padding:20px 24px;font-family:var(--body);font-size:18px;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:12px;letter-spacing:0.01em;box-shadow:var(--shadow-md)}
+.btn-whatnow:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(26,122,74,0.25)}
+.btn-whatnow:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.btn-whatnow-sub{font-size:12px;font-weight:400;opacity:0.85;margin-top:2px}
 
 /* CARDS */
-.card{background:var(--s1);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color 0.2s}
-.card:hover{border-color:var(--border2)}
-.card-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;user-select:none;gap:12px}
-.card-head:hover{background:rgba(255,255,255,0.02)}
-.card-head-left{display:flex;align-items:center;gap:10px}
-.card-icon{font-size:16px;width:28px;text-align:center;flex-shrink:0}
-.card-label{font-family:var(--display);font-size:13px;font-weight:700;color:var(--text);letter-spacing:0.01em}
-.card-sub{font-size:10px;color:var(--text3);margin-top:1px}
-.card-chevron{font-size:12px;color:var(--text3);transition:transform 0.2s;flex-shrink:0}
-.card.open .card-chevron{transform:rotate(180deg)}
-.card-body{display:none;border-top:1px solid var(--border);padding:18px}
-.card.open .card-body{display:block}
+.dash{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow 0.2s}
+.card:hover{box-shadow:var(--shadow-md)}
+.card-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;user-select:none;gap:14px;transition:background 0.15s}
+.card-head:hover{background:var(--bg)}
+.card-head-left{display:flex;align-items:center;gap:14px}
+.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.card-icon.green{background:var(--accent-light)}
+.card-icon.amber{background:var(--warn-light)}
+.card-icon.red{background:var(--red-light)}
+.card-icon.blue{background:var(--blue-light)}
+.card-icon.purple{background:var(--purple-light)}
+.card-icon.gray{background:var(--bg2)}
+.card-label{font-size:16px;font-weight:700;color:var(--text);line-height:1.2}
+.card-sub{font-size:12px;color:var(--text3);margin-top:2px;font-weight:400}
+.card-right{display:flex;align-items:center;gap:10px}
+.card-chevron{font-size:13px;color:var(--text3);transition:transform 0.22s;flex-shrink:0}
+.card.open>.card-head .card-chevron{transform:rotate(180deg)}
+.card-body{display:none;border-top:1.5px solid var(--border);padding:22px}
+.card.open>.card-body{display:block}
 
-/* PULSE BAR */
-.pulse-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
-.pulse-item{background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:10px 12px}
-.pulse-item-label{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
-.pulse-item-val{font-size:18px;font-weight:500;color:var(--text);line-height:1}
-.pulse-item-sub{font-size:10px;margin-top:3px}
-.up{color:var(--accent)}
-.down{color:var(--red)}
-.neutral{color:var(--text2)}
-.fg-bar{margin-top:14px;background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:12px 14px}
-.fg-label{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
-.fg-track{height:6px;background:var(--s3);border-radius:3px;overflow:hidden;margin-bottom:6px}
-.fg-fill{height:100%;border-radius:3px;transition:width 0.6s ease;background:linear-gradient(90deg,var(--red),var(--warn),var(--accent))}
-.fg-labels{display:flex;justify-content:space-between;font-size:9px;color:var(--text3)}
-.fg-score{font-size:20px;font-weight:500;color:var(--text);margin-right:8px}
+/* TRAFFIC LIGHT BADGE */
+.tl{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.04em;white-space:nowrap}
+.tl.red{background:var(--red-light);color:var(--red)}
+.tl.amber{background:var(--warn-light);color:var(--warn)}
+.tl.green{background:var(--accent-light);color:var(--accent)}
 
-/* SECTOR BAR */
-.sector-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);gap:10px}
-.sector-row:last-child{border-bottom:none}
-.sector-name{font-size:11px;color:var(--text2);min-width:100px}
-.sector-bar-wrap{flex:1;height:4px;background:var(--s3);border-radius:2px;overflow:hidden}
-.sector-bar-fill{height:100%;border-radius:2px;transition:width 0.5s ease}
-.sector-pct{font-size:11px;min-width:50px;text-align:right;font-weight:500}
-
-/* RUN BUTTON */
-.btn-run{width:100%;background:transparent;border:1px solid var(--accent);border-radius:7px;color:var(--accent);font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:15px 24px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px}
-.btn-run::before{content:'';position:absolute;inset:0;background:rgba(0,229,160,0.07);opacity:0;transition:opacity 0.2s}
-.btn-run:hover::before{opacity:1}
-.btn-run:hover{box-shadow:0 0 25px rgba(0,229,160,0.12)}
-.btn-run:disabled{opacity:0.4;cursor:not-allowed}
-.btn-run.purple{border-color:var(--purple);color:var(--purple)}
-.btn-run.purple::before{background:rgba(167,139,250,0.07)}
-.btn-run.purple:hover{box-shadow:0 0 25px rgba(167,139,250,0.12)}
-.btn-run.blue{border-color:var(--accent2);color:var(--accent2)}
-.btn-run.blue::before{background:rgba(0,153,255,0.07)}
-
-/* OUTPUT */
-.out-wrap{background:var(--s2);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:4px}
-.out-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--s3);border-bottom:1px solid var(--border)}
-.out-status{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3)}
-.out-status span{color:var(--accent)}
-.out-body{padding:18px;font-size:12px;line-height:1.85;color:var(--text2);max-height:600px;overflow-y:auto}
-.out-body::-webkit-scrollbar{width:3px}
-.out-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
-.out-body h2{font-family:var(--display);font-size:14px;font-weight:700;color:var(--accent);margin:20px 0 8px;border-bottom:1px solid rgba(0,229,160,0.1);padding-bottom:6px}
-.out-body h2:first-child{margin-top:0}
-.out-body h3{font-family:var(--display);font-size:12px;font-weight:600;color:var(--text);margin:14px 0 5px}
-.out-body p{margin-bottom:9px}
-.out-body strong{color:var(--text);font-weight:600}
-.out-body ul{margin:6px 0 10px 14px}
-.out-body li{margin-bottom:4px}
-.out-body hr{border:none;border-top:1px solid var(--border);margin:16px 0}
-.out-body table{width:100%;border-collapse:collapse;margin:10px 0;font-size:11px}
-.out-body th{color:var(--text3);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 8px;border-bottom:1px solid var(--border);text-align:left}
-.out-body td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,0.02);color:var(--text2)}
-.cursor{display:inline-block;width:7px;height:13px;background:var(--accent);animation:blink 1s step-end infinite;vertical-align:-2px;margin-left:2px}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.load-bar{height:2px;background:var(--s3);overflow:hidden}
-.load-bar-i{height:100%;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:loading 1.4s ease infinite;width:35%}
-@keyframes loading{0%{transform:translateX(-200%)}100%{transform:translateX(400%)}}}
+/* BOTTOM LINE BOX */
+.bottom-line{background:linear-gradient(135deg,var(--accent-light),var(--blue-light));border:2px solid var(--accent-mid);border-radius:var(--radius);padding:18px 20px;margin-bottom:18px}
+.bottom-line-title{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.bottom-line ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.bottom-line ul li{display:flex;align-items:flex-start;gap:9px;font-size:14px;font-weight:500;color:var(--text);line-height:1.6}
+.bottom-line ul li::before{content:'→';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
 
 /* FOCUS CHECKS */
-.focus-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px}
-.fitem{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--text2);cursor:pointer;padding:7px 9px;border-radius:4px;border:1px solid transparent;transition:all 0.15s;user-select:none}
-.fitem:hover{background:var(--s2);border-color:var(--border)}
+.focus-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.fitem{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;padding:9px 12px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg);transition:all 0.15s;user-select:none}
+.fitem:hover{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
 .fitem input{display:none}
-.fcheck{width:13px;height:13px;border:1px solid var(--border2);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;transition:all 0.15s}
-.fitem input:checked+.fcheck{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.fitem input:checked~.flbl{color:var(--text)}
+.fcheck{width:16px;height:16px;border:2px solid var(--border2);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all 0.15s;font-weight:700}
+.fitem input:checked+.fcheck{background:var(--accent);border-color:var(--accent);color:#fff}
+.fitem input:checked~.flbl{color:var(--text);font-weight:600}
+
+/* OUTPUT AREA */
+.out-wrap{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:14px}
+.out-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg2);border-bottom:1.5px solid var(--border);flex-wrap:wrap;gap:8px}
+.out-status{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);font-weight:600}
+.out-status span{color:var(--accent)}
+.out-actions{display:flex;gap:6px;flex-wrap:wrap}
+.load-bar{height:4px;background:var(--bg3);overflow:hidden}
+.load-bar-i{height:100%;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:loading 1.4s ease infinite;width:40%}
+@keyframes loading{0%{transform:translateX(-200%)}100%{transform:translateX(500%)}}
+.out-body{padding:22px;font-size:15px;line-height:2;color:var(--text2);max-height:700px;overflow-y:auto;letter-spacing:0.01em}
+.out-body::-webkit-scrollbar{width:5px}
+.out-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.out-body h2{font-size:17px;font-weight:700;color:var(--accent);margin:24px 0 10px;border-bottom:2px solid var(--accent-mid);padding-bottom:7px;letter-spacing:0.01em}
+.out-body h2:first-child{margin-top:0}
+.out-body h3{font-size:15px;font-weight:700;color:var(--text);margin:18px 0 7px}
+.out-body p{margin-bottom:11px}
+.out-body strong{color:var(--text);font-weight:700}
+.out-body ul{margin:8px 0 12px 0;list-style:none}
+.out-body ul li{padding:5px 0 5px 22px;position:relative;border-bottom:1px solid var(--border);line-height:1.8}
+.out-body ul li:last-child{border-bottom:none}
+.out-body ul li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700}
+.out-body hr{border:none;border-top:2px solid var(--border);margin:20px 0}
+.out-body table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.out-body th{background:var(--bg2);color:var(--text2);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:9px 12px;border:1px solid var(--border);text-align:left;font-weight:700}
+.out-body td{padding:9px 12px;border:1px solid var(--border);color:var(--text2);line-height:1.6}
+.out-body tr:nth-child(even) td{background:var(--bg)}
+.cursor{display:inline-block;width:10px;height:16px;background:var(--accent);animation:blink 1s step-end infinite;vertical-align:-3px;margin-left:2px;border-radius:2px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* READ ALOUD */
+.read-aloud-bar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--blue-light);border-top:1.5px solid var(--border);flex-wrap:wrap}
+.read-aloud-label{font-size:11px;color:var(--blue);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+
+/* ASK CLAUDE */
+.ask-wrap{margin-top:18px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.ask-head{padding:12px 16px;background:var(--bg2);border-bottom:1.5px solid var(--border);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);font-weight:700;display:flex;align-items:center;gap:8px}
+.ask-form{display:flex;gap:8px;padding:14px}
+.ask-inp{flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;font-family:var(--body);font-size:14px;color:var(--text);outline:none;transition:border-color 0.2s;line-height:1.5}
+.ask-inp:focus{border-color:var(--accent)}
+.ask-inp::placeholder{color:var(--text4)}
+.ask-responses{padding:0 14px 14px;display:flex;flex-direction:column;gap:10px}
+.ask-bubble{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;font-size:14px;line-height:1.9;color:var(--text2)}
+.ask-bubble strong{color:var(--text);font-weight:700}
+.ask-bubble .ask-q{font-size:12px;color:var(--text3);margin-bottom:6px;font-weight:600}
 
 /* JOURNAL */
-.journal-entries{margin-bottom:14px;display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
-.journal-entries::-webkit-scrollbar{width:3px}
-.journal-entries::-webkit-scrollbar-thumb{background:var(--border2)}
-.journal-entry{background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:12px 14px}
-.je-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.je-date{font-size:9px;color:var(--text3);letter-spacing:0.05em}
-.je-tag{font-size:9px;padding:2px 7px;border-radius:10px;font-weight:500}
-.je-tag.trade{background:rgba(0,229,160,0.1);color:var(--accent)}
-.je-tag.lesson{background:rgba(167,139,250,0.1);color:var(--purple)}
-.je-tag.idea{background:rgba(0,153,255,0.1);color:var(--accent2)}
-.je-tag.note{background:rgba(255,255,255,0.05);color:var(--text3)}
-.je-text{font-size:12px;color:var(--text2);line-height:1.6}
-.je-del{background:none;border:none;cursor:pointer;color:var(--text3);font-size:12px;transition:color 0.15s}
+.journal-entries{display:flex;flex-direction:column;gap:10px;max-height:320px;overflow-y:auto;margin-bottom:16px}
+.journal-entries::-webkit-scrollbar{width:4px}
+.journal-entries::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.je{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px}
+.je-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;flex-wrap:wrap;gap:6px}
+.je-date{font-size:11px;color:var(--text4);font-weight:500}
+.je-tag{font-size:11px;padding:2px 9px;border-radius:10px;font-weight:700;letter-spacing:0.04em}
+.je-tag.trade{background:var(--accent-light);color:var(--accent)}
+.je-tag.lesson{background:var(--purple-light);color:var(--purple)}
+.je-tag.idea{background:var(--blue-light);color:var(--blue)}
+.je-tag.note{background:var(--bg2);color:var(--text3)}
+.je-text{font-size:14px;color:var(--text2);line-height:1.8}
+.je-del{background:none;border:none;cursor:pointer;color:var(--text4);font-size:14px;transition:color 0.15s;padding:0;line-height:1}
 .je-del:hover{color:var(--red)}
-.journal-form{display:flex;flex-direction:column;gap:8px}
-.journal-textarea{background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-family:var(--mono);font-size:12px;color:var(--text);outline:none;resize:vertical;min-height:80px;transition:border-color 0.2s;width:100%}
-.journal-textarea:focus{border-color:var(--accent)}
-.journal-form-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.tag-sel{background:var(--s2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;font-family:var(--mono);font-size:11px;color:var(--text2);outline:none;cursor:pointer}
-.tag-sel:focus{border-color:var(--accent)}
-.search-inp{flex:1;min-width:100px;background:var(--s2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;font-family:var(--mono);font-size:11px;color:var(--text);outline:none;transition:border-color 0.2s}
-.search-inp:focus{border-color:var(--accent)}
-.search-inp::placeholder{color:var(--text3)}
+.journal-form textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-family:var(--body);font-size:14px;color:var(--text);outline:none;resize:vertical;min-height:90px;line-height:1.8;transition:border-color 0.2s}
+.journal-form textarea:focus{border-color:var(--accent)}
+.journal-form-row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.sel{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;font-family:var(--body);font-size:13px;color:var(--text2);outline:none;cursor:pointer;font-weight:500}
+.sel:focus{border-color:var(--accent)}
 
-/* STREAK / SURPRISE */
-.streak-wrap{text-align:center;padding:8px 0 4px}
-.streak-num{font-family:var(--display);font-size:48px;font-weight:800;color:var(--accent);line-height:1}
-.streak-label{font-size:11px;color:var(--text2);margin-top:4px;letter-spacing:0.05em}
-.streak-fire{font-size:32px;margin-bottom:4px}
-.quote-wrap{margin-top:16px;background:var(--s2);border-left:3px solid var(--purple);border-radius:0 6px 6px 0;padding:12px 16px}
-.quote-text{font-size:13px;color:var(--text);line-height:1.6;font-style:italic}
-.quote-author{font-size:10px;color:var(--text3);margin-top:6px;letter-spacing:0.05em}
-.checklist{display:flex;flex-direction:column;gap:6px;margin-top:14px}
-.check-item{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text2);cursor:pointer;padding:8px 10px;border-radius:5px;border:1px solid var(--border);background:var(--s2);transition:all 0.15s;user-select:none}
-.check-item:hover{border-color:var(--border2)}
-.check-item.done{color:var(--text3);text-decoration:line-through}
-.check-item.done .chk{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.chk{width:14px;height:14px;border:1px solid var(--border2);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;transition:all 0.15s}
+/* MINDSET */
+.streak-box{text-align:center;background:linear-gradient(135deg,var(--accent-light),#fff);border:2px solid var(--accent-mid);border-radius:var(--radius);padding:22px;margin-bottom:14px}
+.streak-fire{font-size:36px;margin-bottom:6px}
+.streak-num{font-size:56px;font-weight:700;color:var(--accent);line-height:1;font-family:var(--body)}
+.streak-lbl{font-size:13px;color:var(--text3);margin-top:4px;font-weight:500}
+.checklist{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.chk-item{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;padding:11px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg);transition:all 0.15s;user-select:none;line-height:1.5}
+.chk-item:hover{border-color:var(--accent);background:var(--accent-light)}
+.chk-item.done{color:var(--text4);background:var(--bg2)}
+.chk-item.done .chkbox{background:var(--accent);border-color:var(--accent);color:#fff}
+.chkbox{width:20px;height:20px;border:2px solid var(--border2);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:all 0.15s}
+.quote-box{background:var(--purple-light);border-left:4px solid var(--purple);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 18px}
+.quote-text{font-size:15px;color:var(--text);line-height:1.8;font-style:italic;font-weight:400;margin-bottom:6px}
+.quote-author{font-size:11px;color:var(--text3);font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
 
-/* MISC */
-.divider{height:1px;background:var(--border);margin:14px 0}
-.run-btn-row{display:flex;gap:8px;flex-wrap:wrap}
-.run-btn-row .btn-run{flex:1;min-width:140px;margin-bottom:0}
-.out-actions{display:flex;gap:6px}
-footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--text3);letter-spacing:0.06em;flex-wrap:wrap;gap:8px}
-.footer-brand{color:var(--accent);font-weight:500}
+/* PULSE */
+.pulse-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
+.pulse-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:13px 15px}
+.pulse-lbl{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-weight:700}
+.pulse-val{font-size:20px;font-weight:700;color:var(--text);line-height:1}
+.pulse-sub{font-size:11px;margin-top:4px;color:var(--text3)}
+.fg-box{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px}
+.fg-lbl{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;font-weight:700}
+.fg-track{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;margin-bottom:7px}
+.fg-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--red),var(--warn),var(--accent));transition:width 0.8s ease}
+.fg-row{display:flex;justify-content:space-between;font-size:10px;color:var(--text4)}
+
+/* DIVIDER */
+.divider{height:1.5px;background:var(--border);margin:16px 0}
+
+/* NOTE */
+.note{background:var(--warn-light);border:1.5px solid var(--warn-mid);border-radius:var(--radius-sm);padding:12px 16px;font-size:13px;color:var(--warn);line-height:1.7;font-weight:500}
+.note strong{font-weight:700}
+
+footer{margin-top:48px;padding-top:20px;border-top:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px;font-weight:500}
+.footer-brand{color:var(--accent);font-weight:700}
+
+@media(max-width:500px){
+  .focus-wrap{grid-template-columns:1fr}
+  .pulse-grid{grid-template-columns:1fr 1fr}
+  .header{flex-direction:column;align-items:flex-start}
+  .header-meta{align-items:flex-start}
+}
 </style>
 </head>
 <body>
@@ -215,88 +273,97 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);displ
 
 <!-- HEADER -->
 <header class="header">
-  <div class="header-left">
+  <div class="logo">
     <div class="logo-mark">⌘</div>
-    <div class="header-text">
-      <div class="header-eyebrow">Market Command Center</div>
-      <div class="header-title">Morning Briefing</div>
+    <div class="logo-text">
+      <div class="eyebrow">Market Command Center</div>
+      <div class="title">Morning Briefing</div>
     </div>
   </div>
-  <div class="header-right">
-    <div class="pill"><div class="pill-dot" id="sdot"></div><span id="stxt">Checking...</span></div>
-    <div class="header-date" id="hdate"></div>
+  <div class="header-meta">
+    <div class="status-pill"><div class="sdot" id="sdot"></div><span id="stxt">Checking...</span></div>
+    <div class="hdate" id="hdate"></div>
   </div>
 </header>
 
 <!-- API BANNER -->
 <div class="api-banner" id="apibanner">
-  <div class="api-lbl" id="apilbl">⚠ API Key</div>
+  <div class="api-lbl" id="apilbl">⚠ API Key Required</div>
   <div class="api-row">
-    <input type="password" class="api-inp" id="apiinp" placeholder="Paste Anthropic API key (sk-ant-...)" autocomplete="off">
-    <button class="bsm" onclick="saveKey()">Save</button>
-    <button class="bsm danger" id="clearbtn" onclick="clearKey()" style="display:none">Clear</button>
+    <input type="password" class="api-inp" id="apiinp" placeholder="Paste your Anthropic API key (sk-ant-...)" autocomplete="off">
+    <button class="btn-sm" onclick="saveKey()">Save</button>
+    <button class="btn-sm danger" id="clearbtn" onclick="clearKey()" style="display:none">Clear</button>
   </div>
-  <div class="api-hint" id="apihint">Stored only in your browser. Never uploaded anywhere.</div>
+  <div class="api-hint" id="apihint">Stored only in your browser — never uploaded anywhere</div>
 </div>
 
 <!-- TICKER SETUP -->
 <div class="setup-grid">
   <div class="setup-card">
-    <div class="setup-title accent">◈ Watchlist <span class="count-b" id="wlc">0</span></div>
+    <div class="setup-card-title green">◈ Watchlist <span class="count-b" id="wlc">0</span></div>
     <div class="tags" id="wltags"></div>
-    <div class="irow"><input type="text" id="wlinp" placeholder="Add ticker" maxlength="6" onkeydown="if(event.key==='Enter')addWL()"><button class="badd" onclick="addWL()">+</button></div>
+    <div class="irow"><input type="text" id="wlinp" placeholder="Add ticker (e.g. NVDA)" maxlength="6" onkeydown="if(event.key==='Enter')addWL()"><button class="badd" onclick="addWL()">+</button></div>
   </div>
   <div class="setup-card">
-    <div class="setup-title warn">◈ Open Trades <span class="count-b" id="otc">0</span></div>
+    <div class="setup-card-title amber">◈ Open Trades <span class="count-b" id="otc">0</span></div>
     <div class="tags" id="ottags"></div>
-    <div class="irow"><input type="text" id="otinp" placeholder="Add ticker" maxlength="6" class="wf" onkeydown="if(event.key==='Enter')addOT()"><button class="badd w" onclick="addOT()">+</button></div>
+    <div class="irow"><input type="text" id="otinp" placeholder="Add ticker (e.g. TSLA)" maxlength="6" class="wf" onkeydown="if(event.key==='Enter')addOT()"><button class="badd w" onclick="addOT()">+</button></div>
+  </div>
+</div>
+
+<!-- WHAT DO I DO RIGHT NOW -->
+<div class="whatnow-wrap">
+  <button class="btn-whatnow" onclick="runWhatNow()" id="btn-whatnow">
+    <span style="font-size:24px">⚡</span>
+    <div>
+      <div>What Do I Do Right Now?</div>
+      <div class="btn-whatnow-sub">Urgent scan — 60 second read, tells you exactly what matters this moment</div>
+    </div>
+  </button>
+  <div id="out-whatnow" style="display:none;margin-top:12px">
+    <div class="out-wrap">
+      <div class="out-head"><div class="out-status">Right Now — <span id="st-whatnow">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-whatnow','btn-speak-whatnow')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-whatnow" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-whatnow')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-whatnow','btn-whatnow')">Clear</button></div></div>
+      <div class="load-bar" id="lb-whatnow" style="display:none"><div class="load-bar-i"></div></div>
+      <div class="out-body" id="ob-whatnow"></div>
+    </div>
   </div>
 </div>
 
 <!-- DASHBOARD -->
 <div class="dash">
 
-  <!-- CARD 1: MARKET PULSE (full width, open by default) -->
-  <div class="card card-full open" id="card-pulse">
+  <!-- CARD: MARKET PULSE -->
+  <div class="card" id="card-pulse">
     <div class="card-head" onclick="toggleCard('card-pulse')">
-      <div class="card-head-left">
-        <div class="card-icon">📊</div>
-        <div><div class="card-label">Market Pulse</div><div class="card-sub">Live sentiment & key levels</div></div>
-      </div>
+      <div class="card-head-left"><div class="card-icon green">📊</div><div><div class="card-label">Market Pulse</div><div class="card-sub">Key levels at a glance</div></div></div>
       <div class="card-chevron">▼</div>
     </div>
     <div class="card-body">
-      <div class="pulse-grid" id="pulse-grid">
-        <div class="pulse-item"><div class="pulse-item-label">S&P 500</div><div class="pulse-item-val" id="p-spy">—</div><div class="pulse-item-sub neutral" id="p-spy-s">Pre-market</div></div>
-        <div class="pulse-item"><div class="pulse-item-label">Nasdaq</div><div class="pulse-item-val" id="p-qqq">—</div><div class="pulse-item-sub neutral" id="p-qqq-s">Pre-market</div></div>
-        <div class="pulse-item"><div class="pulse-item-label">VIX</div><div class="pulse-item-val" id="p-vix">—</div><div class="pulse-item-sub neutral" id="p-vix-s">Volatility Index</div></div>
-        <div class="pulse-item"><div class="pulse-item-label">10Y Yield</div><div class="pulse-item-val" id="p-yield">—</div><div class="pulse-item-sub neutral">US Treasury</div></div>
-        <div class="pulse-item"><div class="pulse-item-label">Gold</div><div class="pulse-item-val" id="p-gold">—</div><div class="pulse-item-sub neutral">Safe haven</div></div>
-        <div class="pulse-item"><div class="pulse-item-label">Oil (WTI)</div><div class="pulse-item-val" id="p-oil">—</div><div class="pulse-item-sub neutral">Crude</div></div>
+      <div class="pulse-grid">
+        <div class="pulse-card"><div class="pulse-lbl">S&P 500 / SPY</div><div class="pulse-val" id="p-spy">—</div><div class="pulse-sub">Check pre-market</div></div>
+        <div class="pulse-card"><div class="pulse-lbl">Nasdaq / QQQ</div><div class="pulse-val" id="p-qqq">—</div><div class="pulse-sub">Check pre-market</div></div>
+        <div class="pulse-card"><div class="pulse-lbl">VIX</div><div class="pulse-val" id="p-vix">—</div><div class="pulse-sub">Volatility index</div></div>
+        <div class="pulse-card"><div class="pulse-lbl">10Y Yield</div><div class="pulse-val" id="p-yield">—</div><div class="pulse-sub">US Treasury</div></div>
+        <div class="pulse-card"><div class="pulse-lbl">Gold</div><div class="pulse-val" id="p-gold">—</div><div class="pulse-sub">Safe haven</div></div>
+        <div class="pulse-card"><div class="pulse-lbl">Oil (WTI)</div><div class="pulse-val" id="p-oil">—</div><div class="pulse-sub">Crude</div></div>
       </div>
-      <div class="fg-bar">
-        <div class="fg-label">Fear &amp; Greed Index — <span id="fg-word" style="color:var(--warn)">Loading...</span></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
-          <span class="fg-score" id="fg-score">—</span>
-          <div style="flex:1"><div class="fg-track"><div class="fg-fill" id="fg-fill" style="width:50%"></div></div></div>
-        </div>
-        <div class="fg-labels"><span>Extreme Fear</span><span>Fear</span><span>Neutral</span><span>Greed</span><span>Extreme Greed</span></div>
+      <div class="fg-box">
+        <div class="fg-lbl">Fear &amp; Greed — <strong id="fg-word" style="color:var(--warn)">Run briefing for live data</strong></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="font-size:26px;font-weight:700;color:var(--text)" id="fg-score">—</span><div style="flex:1"><div class="fg-track"><div class="fg-fill" id="fg-fill" style="width:0%"></div></div></div></div>
+        <div class="fg-row"><span>😱 Fear</span><span>😐 Neutral</span><span>😄 Greed</span></div>
       </div>
-      <div style="margin-top:10px;text-align:right"><button class="bsm" onclick="loadPulse()">↻ Refresh</button></div>
+      <div class="note" style="margin-top:12px">⚡ <strong>Live prices need a market data subscription.</strong> Run the Morning Briefing below for AI-sourced current levels, or check <strong>cnbc.com/markets</strong> for real-time data.</div>
     </div>
   </div>
 
-  <!-- CARD 2: MORNING BRIEFING (full width) -->
-  <div class="card card-full open" id="card-brief">
+  <!-- CARD: MORNING BRIEFING -->
+  <div class="card open" id="card-brief">
     <div class="card-head" onclick="toggleCard('card-brief')">
-      <div class="card-head-left">
-        <div class="card-icon">🗞️</div>
-        <div><div class="card-label">Morning Briefing</div><div class="card-sub">News, macro, earnings, calendar</div></div>
-      </div>
+      <div class="card-head-left"><div class="card-icon green">🗞️</div><div><div class="card-label">Morning Briefing</div><div class="card-sub">News · Macro · Earnings · Calendar</div></div></div>
       <div class="card-chevron">▼</div>
     </div>
     <div class="card-body">
-      <div class="focus-grid">
+      <div class="focus-wrap">
         <label class="fitem"><input type="checkbox" id="f1" checked><div class="fcheck">✓</div><span class="flbl">Macro &amp; Fed</span></label>
         <label class="fitem"><input type="checkbox" id="f2" checked><div class="fcheck">✓</div><span class="flbl">Earnings</span></label>
         <label class="fitem"><input type="checkbox" id="f3" checked><div class="fcheck">✓</div><span class="flbl">Geopolitical</span></label>
@@ -304,187 +371,154 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);displ
         <label class="fitem"><input type="checkbox" id="f5" checked><div class="fcheck">✓</div><span class="flbl">Economic Calendar</span></label>
         <label class="fitem"><input type="checkbox" id="f6" checked><div class="fcheck">✓</div><span class="flbl">Options Flow</span></label>
       </div>
-      <button class="btn-run" onclick="runSection('brief')" id="btn-brief">⟳ Run Morning Briefing</button>
+      <button class="btn btn-primary" onclick="runSection('brief')" id="btn-brief">⟳ Run Morning Briefing</button>
       <div id="out-brief" style="display:none">
         <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Briefing — <span id="st-brief">Ready</span></div><div class="out-actions"><button class="bsm" onclick="copyOut('ob-brief')">Copy</button><button class="bsm danger" onclick="clearOut('out-brief','btn-brief')">Clear</button></div></div>
+          <div class="out-head"><div class="out-status">Briefing — <span id="st-brief">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-brief','btn-speak-brief')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-brief" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-brief')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-brief','btn-brief')">Clear</button></div></div>
           <div class="load-bar" id="lb-brief" style="display:none"><div class="load-bar-i"></div></div>
           <div class="out-body" id="ob-brief"></div>
         </div>
+        <div class="ask-wrap"><div class="ask-head">💬 Ask a question about this briefing</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-brief" placeholder="e.g. What does this mean for my NVDA calls? Explain IV crush simply..." onkeydown="if(event.key==='Enter')askQ('brief')"><button class="btn-sm" onclick="askQ('brief')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-brief-res"></div></div>
       </div>
     </div>
   </div>
 
-  <!-- CARD 3: MY POSITIONS -->
-  <div class="card card-full open" id="card-pos">
+  <!-- CARD: MY POSITIONS -->
+  <div class="card open" id="card-pos">
     <div class="card-head" onclick="toggleCard('card-pos')">
-      <div class="card-head-left">
-        <div class="card-icon">🚨</div>
-        <div><div class="card-label">My Positions Alert</div><div class="card-sub">Risk, catalysts & IV events per trade</div></div>
-      </div>
+      <div class="card-head-left"><div class="card-icon amber">🚨</div><div><div class="card-label">My Positions Alert</div><div class="card-sub">Risk · Catalysts · IV events per trade</div></div></div>
       <div class="card-chevron">▼</div>
     </div>
     <div class="card-body">
-      <button class="btn-run" style="border-color:var(--warn);color:var(--warn)" onclick="runSection('pos')" id="btn-pos">⟳ Scan My Open Trades</button>
+      <button class="btn btn-primary warn" onclick="runSection('pos')" id="btn-pos">⟳ Scan My Open Trades</button>
       <div id="out-pos" style="display:none">
         <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Positions — <span id="st-pos">Ready</span></div><div class="out-actions"><button class="bsm" onclick="copyOut('ob-pos')">Copy</button><button class="bsm danger" onclick="clearOut('out-pos','btn-pos')">Clear</button></div></div>
+          <div class="out-head"><div class="out-status">Positions — <span id="st-pos">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-pos','btn-speak-pos')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-pos" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-pos')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-pos','btn-pos')">Clear</button></div></div>
           <div class="load-bar" id="lb-pos" style="display:none"><div class="load-bar-i"></div></div>
           <div class="out-body" id="ob-pos"></div>
         </div>
+        <div class="ask-wrap"><div class="ask-head">💬 Ask about a specific position</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-pos" placeholder="e.g. Should I hedge my SWKS position? What's a protective put?" onkeydown="if(event.key==='Enter')askQ('pos')"><button class="btn-sm" onclick="askQ('pos')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-pos-res"></div></div>
       </div>
     </div>
   </div>
 
-  <!-- CARD 4: TRADE IDEA -->
+  <!-- CARD: TRADE IDEA -->
   <div class="card" id="card-idea">
     <div class="card-head" onclick="toggleCard('card-idea')">
-      <div class="card-head-left">
-        <div class="card-icon">💡</div>
-        <div><div class="card-label">Trade Idea of the Day</div><div class="card-sub">AI-generated options setup</div></div>
-      </div>
+      <div class="card-head-left"><div class="card-icon blue">💡</div><div><div class="card-label">Trade Idea of the Day</div><div class="card-sub">AI-generated options setups</div></div></div>
       <div class="card-chevron">▼</div>
     </div>
     <div class="card-body">
-      <button class="btn-run blue" onclick="runSection('idea')" id="btn-idea">⟳ Generate Trade Idea</button>
+      <button class="btn btn-primary blue" onclick="runSection('idea')" id="btn-idea">⟳ Generate Trade Idea</button>
       <div id="out-idea" style="display:none">
         <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Idea — <span id="st-idea">Ready</span></div><div class="out-actions"><button class="bsm" onclick="copyOut('ob-idea')">Copy</button><button class="bsm danger" onclick="clearOut('out-idea','btn-idea')">Clear</button></div></div>
+          <div class="out-head"><div class="out-status">Idea — <span id="st-idea">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-idea','btn-speak-idea')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-idea" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-idea')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-idea','btn-idea')">Clear</button></div></div>
           <div class="load-bar" id="lb-idea" style="display:none"><div class="load-bar-i"></div></div>
           <div class="out-body" id="ob-idea"></div>
         </div>
+        <div class="ask-wrap"><div class="ask-head">💬 Ask about this trade idea</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-idea" placeholder="e.g. What's a bull call spread? How do I calculate max loss?" onkeydown="if(event.key==='Enter')askQ('idea')"><button class="btn-sm" onclick="askQ('idea')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-idea-res"></div></div>
       </div>
     </div>
   </div>
 
-  <!-- CARD 5: LEARN TODAY -->
+  <!-- CARD: LEARN TODAY -->
   <div class="card" id="card-learn">
     <div class="card-head" onclick="toggleCard('card-learn')">
-      <div class="card-head-left">
-        <div class="card-icon">🎓</div>
-        <div><div class="card-label">Learn Something Today</div><div class="card-sub">Options tip + long-term stock idea</div></div>
-      </div>
+      <div class="card-head-left"><div class="card-icon purple">🎓</div><div><div class="card-label">Learn Something Today</div><div class="card-sub">Options tip · Long-term stock idea · Wisdom</div></div></div>
       <div class="card-chevron">▼</div>
     </div>
     <div class="card-body">
-      <button class="btn-run purple" onclick="runSection('learn')" id="btn-learn">⟳ Get Today's Lesson</button>
+      <button class="btn btn-primary purple" onclick="runSection('learn')" id="btn-learn">⟳ Get Today's Lesson</button>
       <div id="out-learn" style="display:none">
         <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Education — <span id="st-learn">Ready</span></div><div class="out-actions"><button class="bsm" onclick="copyOut('ob-learn')">Copy</button><button class="bsm danger" onclick="clearOut('out-learn','btn-learn')">Clear</button></div></div>
+          <div class="out-head"><div class="out-status">Education — <span id="st-learn">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-learn','btn-speak-learn')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-learn" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-learn')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-learn','btn-learn')">Clear</button></div></div>
           <div class="load-bar" id="lb-learn" style="display:none"><div class="load-bar-i"></div></div>
           <div class="out-body" id="ob-learn"></div>
         </div>
+        <div class="ask-wrap"><div class="ask-head">💬 Ask anything — no question is too basic</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-learn" placeholder="e.g. What's the difference between a call and a put? Explain theta decay..." onkeydown="if(event.key==='Enter')askQ('learn')"><button class="btn-sm" onclick="askQ('learn')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-learn-res"></div></div>
       </div>
     </div>
   </div>
 
-  <!-- CARD 6: ECONOMIC EVENTS -->
+  <!-- CARD: ECONOMIC EVENTS -->
   <div class="card" id="card-econ">
     <div class="card-head" onclick="toggleCard('card-econ')">
-      <div class="card-head-left">
-        <div class="card-icon">📅</div>
-        <div><div class="card-label">Economic Events</div><div class="card-sub">Plain-English explanation of what matters</div></div>
-      </div>
+      <div class="card-head-left"><div class="card-icon green">📅</div><div><div class="card-label">Economic Events</div><div class="card-sub">Plain English — what it means for YOUR trades</div></div></div>
       <div class="card-chevron">▼</div>
     </div>
     <div class="card-body">
-      <button class="btn-run" onclick="runSection('econ')" id="btn-econ">⟳ Explain Today's Events</button>
+      <button class="btn btn-primary" onclick="runSection('econ')" id="btn-econ">⟳ Explain Today's Events</button>
       <div id="out-econ" style="display:none">
         <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Events — <span id="st-econ">Ready</span></div><div class="out-actions"><button class="bsm" onclick="copyOut('ob-econ')">Copy</button><button class="bsm danger" onclick="clearOut('out-econ','btn-econ')">Clear</button></div></div>
+          <div class="out-head"><div class="out-status">Events — <span id="st-econ">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-econ','btn-speak-econ')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-econ" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-econ')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-econ','btn-econ')">Clear</button></div></div>
           <div class="load-bar" id="lb-econ" style="display:none"><div class="load-bar-i"></div></div>
           <div class="out-body" id="ob-econ"></div>
         </div>
+        <div class="ask-wrap"><div class="ask-head">💬 Ask about any economic event</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-econ" placeholder="e.g. What is PCE and why does it matter? How does CPI affect options?" onkeydown="if(event.key==='Enter')askQ('econ')"><button class="btn-sm" onclick="askQ('econ')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-econ-res"></div></div>
       </div>
     </div>
   </div>
 
-  <!-- CARD 7: SECTOR RANKINGS -->
+  <!-- CARD: SECTOR RANKINGS -->
   <div class="card" id="card-sector">
     <div class="card-head" onclick="toggleCard('card-sector')">
-      <div class="card-head-left">
-        <div class="card-icon">🏆</div>
-        <div><div class="card-label">Sector Rankings</div><div class="card-sub">Hot vs cold sectors today</div></div>
-      </div>
+      <div class="card-head-left"><div class="card-icon amber">🏆</div><div><div class="card-label">Sector Rankings</div><div class="card-sub">What's hot, what's not — rotation signals</div></div></div>
       <div class="card-chevron">▼</div>
     </div>
     <div class="card-body">
-      <button class="btn-run" onclick="runSection('sector')" id="btn-sector">⟳ Rank Today's Sectors</button>
+      <button class="btn btn-primary warn" onclick="runSection('sector')" id="btn-sector">⟳ Rank Today's Sectors</button>
       <div id="out-sector" style="display:none">
         <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Sectors — <span id="st-sector">Ready</span></div><div class="out-actions"><button class="bsm" onclick="copyOut('ob-sector')">Copy</button><button class="bsm danger" onclick="clearOut('out-sector','btn-sector')">Clear</button></div></div>
+          <div class="out-head"><div class="out-status">Sectors — <span id="st-sector">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-sector','btn-speak-sector')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-sector" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-sector')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-sector','btn-sector')">Clear</button></div></div>
           <div class="load-bar" id="lb-sector" style="display:none"><div class="load-bar-i"></div></div>
           <div class="out-body" id="ob-sector"></div>
         </div>
+        <div class="ask-wrap"><div class="ask-head">💬 Ask about sectors or rotation</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-sector" placeholder="e.g. What is sector rotation? How do I trade XLE options?" onkeydown="if(event.key==='Enter')askQ('sector')"><button class="btn-sm" onclick="askQ('sector')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-sector-res"></div></div>
       </div>
     </div>
   </div>
 
-  <!-- CARD 8: TRADE JOURNAL -->
+  <!-- CARD: TRADE JOURNAL -->
   <div class="card" id="card-journal">
     <div class="card-head" onclick="toggleCard('card-journal')">
-      <div class="card-head-left">
-        <div class="card-icon">📓</div>
-        <div><div class="card-label">Trade Journal</div><div class="card-sub">Log trades, lessons & ideas</div></div>
-      </div>
+      <div class="card-head-left"><div class="card-icon gray">📓</div><div><div class="card-label">Trade Journal</div><div class="card-sub">Log trades · Lessons · Ideas — saved in your browser</div></div></div>
       <div class="card-chevron">▼</div>
     </div>
     <div class="card-body">
-      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
-        <input type="text" class="search-inp" id="jsearch" placeholder="Search journal..." oninput="renderJournal()">
-        <select class="tag-sel" id="jfilter" onchange="renderJournal()">
-          <option value="">All entries</option>
-          <option value="trade">Trades</option>
-          <option value="lesson">Lessons</option>
-          <option value="idea">Ideas</option>
-          <option value="note">Notes</option>
-        </select>
+      <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+        <input type="text" class="ask-inp" id="jsearch" placeholder="Search your journal..." oninput="renderJournal()" style="flex:1;min-width:150px">
+        <select class="sel" id="jfilter" onchange="renderJournal()"><option value="">All entries</option><option value="trade">Trades</option><option value="lesson">Lessons</option><option value="idea">Ideas</option><option value="note">Notes</option></select>
       </div>
       <div class="journal-entries" id="journal-entries"></div>
       <div class="divider"></div>
       <div class="journal-form">
-        <textarea class="journal-textarea" id="jtext" placeholder="Log a trade, capture a lesson, save an idea..."></textarea>
+        <textarea id="jtext" placeholder="One sentence is enough. 'Sold too early on NVDA — wait for the second push next time.'"></textarea>
         <div class="journal-form-row">
-          <select class="tag-sel" id="jtag">
-            <option value="trade">📈 Trade</option>
-            <option value="lesson">🎓 Lesson</option>
-            <option value="idea">💡 Idea</option>
-            <option value="note">📌 Note</option>
-          </select>
-          <button class="bsm" onclick="addJournalEntry()" style="padding:7px 16px">Save Entry</button>
+          <select class="sel" id="jtag"><option value="trade">📈 Trade</option><option value="lesson">🎓 Lesson</option><option value="idea">💡 Idea</option><option value="note">📌 Note</option></select>
+          <button class="btn btn-primary" onclick="addEntry()" style="flex:1;padding:9px 16px;font-size:14px">Save Entry</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- CARD 9: SURPRISE — TRADER MINDSET (full width) -->
-  <div class="card card-full" id="card-mindset">
+  <!-- CARD: TRADER MINDSET (SURPRISE) -->
+  <div class="card" id="card-mindset">
     <div class="card-head" onclick="toggleCard('card-mindset')">
-      <div class="card-head-left">
-        <div class="card-icon">🔥</div>
-        <div><div class="card-label">Trader Mindset</div><div class="card-sub">Daily streak, pre-market checklist & market wisdom</div></div>
-      </div>
+      <div class="card-head-left"><div class="card-icon amber">🔥</div><div><div class="card-label">Trader Mindset</div><div class="card-sub">Streak · Pre-market checklist · Daily wisdom</div></div></div>
       <div class="card-chevron">▼</div>
     </div>
     <div class="card-body">
-      <div style="display:grid;grid-template-columns:1fr 2fr;gap:16px;flex-wrap:wrap" id="mindset-grid">
-        <div>
-          <div class="streak-wrap">
-            <div class="streak-fire">🔥</div>
-            <div class="streak-num" id="streak-num">0</div>
-            <div class="streak-label">Day Streak</div>
-            <div style="margin-top:10px;font-size:10px;color:var(--text3)">Days you opened the briefing</div>
-            <button class="bsm" onclick="markToday()" style="margin-top:10px;width:100%">✓ Mark Today</button>
-          </div>
-        </div>
-        <div>
-          <div style="font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:10px">Pre-Market Checklist</div>
-          <div class="checklist" id="checklist"></div>
-          <div class="quote-wrap" id="daily-quote" style="margin-top:14px">
-            <div class="quote-text" id="qt"></div>
-            <div class="quote-author" id="qa"></div>
-          </div>
-        </div>
+      <div class="streak-box">
+        <div class="streak-fire">🔥</div>
+        <div class="streak-num" id="streak-num">0</div>
+        <div class="streak-lbl">Day Streak — keep showing up</div>
+        <button class="btn-sm" onclick="markToday()" style="margin-top:12px;padding:8px 20px;font-size:13px">✓ Mark Today Complete</button>
+      </div>
+      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);font-weight:700;margin-bottom:10px">Pre-Market Checklist</div>
+      <div class="checklist" id="checklist"></div>
+      <div class="quote-box" id="quote-box">
+        <div class="quote-text" id="qt"></div>
+        <div class="quote-author" id="qa"></div>
       </div>
     </div>
   </div>
@@ -492,54 +526,54 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);displ
 </div><!-- end dash -->
 
 <footer>
-  <div><span class="footer-brand">Market Command Center</span> — Day &amp; Swing Options</div>
-  <div>NYSE 9:30 AM ET · Options 9:30 AM ET · Futures 24/7</div>
+  <div><span class="footer-brand">Market Command Center</span> — Built for focus, built for you</div>
+  <div>NYSE opens 9:30 AM ET</div>
 </footer>
 </div>
 
 <script>
-const WORKER = 'https://morning-market-briefing.cpettit01.workers.dev';
-let wl = JSON.parse(localStorage.getItem('mb_wl')||'["SPY","QQQ","TSLA","NVDA","AAPL"]');
-let ot = JSON.parse(localStorage.getItem('mb_ot')||'[]');
-let journal = JSON.parse(localStorage.getItem('mb_journal')||'[]');
-let streak = JSON.parse(localStorage.getItem('mb_streak')||'{"count":0,"last":""}');
-let checks = JSON.parse(localStorage.getItem('mb_checks')||'{}');
+const WORKER='https://morning-market-briefing.cpettit01.workers.dev';
+let wl=JSON.parse(localStorage.getItem('mb_wl')||'["SPY","QQQ","TSLA","NVDA","AAPL"]');
+let ot=JSON.parse(localStorage.getItem('mb_ot')||'[]');
+let journal=JSON.parse(localStorage.getItem('mb_journal')||'[]');
+let streak=JSON.parse(localStorage.getItem('mb_streak')||'{"count":0,"last":""}');
+let checks=JSON.parse(localStorage.getItem('mb_checks')||'{}');
+let currentUtterance=null;
 
-const QUOTES = [
-  {t:"The stock market is a device for transferring money from the impatient to the patient.",a:"— Warren Buffett"},
-  {t:"In investing, what is comfortable is rarely profitable.",a:"— Robert Arnott"},
-  {t:"The market is a pendulum that forever swings between unsustainable optimism and unjustified pessimism.",a:"— Benjamin Graham"},
-  {t:"Risk comes from not knowing what you're doing.",a:"— Warren Buffett"},
-  {t:"The four most dangerous words in investing are: 'This time it's different.'",a:"— Sir John Templeton"},
-  {t:"Know what you own, and know why you own it.",a:"— Peter Lynch"},
-  {t:"The intelligent investor is a realist who sells to optimists and buys from pessimists.",a:"— Benjamin Graham"},
-  {t:"In the short run, the market is a voting machine. In the long run, it is a weighing machine.",a:"— Benjamin Graham"},
-  {t:"It's not whether you're right or wrong, but how much money you make when you're right and how much you lose when you're wrong.",a:"— George Soros"},
-  {t:"The goal of a successful trader is to make the best trades. Money is secondary.",a:"— Alexander Elder"},
-  {t:"Markets can remain irrational longer than you can remain solvent.",a:"— John Maynard Keynes"},
-  {t:"Cut your losses short and let your winners run.",a:"— Trading maxim"},
-  {t:"The trend is your friend until the end when it bends.",a:"— Ed Seykota"},
-  {t:"Never risk more than you can afford to lose emotionally, not just financially.",a:"— Anonymous"}
+const QUOTES=[
+  {t:"The stock market is a device for transferring money from the impatient to the patient.",a:"Warren Buffett"},
+  {t:"Risk comes from not knowing what you're doing.",a:"Warren Buffett"},
+  {t:"The four most dangerous words in investing are: this time it's different.",a:"Sir John Templeton"},
+  {t:"Know what you own, and know why you own it.",a:"Peter Lynch"},
+  {t:"Cut your losses short and let your winners run.",a:"Trading maxim"},
+  {t:"In the short run the market is a voting machine. In the long run it is a weighing machine.",a:"Benjamin Graham"},
+  {t:"It's not whether you're right or wrong, but how much you make when right and lose when wrong.",a:"George Soros"},
+  {t:"The trend is your friend until the end when it bends.",a:"Ed Seykota"},
+  {t:"Markets can remain irrational longer than you can remain solvent.",a:"John Maynard Keynes"},
+  {t:"Never risk more than you can afford to lose emotionally — not just financially.",a:"Anonymous"},
+  {t:"The goal of a successful trader is to make the best trades. Money is secondary.",a:"Alexander Elder"},
+  {t:"Price is what you pay. Value is what you get.",a:"Warren Buffett"},
+  {t:"The market is not your enemy. Your own emotions are.",a:"Anonymous"},
+  {t:"Opportunities come infrequently. When it rains gold, put out the bucket not the thimble.",a:"Warren Buffett"}
 ];
 
-const CHECKLIST_ITEMS = [
+const CHECKLIST=[
   "Checked pre-market futures direction",
   "Reviewed open trades for overnight risk",
   "Read today's economic calendar",
-  "Set max loss limit for the day",
-  "Identified key support & resistance levels",
-  "Checked VIX — assessed market volatility",
+  "Set my max loss limit for today",
+  "Checked VIX — know today's volatility",
   "Reviewed any earnings before open",
-  "Clear head — no FOMO, no revenge trading"
+  "Identified my 1-2 focus trades only",
+  "Clear head — no FOMO, no revenge trading today"
 ];
 
 function save(){localStorage.setItem('mb_wl',JSON.stringify(wl));localStorage.setItem('mb_ot',JSON.stringify(ot));}
 
-// Init
 function init(){
-  const now = new Date();
-  document.getElementById('hdate').textContent = now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  updateStatus(); renderWL(); renderOT(); loadKeyUI(); renderJournal(); initMindset(); loadPulse();
+  const now=new Date();
+  document.getElementById('hdate').textContent=now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  updateStatus();renderWL();renderOT();loadKeyUI();renderJournal();initMindset();
   setInterval(updateStatus,60000);
 }
 
@@ -548,7 +582,7 @@ function updateStatus(){
   const d=et.getDay(),m=et.getHours()*60+et.getMinutes();
   const dot=document.getElementById('sdot'),txt=document.getElementById('stxt');
   dot.classList.remove('open');
-  if(d===0||d===6){txt.textContent='Weekend — Closed';}
+  if(d===0||d===6){txt.textContent='Weekend — Market Closed';}
   else if(m>=570&&m<960){dot.classList.add('open');txt.textContent='Market Open';}
   else if(m>=540&&m<570){txt.textContent='Pre-Market';}
   else if(m>=960&&m<1080){txt.textContent='After Hours';}
@@ -559,215 +593,228 @@ function updateStatus(){
 function loadKeyUI(){
   const k=localStorage.getItem('mb_key')||'';
   const banner=document.getElementById('apibanner'),lbl=document.getElementById('apilbl'),inp=document.getElementById('apiinp'),hint=document.getElementById('apihint'),cb=document.getElementById('clearbtn');
-  if(k){banner.classList.add('set');lbl.classList.add('set');lbl.textContent='✓ API Key Active';inp.value='••••••••••••••••••••';inp.classList.add('set');inp.disabled=true;hint.textContent='Key saved in browser only.';cb.style.display='inline-block';}
-  else{banner.classList.remove('set');lbl.classList.remove('set');lbl.textContent='⚠ API Key Required';inp.value='';inp.classList.remove('set');inp.disabled=false;hint.textContent='Stored only in your browser.';cb.style.display='none';}
+  if(k){banner.classList.add('set');lbl.classList.add('set');lbl.textContent='✓ API Key Active';inp.value='••••••••••••••••••••••••';inp.classList.add('set');inp.disabled=true;hint.textContent='Key saved in your browser only — never uploaded.';cb.style.display='inline-block';}
+  else{banner.classList.remove('set');lbl.classList.remove('set');lbl.textContent='⚠ API Key Required';inp.value='';inp.classList.remove('set');inp.disabled=false;hint.textContent='Stored only in your browser — never uploaded anywhere';cb.style.display='none';}
 }
-function saveKey(){const v=document.getElementById('apiinp').value.trim();if(!v||!v.startsWith('sk-ant-')){alert('Please paste a valid Anthropic API key (starts with sk-ant-)');return;}localStorage.setItem('mb_key',v);loadKeyUI();}
-function clearKey(){if(!confirm('Remove API key?'))return;localStorage.removeItem('mb_key');loadKeyUI();}
+function saveKey(){const v=document.getElementById('apiinp').value.trim();if(!v||!v.startsWith('sk-ant-')){alert('Please paste a valid Anthropic API key. It starts with sk-ant-');return;}localStorage.setItem('mb_key',v);loadKeyUI();}
+function clearKey(){if(!confirm('Remove saved API key?'))return;localStorage.removeItem('mb_key');loadKeyUI();}
 
 // Tickers
-function renderWL(){const c=document.getElementById('wltags');document.getElementById('wlc').textContent=wl.length;c.innerHTML=wl.length?wl.map(t=>`<span class="tag">${t}<button onclick="removeWL('${t}')">×</button></span>`).join(''):'<span class="empty-t">No tickers</span>';}
+function renderWL(){const c=document.getElementById('wltags');document.getElementById('wlc').textContent=wl.length;c.innerHTML=wl.length?wl.map(t=>`<span class="tag">${t}<button onclick="removeWL('${t}')">×</button></span>`).join(''):'<span class="empty-t">No tickers added yet</span>';}
 function renderOT(){const c=document.getElementById('ottags');document.getElementById('otc').textContent=ot.length;c.innerHTML=ot.length?ot.map(t=>`<span class="tag ot">${t}<button onclick="removeOT('${t}')">×</button></span>`).join(''):'<span class="empty-t">No open trades</span>';}
 function addWL(){const i=document.getElementById('wlinp'),v=i.value.trim().toUpperCase().replace(/[^A-Z]/g,'');if(v&&!wl.includes(v)&&v.length<=6){wl.push(v);save();renderWL();}i.value='';i.focus();}
 function addOT(){const i=document.getElementById('otinp'),v=i.value.trim().toUpperCase().replace(/[^A-Z]/g,'');if(v&&!ot.includes(v)&&v.length<=6){ot.push(v);save();renderOT();}i.value='';i.focus();}
 function removeWL(t){wl=wl.filter(x=>x!==t);save();renderWL();}
 function removeOT(t){ot=ot.filter(x=>x!==t);save();renderOT();}
 
-// Cards
-function toggleCard(id){const c=document.getElementById(id);c.classList.toggle('open');}
-
-// Market Pulse (simulated — real data needs exchange subscription)
-function loadPulse(){
-  // Show placeholder values with note — real-time prices need a market data API
-  const vals=[
-    ['p-spy','~5,850','p-spy-s','SPY ETF'],
-    ['p-qqq','~19,200','p-qqq-s','QQQ ETF'],
-    ['p-vix','~16–18','p-vix-s','Check CBOE'],
-    ['p-yield','~4.5%',null,null],
-    ['p-gold','~$3,300',null,null],
-    ['p-oil','~$62',null,null]
-  ];
-  vals.forEach(([id,v,sid,sv])=>{
-    const el=document.getElementById(id);if(el)el.textContent=v;
-    if(sid&&sv){const sel=document.getElementById(sid);if(sel)sel.textContent=sv;}
-  });
-  // Fear & Greed placeholder
-  document.getElementById('fg-score').textContent='~55';
-  document.getElementById('fg-word').textContent='Greed';
-  document.getElementById('fg-fill').style.width='55%';
-  // Note
-  const note=document.getElementById('pulse-grid');
-  if(!document.getElementById('pulse-note')){
-    const n=document.createElement('div');
-    n.id='pulse-note';
-    n.style='grid-column:1/-1;font-size:10px;color:var(--text3);padding:8px 10px;background:var(--s2);border-radius:4px;border:1px solid var(--border)';
-    n.textContent='⚡ Live prices require a market data subscription (Yahoo Finance, Polygon.io). Values above are approximate — run the Morning Briefing for AI-sourced current levels.';
-    note.appendChild(n);
-  }
-}
+function toggleCard(id){document.getElementById(id).classList.toggle('open');}
 
 // Prompts
 function getFocus(){
-  const m={f1:'macro events, Fed speakers, interest rate news',f2:'earnings reports before and after market open',f3:'geopolitical events affecting markets',f4:'sector news and rotation signals',f5:'economic calendar releases',f6:'unusual options activity and IV events'};
-  return Object.keys(m).filter(k=>document.getElementById(k)?.checked).map(k=>m[k]).join('; ');
+  const m={f1:'macro events and Fed speakers',f2:'earnings reports and beats/misses',f3:'geopolitical events',f4:'sector news and rotation',f5:'economic calendar releases',f6:'unusual options activity and IV events'};
+  return Object.keys(m).filter(k=>document.getElementById(k)?.checked).map(k=>m[k]).join(', ');
 }
 
-const PROMPTS = {
-  brief: ()=>{
-    const today=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-    const otStr=ot.length?ot.join(', '):'none'; const wlStr=wl.length?wl.join(', '):'none';
-    return `Run my morning market briefing for ${today}.
-Open trades (flag risks immediately): ${otStr}
-Watchlist: ${wlStr}
-Search the web for today's most current information and provide:
-
-## 1. Market Snapshot
-Pre-market futures (S&P 500, Nasdaq, Dow, Russell 2000), VIX, overnight sentiment in 2-3 sentences.
-
-## 2. Top Market-Moving News
-5-7 most impactful headlines covering: ${getFocus()}. For each: headline, 1-sentence context, options positioning implication. Use 🔴 urgent, 🟡 caution, 🟢 constructive.
-
-## 3. Earnings Today
-Before open and after close. Any beats/misses already reported.
-
-## 4. Open Trades Check
-For each of (${otStr}): news, catalyst, IV event, risk level right now.
-
-## 5. Watchlist Setups
-Key levels and catalysts for: ${wlStr}
-
-## 6. One Thing to Watch
-Single most important thing for today's session and why.
-
-Be concise, specific, actionable. Options-trader perspective throughout.`;
-  },
-
-  pos: ()=>{
-    if(!ot.length)return `I have no open trades currently. Please give me a general risk scan of the market today — what sectors or macro events could cause outsized moves, and what should an options swing trader be cautious about right now? Search the web for today's current information.`;
-    return `Urgent position scan for ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}.
-My open trades: ${ot.join(', ')}
-Search the web for the latest news on each ticker and provide:
-
-## Position-by-Position Alert
-For EACH ticker in my open trades, give me:
-- **Status**: 🔴 Urgent risk / 🟡 Watch closely / 🟢 Clear
-- **Latest news**: Any breaking news, earnings, analyst calls, SEC filings
-- **IV situation**: Is IV elevated, crushed, or normal? Any upcoming events?
-- **Key levels**: Support/resistance to watch today
-- **Action**: Should I hold, hedge, or consider exiting?
-
-Be direct and urgent. I am an intermediate options trader. Flag anything that could hurt my position TODAY.`;
-  },
-
-  idea: ()=>{
+const PROMPTS={
+  whatnow:()=>{
     const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    return `Generate 2 specific options trade ideas for ${today} based on current market conditions.
-My watchlist for context: ${wl.join(', ')||'SPY, QQQ, NVDA, TSLA'}
-I am an intermediate options trader comfortable with calls, puts, and spreads.
+    const otStr=ot.length?ot.join(', '):'no open trades';
+    const wlStr=wl.length?wl.join(', '):'SPY, QQQ';
+    return`Search the web for the most urgent market news right now for ${today}. My open trades are: ${otStr}. My watchlist: ${wlStr}.
 
-Search the web for today's market conditions, then provide:
+Give me ONLY the most important things I need to know RIGHT NOW as an options trader. Format like this:
 
-## Trade Idea 1 — Momentum/News Play
-- **Ticker & Strategy**: (e.g. NVDA Bull Call Spread)
-- **Setup**: Specific strike prices and expiration
-- **Why now**: What's the catalyst or setup today?
-- **Max risk / Max reward**: Clear numbers
-- **Key risk**: What could go wrong?
-- **Ideal entry**: Price level or condition to wait for
+## ⚡ Bottom Line — Read This First
+Three bullet points max. What are the 3 most important things happening right now? One sentence each. Plain language, no jargon.
 
-## Trade Idea 2 — Swing Setup (3–10 days)
-Same format as above but for a multi-day hold.
+## 🔴 Urgent — Act or Watch Now
+Anything that could hurt my open positions TODAY. Be direct. If nothing urgent, say "All clear on your positions."
 
-## Educational note
-One thing about these setups an intermediate trader should understand (Greeks, IV, timing etc).
+## ✅ One Thing To Do
+The single most useful action I can take in the next 30 minutes as a trader.
 
-Be specific with strikes and expirations. These are educational ideas, not financial advice.`;
+Keep the entire response under 200 words. Simple language throughout. No walls of text.`;
   },
 
-  learn: ()=>{
+  brief:()=>{
     const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    return `I am an intermediate options trader and stock investor. Today is ${today}. Search the web to make your answer current and relevant to today's market.
+    const otStr=ot.length?ot.join(', '):'none'; const wlStr=wl.length?wl.join(', '):'SPY, QQQ';
+    return`Morning market briefing for ${today}. Open trades: ${otStr}. Watchlist: ${wlStr}. Focus: ${getFocus()}.
+
+Search the web for today's current market information. Structure your response exactly like this:
+
+## ⚡ Bottom Line — Read This First
+Exactly 3 bullet points. The 3 most important things for today. One sentence each. Plain English.
+
+## 📰 Top News
+5 headlines that matter most for options traders today. For each: the headline, one sentence of context, and whether it is 🔴 Urgent / 🟡 Watch / 🟢 Fine for my positions.
+
+## 📊 Market Snapshot
+Futures direction, VIX level, overnight sentiment. Two sentences max.
+
+## 📅 Earnings & Events
+What reports today before and after bell. Any major economic data.
+
+## 🚨 My Positions
+Quick status on: ${otStr}. One line each. Red/amber/green.
+
+## 🎯 Watchlist
+One sentence on each: ${wlStr}
+
+## 👁 One Thing to Watch
+The single most important thing for today's session. One paragraph.
+
+Write in plain English. Short sentences. No jargon without explanation. I have dyslexia so keep paragraphs short and use clear structure.`;
+  },
+
+  pos:()=>{
+    if(!ot.length)return`I have no open trades currently. Search the web for today's market conditions and give me a general risk assessment: what could cause big market moves today, and what should an options swing trader be cautious about? Use plain English, short sentences, clear structure. Date: ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}.`;
+    return`Urgent position scan for ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}. My open trades: ${ot.join(', ')}.
+
+Search the web for the latest news on each of my tickers and give me:
+
+## ⚡ Bottom Line
+Three sentences max. Are my positions safe right now? Any urgent flags?
+
+## Position by Position
+For EACH ticker in my open trades, give me exactly this format:
+
+**[TICKER]** — 🔴 Urgent / 🟡 Watch / 🟢 Clear
+- What's happening: one sentence
+- IV situation: one sentence  
+- What I should think about: one sentence
+
+## Overall Action
+One paragraph. Should I be defensive or aggressive today? Any positions I should look to exit or hedge?
+
+Plain English throughout. Short sentences. I have dyslexia so no walls of text.`;
+  },
+
+  idea:()=>{
+    const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+    return`Generate 2 specific options trade ideas for ${today} based on today's market conditions. My watchlist: ${wl.join(', ')||'SPY, QQQ, NVDA, TSLA'}. I am an intermediate options trader who understands calls, puts, and spreads. Search the web for current market conditions first.
+
+## ⚡ Bottom Line
+Which of the two ideas is stronger today and why? Two sentences.
+
+## Trade Idea 1 — Today's Play
+- **Ticker and strategy** (e.g. NVDA Bull Call Spread)
+- **The setup** — specific strikes and expiration
+- **Why this works today** — the catalyst or reason
+- **Max loss / Max gain** — clear numbers
+- **Biggest risk** — what could go wrong
+- **Wait for** — ideal entry condition
+
+## Trade Idea 2 — Swing (3 to 10 days)
+Same format.
+
+## Learn from These Ideas
+One options concept these trades teach me. Explain it simply — what is it, why does it matter, one real example.
+
+Plain English. Short sentences. These are educational ideas, not financial advice.`;
+  },
+
+  learn:()=>{
+    const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+    return`I am an intermediate options trader and long-term investor. Today is ${today}. Search the web to make your answer relevant to current market conditions.
+
+## ⚡ Today's Single Most Important Lesson
+One sentence. What is the most useful thing I can learn today given what's happening in markets?
 
 ## Options Tip of the Day
-Pick ONE options concept that is especially relevant to TODAY's market conditions (check what's happening — earnings season? High VIX? Rate decisions?). Explain it as if teaching an intermediate trader:
-- What is it? (plain English, no jargon without explanation)
-- Why does it matter TODAY specifically?
-- A real-world example using a current stock or situation
-- One common mistake to avoid
-- One way to use this knowledge to trade better
+Pick ONE options concept relevant to today's market. Teach it simply:
+- **What is it?** One paragraph, plain English, explain any jargon
+- **Why it matters TODAY** — tie it to something happening right now
+- **Real example** using a stock that is in the news
+- **The mistake to avoid** — what do intermediate traders get wrong about this?
+- **How to use it** — one practical takeaway
 
 ## Long-Term Stock Idea
-Pick ONE stock that has a compelling long-term investment thesis RIGHT NOW based on current market trends, sector momentum, or macro tailwinds. This is for a 1–3 year hold, not a trade.
-- **The company**: What do they do in simple terms?
-- **The thesis**: Why is this interesting for the long term?
-- **The catalyst**: What could make this really work?
-- **The risk**: What could go wrong?
-- **Current valuation**: Cheap, fair, or expensive vs peers?
-- **What to watch**: Key metrics or news to track
+One stock with a strong long-term thesis right now (1 to 3 year hold):
+- **What they do** — one sentence, plain English
+- **Why it's interesting** — the big picture case, two sentences
+- **The risk** — what could go wrong, one sentence
+- **What to watch** — key thing to track
 
-## General Market Wisdom
-One broader insight about markets, psychology, or investing that is relevant to current conditions. Keep it practical and actionable.`;
+## This Week's Market Wisdom
+One insight about trading psychology or markets that applies to right now. Keep it practical and under 100 words.
+
+Short sentences throughout. Clear headings. I have dyslexia so keep it structured and avoid long paragraphs.`;
   },
 
-  econ: ()=>{
+  econ:()=>{
     const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    return `Search the web for today's economic calendar for ${today} and explain each event in plain English for an intermediate options trader.
+    return`Search the web for today's economic calendar for ${today}. Explain each event to me like I'm smart but not an economist. I trade options so focus on what each event means for my trades.
 
-## Today's Economic Events — Plain English Guide
+## ⚡ Bottom Line
+Which event today matters most for options traders? One sentence.
 
-For EACH economic event scheduled today, provide:
+## Today's Events — Plain English
 
-**[Event Name] — [Time ET] — Impact: 🔴 High / 🟡 Medium / 🟢 Low**
-- **What is this?** Explain it like I'm smart but not an economist (1-2 sentences)
-- **What are markets expecting?** The consensus estimate
-- **If it comes in HIGHER than expected:** What happens to stocks, bonds, my options?
-- **If it comes in LOWER than expected:** What happens?
-- **Options trader's note:** Should I avoid holding through this? Is IV elevated? What to watch?
+For EACH economic event today use this exact format:
 
-If there are no major events today, explain what that means for markets and what to focus on instead.
+**[Event Name] at [Time] ET** — Impact: 🔴 High / 🟡 Medium / 🟢 Low
 
-End with a "Big Picture" paragraph on how today's events fit into the broader macro story (Fed, inflation, growth).`;
+**What is this?** One sentence. What does this measure in plain English?
+
+**What markets expect:** The consensus number.
+
+**If higher than expected:** What happens to stocks and options? One sentence.
+
+**If lower than expected:** What happens? One sentence.
+
+**My options trader note:** Should I avoid holding positions through this? Is IV elevated before it? One sentence.
+
+---
+
+## The Big Picture
+How do today's events fit into the bigger story — inflation, Fed, growth? Two short paragraphs max.
+
+Plain English throughout. Short sentences. No economics jargon without explanation. I have dyslexia.`;
   },
 
-  sector: ()=>{
+  sector:()=>{
     const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    return `Search the web for current sector performance data and news for ${today}. Provide a complete sector ranking and rotation analysis.
+    return`Search the web for sector performance data for ${today}. Rank all 11 S&P 500 sectors and give me rotation signals.
 
-## Sector Rankings — ${today}
+## ⚡ Bottom Line
+One sentence: where is money flowing today and what does that tell us?
 
-Rank ALL 11 S&P 500 sectors from strongest to weakest based on today's pre-market action and recent momentum:
-XLK (Tech), XLV (Healthcare), XLF (Financials), XLE (Energy), XLI (Industrials), XLY (Consumer Discretionary), XLP (Consumer Staples), XLU (Utilities), XLRE (Real Estate), XLB (Materials), XLC (Communications)
+## Sector Rankings — Strongest to Weakest
+Rank these 11 sectors: XLK Tech, XLF Financials, XLV Healthcare, XLE Energy, XLI Industrials, XLY Consumer Discretionary, XLP Consumer Staples, XLU Utilities, XLRE Real Estate, XLB Materials, XLC Communications.
 
-For each sector:
-- **Performance**: Today's direction and recent trend
-- **Why**: Key driver (earnings, macro, news)
-- **Options opportunity**: Any elevated IV or upcoming catalysts?
+For each sector give me one line: name, direction today, and the main reason why.
 
 ## Rotation Signal
-- Where is smart money flowing INTO today?
-- What sectors are being SOLD?
-- What does this rotation tell us about the macro environment?
+- **Money is flowing INTO:** which sectors and why
+- **Money is leaving:** which sectors and why
+- **What this means:** one sentence on the macro story
 
-## Top 3 Sector Plays
-Three specific ETF or sector-related options opportunities based on today's rotation, with brief reasoning.`;
+## Best Options Opportunity Today
+One sector ETF setup based on today's rotation. Keep it simple — ticker, direction, brief reason.
+
+Short sentences. Clear structure. Plain English. I have dyslexia so keep sections short.`;
   }
 };
 
 // AI Runner
-async function runSection(sec){
+async function runSection(sec,customPrompt,outIdOverride,stIdOverride,lbIdOverride,obIdOverride,btnIdOverride){
   const key=localStorage.getItem('mb_key');
-  if(!key){alert('Please save your API key first.');return;}
-  const prompt=PROMPTS[sec]();
-  const btnId=`btn-${sec}`,outId=`out-${sec}`,lbId=`lb-${sec}`,stId=`st-${sec}`,obId=`ob-${sec}`;
+  if(!key){alert('Please save your Anthropic API key first.');return;}
+  const prompt=customPrompt||PROMPTS[sec]();
+  const btnId=btnIdOverride||`btn-${sec}`,outId=outIdOverride||`out-${sec}`,lbId=lbIdOverride||`lb-${sec}`,stId=stIdOverride||`st-${sec}`,obId=obIdOverride||`ob-${sec}`;
   const btn=document.getElementById(btnId),out=document.getElementById(outId),lb=document.getElementById(lbId),st=document.getElementById(stId),ob=document.getElementById(obId);
-  btn.disabled=true; out.style.display='block'; ob.innerHTML=''; lb.style.display='block'; st.textContent='Searching...';
-  ob.innerHTML='<span class="cursor"></span>';
-
+  if(btn)btn.disabled=true;
+  if(out)out.style.display='block';
+  if(ob)ob.innerHTML='<span class="cursor"></span>';
+  if(lb)lb.style.display='block';
+  if(st)st.textContent='Searching the web...';
   let full='';
   try{
     const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json','x-api-key':key},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:3000,stream:true,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:prompt}]})});
     if(!res.ok){const e=await res.json();throw new Error(e.error?.message||`Error ${res.status}`);}
-    lb.style.display='none'; st.textContent='Streaming...';
+    if(lb)lb.style.display='none';
+    if(st)st.textContent='Writing your briefing...';
     const reader=res.body.getReader(),dec=new TextDecoder();
     let buf='',searches=0;
     while(true){
@@ -779,19 +826,88 @@ async function runSection(sec){
         const d=line.slice(6).trim();if(d==='[DONE]')continue;
         try{
           const ev=JSON.parse(d);
-          if(ev.type==='content_block_start'&&ev.content_block?.name==='web_search'){searches++;st.textContent=`${searches} search${searches>1?'es':''} run...`;}
-          if(ev.type==='content_block_delta'&&ev.delta?.type==='text_delta'){full+=ev.delta.text;ob.innerHTML=renderMD(full)+'<span class="cursor"></span>';ob.scrollTop=ob.scrollHeight;}
+          if(ev.type==='content_block_start'&&ev.content_block?.name==='web_search'){searches++;if(st)st.textContent=`Running ${searches} web search${searches>1?'es':''}...`;}
+          if(ev.type==='content_block_delta'&&ev.delta?.type==='text_delta'){full+=ev.delta.text;if(ob){ob.innerHTML=renderMD(full)+'<span class="cursor"></span>';ob.scrollTop=ob.scrollHeight;}}
         }catch(e){}
       }
     }
-    ob.innerHTML=renderMD(full);
-    st.textContent=`Done — ${searches} search${searches!==1?'es':''} run`;
+    if(ob)ob.innerHTML=renderMD(full);
+    if(st)st.textContent=`Done — ${searches} search${searches!==1?'es':''} run`;
   }catch(e){
-    lb.style.display='none';
-    ob.innerHTML=`<p style="color:var(--red)">Error: ${e.message}</p><p style="color:var(--text3);margin-top:6px;font-size:11px">Check your API key at console.anthropic.com</p>`;
-    st.textContent='Error';
+    if(lb)lb.style.display='none';
+    if(ob)ob.innerHTML=`<p style="color:var(--red);font-weight:600">Something went wrong: ${e.message}</p><p style="color:var(--text3);margin-top:8px;font-size:13px">Check your API key has credits at console.anthropic.com</p>`;
+    if(st)st.textContent='Error';
   }
-  btn.disabled=false;
+  if(btn)btn.disabled=false;
+}
+
+async function runWhatNow(){
+  await runSection('whatnow',null,'out-whatnow','st-whatnow','lb-whatnow','ob-whatnow','btn-whatnow');
+}
+
+// Ask Claude
+async function askQ(sec){
+  const key=localStorage.getItem('mb_key');
+  if(!key){alert('Please save your API key first.');return;}
+  const inp=document.getElementById(`ask-${sec}`);
+  const q=inp.value.trim();if(!q)return;
+  inp.value='';
+  const resWrap=document.getElementById(`ask-${sec}-res`);
+  const bubble=document.createElement('div');
+  bubble.className='ask-bubble';
+  bubble.innerHTML=`<div class="ask-q">You asked: ${q.replace(/</g,'&lt;')}</div><span class="cursor"></span>`;
+  resWrap.prepend(bubble);
+  const context=document.getElementById(`ob-${sec}`)?.innerText||'';
+  const prompt=`I am an intermediate options trader. Today is ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}. My open trades: ${ot.join(', ')||'none'}. My watchlist: ${wl.join(', ')||'SPY, QQQ'}.
+
+${context?`Context from my morning briefing:\n${context.slice(0,800)}\n\n`:''}
+
+My question: ${q}
+
+Answer in plain English. Short sentences. No jargon without explanation. Keep it under 150 words if possible. I have dyslexia so use clear structure. If relevant, search the web for current information.`;
+  try{
+    const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json','x-api-key':key},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:800,stream:true,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:prompt}]})});
+    if(!res.ok)throw new Error('API error');
+    const reader=res.body.getReader(),dec=new TextDecoder();
+    let buf='',full='';
+    while(true){
+      const{done,value}=await reader.read();if(done)break;
+      buf+=dec.decode(value,{stream:true});
+      const lines=buf.split('\n');buf=lines.pop();
+      for(const line of lines){
+        if(!line.startsWith('data: '))continue;
+        const d=line.slice(6).trim();if(d==='[DONE]')continue;
+        try{const ev=JSON.parse(d);if(ev.type==='content_block_delta'&&ev.delta?.type==='text_delta'){full+=ev.delta.text;bubble.innerHTML=`<div class="ask-q">You asked: ${q.replace(/</g,'&lt;')}</div>${renderMD(full)}<span class="cursor"></span>`;}}catch(e){}
+      }
+    }
+    bubble.innerHTML=`<div class="ask-q">You asked: ${q.replace(/</g,'&lt;')}</div>${renderMD(full)}`;
+  }catch(e){bubble.innerHTML=`<div class="ask-q">You asked: ${q.replace(/</g,'&lt;')}</div><p style="color:var(--red)">Something went wrong. Try again.</p>`;}
+}
+
+// Read Aloud
+function speakOut(obId,stopBtnId){
+  if(!window.speechSynthesis){alert('Read Aloud is not supported in your browser. Try Chrome.');return;}
+  stopSpeak();
+  const text=document.getElementById(obId)?.innerText||'';
+  if(!text)return;
+  currentUtterance=new SpeechSynthesisUtterance(text);
+  currentUtterance.rate=0.9;currentUtterance.pitch=1;currentUtterance.lang='en-US';
+  currentUtterance.onend=()=>{if(stopBtnId){const b=document.getElementById(stopBtnId);if(b)b.style.display='none';}};
+  window.speechSynthesis.speak(currentUtterance);
+  if(stopBtnId){const b=document.getElementById(stopBtnId);if(b)b.style.display='inline-flex';}
+}
+function stopSpeak(){if(window.speechSynthesis)window.speechSynthesis.cancel();document.querySelectorAll('[id^="btn-speak-"]').forEach(b=>b.style.display='none');}
+
+// Copy
+function copyOut(obId){
+  const text=document.getElementById(obId)?.innerText||'';
+  navigator.clipboard.writeText(text).then(()=>{const b=event.target;b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy',2000);});
+}
+
+function clearOut(outId,btnId){
+  const out=document.getElementById(outId);if(out)out.style.display='none';
+  const ob=out?.querySelector('.out-body');if(ob)ob.innerHTML='';
+  const btn=document.getElementById(btnId);if(btn)btn.disabled=false;
 }
 
 // Markdown
@@ -805,80 +921,54 @@ function renderMD(t){
     .replace(/^[\-\*] (.+)$/gm,'<li>$1</li>')
     .replace(/(<li>[^<]*<\/li>\n?)+/g,m=>`<ul>${m}</ul>`)
     .replace(/\n\n+/g,'</p><p>')
-    .replace(/^(?!<[hpuol]|<hr)(.+)$/gm,'<p>$1</p>');
+    .replace(/^(?!<[hpuolhr])(.+)$/gm,'<p>$1</p>');
 }
-
-function copyOut(id){navigator.clipboard.writeText(document.getElementById(id).innerText).then(()=>{const b=event.target;b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy',2000);});}
-function clearOut(outId,btnId){document.getElementById(outId).style.display='none';document.getElementById(document.getElementById(outId).querySelector('.out-body').id).innerHTML='';document.getElementById(btnId).disabled=false;}
 
 // Journal
-function addJournalEntry(){
-  const txt=document.getElementById('jtext').value.trim();
-  if(!txt)return;
+function addEntry(){
+  const txt=document.getElementById('jtext').value.trim();if(!txt)return;
   const tag=document.getElementById('jtag').value;
-  const entry={id:Date.now(),text:txt,tag,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'})};
-  journal.unshift(entry);
+  journal.unshift({id:Date.now(),text:txt,tag,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'})});
   localStorage.setItem('mb_journal',JSON.stringify(journal));
-  document.getElementById('jtext').value='';
-  renderJournal();
+  document.getElementById('jtext').value='';renderJournal();
 }
-
-function deleteEntry(id){
-  journal=journal.filter(e=>e.id!==id);
-  localStorage.setItem('mb_journal',JSON.stringify(journal));
-  renderJournal();
-}
-
+function delEntry(id){journal=journal.filter(e=>e.id!==id);localStorage.setItem('mb_journal',JSON.stringify(journal));renderJournal();}
 function renderJournal(){
   const search=document.getElementById('jsearch')?.value.toLowerCase()||'';
   const filter=document.getElementById('jfilter')?.value||'';
   const filtered=journal.filter(e=>(!filter||e.tag===filter)&&(!search||e.text.toLowerCase().includes(search)));
   const c=document.getElementById('journal-entries');
-  if(!filtered.length){c.innerHTML=`<div style="font-size:11px;color:var(--text3);text-align:center;padding:16px">${journal.length?'No entries match your search':'No entries yet — log your first trade or lesson below'}</div>`;return;}
-  c.innerHTML=filtered.map(e=>`<div class="journal-entry"><div class="je-meta"><span class="je-date">${e.date}</span><div style="display:flex;align-items:center;gap:8px"><span class="je-tag ${e.tag}">${{trade:'📈 Trade',lesson:'🎓 Lesson',idea:'💡 Idea',note:'📌 Note'}[e.tag]||e.tag}</span><button class="je-del" onclick="deleteEntry(${e.id})" title="Delete">✕</button></div></div><div class="je-text">${e.text.replace(/</g,'&lt;')}</div></div>`).join('');
+  if(!filtered.length){c.innerHTML=`<div style="font-size:13px;color:var(--text4);text-align:center;padding:20px">${journal.length?'No entries match your search.':'No entries yet. Log your first trade or lesson below — even one sentence counts.'}</div>`;return;}
+  c.innerHTML=filtered.map(e=>`<div class="je"><div class="je-meta"><span class="je-date">${e.date}</span><div style="display:flex;align-items:center;gap:8px"><span class="je-tag ${e.tag}">${{trade:'📈 Trade',lesson:'🎓 Lesson',idea:'💡 Idea',note:'📌 Note'}[e.tag]}</span><button class="je-del" onclick="delEntry(${e.id})" title="Delete entry">✕</button></div></div><div class="je-text">${e.text.replace(/</g,'&lt;')}</div></div>`).join('');
 }
 
-// Mindset / Surprise card
+// Mindset
 function initMindset(){
-  // Streak
   document.getElementById('streak-num').textContent=streak.count;
-  // Quote — rotates daily
   const q=QUOTES[new Date().getDate()%QUOTES.length];
   document.getElementById('qt').textContent=q.t;
-  document.getElementById('qa').textContent=q.a;
-  // Checklist
+  document.getElementById('qa').textContent='— '+q.a;
   renderChecklist();
 }
-
 function renderChecklist(){
   const today=new Date().toDateString();
-  const c=document.getElementById('checklist');
-  c.innerHTML=CHECKLIST_ITEMS.map((item,i)=>{
-    const key=`${today}-${i}`;
-    const done=checks[key];
-    return`<div class="check-item${done?' done':''}" onclick="toggleCheck('${key}',this)"><div class="chk">${done?'✓':''}</div>${item}</div>`;
+  document.getElementById('checklist').innerHTML=CHECKLIST.map((item,i)=>{
+    const key=`${today}-${i}`,done=checks[key];
+    return`<div class="chk-item${done?' done':''}" onclick="toggleCheck('${key}',this)"><div class="chkbox">${done?'✓':''}</div>${item}</div>`;
   }).join('');
 }
-
-function toggleCheck(key,el){
-  checks[key]=!checks[key];
-  localStorage.setItem('mb_checks',JSON.stringify(checks));
-  el.classList.toggle('done');
-  const chk=el.querySelector('.chk');
-  chk.textContent=checks[key]?'✓':'';
-}
-
+function toggleCheck(key,el){checks[key]=!checks[key];localStorage.setItem('mb_checks',JSON.stringify(checks));el.classList.toggle('done');el.querySelector('.chkbox').textContent=checks[key]?'✓':'';}
 function markToday(){
   const today=new Date().toDateString();
-  if(streak.last===today){alert('Already marked for today! 🔥');return;}
+  if(streak.last===today){alert('Already marked for today! Keep the streak going tomorrow. 🔥');return;}
   const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
-  const wasYesterday=streak.last===yesterday.toDateString();
-  streak.count=wasYesterday?streak.count+1:1;
+  streak.count=streak.last===yesterday.toDateString()?streak.count+1:1;
   streak.last=today;
   localStorage.setItem('mb_streak',JSON.stringify(streak));
   document.getElementById('streak-num').textContent=streak.count;
-  if(streak.count>=7)alert(`🔥 ${streak.count} day streak! You're building real habits.`);
-  else alert(`Day ${streak.count} marked! Come back tomorrow to keep the streak alive.`);
+  if(streak.count>=7)alert(`🔥 ${streak.count} day streak! You are building real habits. This is how traders improve.`);
+  else if(streak.count>=3)alert(`${streak.count} days in a row! Keep going. 🔥`);
+  else alert(`Day ${streak.count} marked. Come back tomorrow to build your streak!`);
 }
 
 init();
