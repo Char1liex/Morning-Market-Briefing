@@ -9,46 +9,27 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#f5f0e8;
-  --bg2:#ede8df;
-  --bg3:#e4ddd2;
-  --white:#ffffff;
-  --border:#d5cfc4;
-  --border2:#bfb8ac;
-  --accent:#1a7a4a;
-  --accent-light:#e8f5ee;
-  --accent-mid:#c8e6d5;
-  --warn:#b85c00;
-  --warn-light:#fff3e0;
-  --warn-mid:#ffd9a8;
-  --red:#c0392b;
-  --red-light:#fdecea;
-  --red-mid:#f5b7b1;
-  --blue:#1a5fa8;
-  --blue-light:#e8f0fb;
-  --purple:#6b3fa0;
-  --purple-light:#f0eaf8;
-  --text:#1a1814;
-  --text2:#4a4540;
-  --text3:#8a8278;
-  --text4:#b0a898;
-  --body:'Lexend',sans-serif;
-  --mono:'Lexend Mono',monospace;
-  --radius:12px;
-  --radius-sm:8px;
-  --shadow:0 2px 12px rgba(0,0,0,0.06);
-  --shadow-md:0 4px 24px rgba(0,0,0,0.10);
+  --bg:#f5f0e8;--bg2:#ede8df;--bg3:#e4ddd2;--white:#fff;
+  --border:#d5cfc4;--border2:#bfb8ac;
+  --accent:#1a7a4a;--accent-l:#e8f5ee;--accent-m:#c8e6d5;
+  --warn:#b85c00;--warn-l:#fff3e0;--warn-m:#ffd9a8;
+  --red:#c0392b;--red-l:#fdecea;--red-m:#f5b7b1;
+  --blue:#1a5fa8;--blue-l:#e8f0fb;
+  --purple:#6b3fa0;--purple-l:#f0eaf8;
+  --text:#1a1814;--text2:#4a4540;--text3:#8a8278;--text4:#b0a898;
+  --body:'Lexend',sans-serif;--mono:'Lexend Mono',monospace;
+  --r:12px;--rs:8px;--shadow:0 2px 12px rgba(0,0,0,0.06);--shadow-md:0 4px 24px rgba(0,0,0,0.10);
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;font-size:16px;line-height:1.9;letter-spacing:0.01em;-webkit-font-smoothing:antialiased}
-.app{max-width:900px;margin:0 auto;padding:0 20px 80px}
+.app{max-width:920px;margin:0 auto;padding:0 20px 80px}
 
 /* HEADER */
-.header{padding:32px 0 24px;border-bottom:2px solid var(--border);margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.header{padding:28px 0 20px;border-bottom:2px solid var(--border);margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:14px}
 .logo-mark{width:44px;height:44px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.logo-text .eyebrow{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2px}
-.logo-text .title{font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
+.eyebrow{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2px}
+.hdr-title{font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
 .header-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .status-pill{display:flex;align-items:center;gap:7px;font-size:12px;padding:6px 14px;border:1.5px solid var(--border);border-radius:20px;background:var(--white);color:var(--text2);font-weight:500;white-space:nowrap}
 .sdot{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0}
@@ -57,27 +38,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:1
 .hdate{font-size:12px;color:var(--text3);letter-spacing:0.03em}
 
 /* API BANNER */
-.api-banner{border-radius:var(--radius);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:2px solid var(--warn-mid);background:var(--warn-light)}
-.api-banner.set{border-color:var(--accent-mid);background:var(--accent-light)}
+.api-banner{border-radius:var(--r);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:2px solid var(--warn-m);background:var(--warn-l)}
+.api-banner.set{border-color:var(--accent-m);background:var(--accent-l)}
 .api-lbl{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warn);font-weight:700;white-space:nowrap;flex-shrink:0}
 .api-lbl.set{color:var(--accent)}
 .api-row{display:flex;gap:8px;flex:1;min-width:200px}
-.api-inp{flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:9px 13px;font-family:var(--body);font-size:13px;color:var(--text);outline:none;transition:border-color 0.2s}
+.api-inp{flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 13px;font-family:var(--body);font-size:13px;color:var(--text);outline:none;transition:border-color 0.2s}
 .api-inp:focus{border-color:var(--accent)}
 .api-inp.set{border-color:var(--accent);color:var(--accent);font-weight:500}
-.api-hint{font-size:11px;color:var(--text3);line-height:1.6;flex-shrink:0}
+.api-hint{font-size:11px;color:var(--text3);line-height:1.6}
 
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-weight:600;border-radius:var(--radius-sm);cursor:pointer;transition:all 0.18s;border:none;letter-spacing:0.02em;white-space:nowrap}
-.btn-primary{background:var(--accent);color:#fff;padding:13px 22px;font-size:15px;width:100%;border:none}
-.btn-primary:hover{background:#155e3a;transform:translateY(-1px);box-shadow:var(--shadow)}
-.btn-primary:disabled{opacity:0.45;cursor:not-allowed;transform:none;box-shadow:none}
-.btn-primary.warn{background:var(--warn)}
-.btn-primary.warn:hover{background:#8a4500}
-.btn-primary.blue{background:var(--blue)}
-.btn-primary.blue:hover{background:#144d8a}
-.btn-primary.purple{background:var(--purple)}
-.btn-primary.purple:hover{background:#522e80}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-weight:600;border-radius:var(--rs);cursor:pointer;transition:all 0.18s;border:none;letter-spacing:0.02em;white-space:nowrap}
+.btn-p{background:var(--accent);color:#fff;padding:13px 22px;font-size:15px;width:100%}
+.btn-p:hover{background:#155e3a;transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-p:disabled{opacity:0.45;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-p.warn{background:var(--warn)}.btn-p.warn:hover{background:#8a4500}
+.btn-p.blue{background:var(--blue)}.btn-p.blue:hover{background:#144d8a}
+.btn-p.purple{background:var(--purple)}.btn-p.purple:hover{background:#522e80}
+.btn-p.red{background:var(--red)}.btn-p.red:hover{background:#922b21}
 .btn-sm{background:var(--white);border:1.5px solid var(--border);border-radius:6px;color:var(--text2);font-family:var(--body);font-size:12px;font-weight:500;padding:6px 13px;cursor:pointer;transition:all 0.15s}
 .btn-sm:hover{border-color:var(--accent);color:var(--accent)}
 .btn-sm.danger:hover{border-color:var(--red);color:var(--red)}
@@ -86,79 +65,72 @@ body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:1
 /* SETUP GRID */
 .setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
 @media(max-width:580px){.setup-grid{grid-template-columns:1fr}}
-.setup-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-.setup-card-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.setup-card-title.green{color:var(--accent)}
-.setup-card-title.amber{color:var(--warn)}
+.setup-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.sct{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sct.green{color:var(--accent)}.sct.amber{color:var(--warn)}
 .count-b{font-size:10px;padding:2px 7px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text3);font-weight:600}
+
+/* POSITION TAGS */
+.pos-tags{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;max-height:200px;overflow-y:auto}
+.pos-tag{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-radius:var(--rs);background:var(--warn-l);border:1.5px solid var(--warn-m);font-size:12px;flex-wrap:wrap}
+.pos-tag-main{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pos-ticker{font-size:13px;font-weight:700;color:var(--warn);min-width:50px}
+.pos-detail{color:var(--text2);font-size:12px}
+.pos-tag button{background:none;border:none;cursor:pointer;color:var(--text3);font-size:14px;font-weight:700;transition:color 0.15s;flex-shrink:0}
+.pos-tag button:hover{color:var(--red)}
+.pos-form{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.pos-form input,.pos-form select{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:7px 10px;font-family:var(--body);font-size:12px;color:var(--text);outline:none;transition:border-color 0.2s;font-weight:500}
+.pos-form input:focus,.pos-form select:focus{border-color:var(--warn)}
+.pos-form input::placeholder{color:var(--text4);font-weight:400}
+.pos-form-full{grid-column:1/-1}
+
+/* WATCHLIST TAGS */
 .tags{display:flex;flex-wrap:wrap;gap:6px;min-height:32px;margin-bottom:12px}
 .tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 11px;border-radius:6px;background:var(--bg2);border:1.5px solid var(--border);color:var(--text);letter-spacing:0.04em}
-.tag.ot{border-color:var(--warn-mid);color:var(--warn);background:var(--warn-light)}
 .tag button{background:none;border:none;cursor:pointer;color:var(--text3);font-size:14px;line-height:1;padding:0;font-weight:700;transition:color 0.15s}
 .tag button:hover{color:var(--red)}
 .irow{display:flex;gap:8px}
-.irow input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;font-family:var(--body);font-size:13px;color:var(--text);outline:none;transition:border-color 0.2s;text-transform:uppercase;letter-spacing:0.06em;font-weight:500}
+.irow input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:8px 12px;font-family:var(--body);font-size:13px;color:var(--text);outline:none;transition:border-color 0.2s;text-transform:uppercase;letter-spacing:0.06em;font-weight:500}
 .irow input::placeholder{text-transform:none;letter-spacing:normal;color:var(--text4);font-weight:400}
 .irow input:focus{border-color:var(--accent)}
-.irow input.wf:focus{border-color:var(--warn)}
-.badd{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-size:20px;padding:0 14px;cursor:pointer;transition:all 0.15s;line-height:1;font-weight:300}
+.badd{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--rs);color:var(--text2);font-size:20px;padding:0 14px;cursor:pointer;transition:all 0.15s;line-height:1;font-weight:300}
 .badd:hover{border-color:var(--accent);color:var(--accent)}
-.badd.w:hover{border-color:var(--warn);color:var(--warn)}
 .empty-t{font-size:12px;color:var(--text4);font-style:italic}
 
-/* WHAT NOW BUTTON */
+/* WHAT NOW */
 .whatnow-wrap{margin-bottom:24px}
-.btn-whatnow{width:100%;background:linear-gradient(135deg,var(--accent),#1d9c5e);color:#fff;border:none;border-radius:var(--radius);padding:20px 24px;font-family:var(--body);font-size:18px;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:12px;letter-spacing:0.01em;box-shadow:var(--shadow-md)}
+.btn-whatnow{width:100%;background:linear-gradient(135deg,var(--accent),#1d9c5e);color:#fff;border:none;border-radius:var(--r);padding:20px 24px;font-family:var(--body);font-size:18px;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:var(--shadow-md)}
 .btn-whatnow:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(26,122,74,0.25)}
 .btn-whatnow:disabled{opacity:0.5;cursor:not-allowed;transform:none}
 .btn-whatnow-sub{font-size:12px;font-weight:400;opacity:0.85;margin-top:2px}
 
 /* CARDS */
 .dash{display:flex;flex-direction:column;gap:14px}
-.card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow 0.2s}
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow 0.2s}
 .card:hover{box-shadow:var(--shadow-md)}
 .card-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;user-select:none;gap:14px;transition:background 0.15s}
 .card-head:hover{background:var(--bg)}
 .card-head-left{display:flex;align-items:center;gap:14px}
 .card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.card-icon.green{background:var(--accent-light)}
-.card-icon.amber{background:var(--warn-light)}
-.card-icon.red{background:var(--red-light)}
-.card-icon.blue{background:var(--blue-light)}
-.card-icon.purple{background:var(--purple-light)}
-.card-icon.gray{background:var(--bg2)}
+.ci-green{background:var(--accent-l)}.ci-amber{background:var(--warn-l)}.ci-red{background:var(--red-l)}.ci-blue{background:var(--blue-l)}.ci-purple{background:var(--purple-l)}.ci-gray{background:var(--bg2)}
 .card-label{font-size:16px;font-weight:700;color:var(--text);line-height:1.2}
 .card-sub{font-size:12px;color:var(--text3);margin-top:2px;font-weight:400}
-.card-right{display:flex;align-items:center;gap:10px}
 .card-chevron{font-size:13px;color:var(--text3);transition:transform 0.22s;flex-shrink:0}
 .card.open>.card-head .card-chevron{transform:rotate(180deg)}
 .card-body{display:none;border-top:1.5px solid var(--border);padding:22px}
 .card.open>.card-body{display:block}
 
-/* TRAFFIC LIGHT BADGE */
-.tl{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.04em;white-space:nowrap}
-.tl.red{background:var(--red-light);color:var(--red)}
-.tl.amber{background:var(--warn-light);color:var(--warn)}
-.tl.green{background:var(--accent-light);color:var(--accent)}
-
-/* BOTTOM LINE BOX */
-.bottom-line{background:linear-gradient(135deg,var(--accent-light),var(--blue-light));border:2px solid var(--accent-mid);border-radius:var(--radius);padding:18px 20px;margin-bottom:18px}
-.bottom-line-title{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.bottom-line ul{list-style:none;display:flex;flex-direction:column;gap:7px}
-.bottom-line ul li{display:flex;align-items:flex-start;gap:9px;font-size:14px;font-weight:500;color:var(--text);line-height:1.6}
-.bottom-line ul li::before{content:'→';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
-
 /* FOCUS CHECKS */
 .focus-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-.fitem{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;padding:9px 12px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg);transition:all 0.15s;user-select:none}
-.fitem:hover{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.fitem{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;padding:9px 12px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--bg);transition:all 0.15s;user-select:none}
+.fitem:hover{border-color:var(--accent);background:var(--accent-l);color:var(--accent)}
 .fitem input{display:none}
 .fcheck{width:16px;height:16px;border:2px solid var(--border2);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all 0.15s;font-weight:700}
 .fitem input:checked+.fcheck{background:var(--accent);border-color:var(--accent);color:#fff}
 .fitem input:checked~.flbl{color:var(--text);font-weight:600}
 
-/* OUTPUT AREA */
-.out-wrap{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:14px}
+/* OUTPUT */
+.out-wrap{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:14px}
 .out-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg2);border-bottom:1.5px solid var(--border);flex-wrap:wrap;gap:8px}
 .out-status{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);font-weight:600}
 .out-status span{color:var(--accent)}
@@ -169,7 +141,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:1
 .out-body{padding:22px;font-size:15px;line-height:2;color:var(--text2);max-height:700px;overflow-y:auto;letter-spacing:0.01em}
 .out-body::-webkit-scrollbar{width:5px}
 .out-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-.out-body h2{font-size:17px;font-weight:700;color:var(--accent);margin:24px 0 10px;border-bottom:2px solid var(--accent-mid);padding-bottom:7px;letter-spacing:0.01em}
+.out-body h2{font-size:17px;font-weight:700;color:var(--accent);margin:24px 0 10px;border-bottom:2px solid var(--accent-m);padding-bottom:7px}
 .out-body h2:first-child{margin-top:0}
 .out-body h3{font-size:15px;font-weight:700;color:var(--text);margin:18px 0 7px}
 .out-body p{margin-bottom:11px}
@@ -186,86 +158,141 @@ body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:1
 .cursor{display:inline-block;width:10px;height:16px;background:var(--accent);animation:blink 1s step-end infinite;vertical-align:-3px;margin-left:2px;border-radius:2px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
-/* READ ALOUD */
-.read-aloud-bar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--blue-light);border-top:1.5px solid var(--border);flex-wrap:wrap}
-.read-aloud-label{font-size:11px;color:var(--blue);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
-
 /* ASK CLAUDE */
-.ask-wrap{margin-top:18px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.ask-wrap{margin-top:18px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden}
 .ask-head{padding:12px 16px;background:var(--bg2);border-bottom:1.5px solid var(--border);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);font-weight:700;display:flex;align-items:center;gap:8px}
 .ask-form{display:flex;gap:8px;padding:14px}
-.ask-inp{flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;font-family:var(--body);font-size:14px;color:var(--text);outline:none;transition:border-color 0.2s;line-height:1.5}
+.ask-inp{flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 14px;font-family:var(--body);font-size:14px;color:var(--text);outline:none;transition:border-color 0.2s;line-height:1.5}
 .ask-inp:focus{border-color:var(--accent)}
 .ask-inp::placeholder{color:var(--text4)}
 .ask-responses{padding:0 14px 14px;display:flex;flex-direction:column;gap:10px}
-.ask-bubble{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;font-size:14px;line-height:1.9;color:var(--text2)}
+.ask-bubble{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rs);padding:14px 16px;font-size:14px;line-height:1.9;color:var(--text2)}
 .ask-bubble strong{color:var(--text);font-weight:700}
-.ask-bubble .ask-q{font-size:12px;color:var(--text3);margin-bottom:6px;font-weight:600}
+.ask-q{font-size:12px;color:var(--text3);margin-bottom:6px;font-weight:600}
+
+/* NOTE BOX */
+.note{border-radius:var(--rs);padding:12px 16px;font-size:13px;line-height:1.7;font-weight:500}
+.note-warn{background:var(--warn-l);border:1.5px solid var(--warn-m);color:var(--warn)}
+.note-blue{background:var(--blue-l);border:1.5px solid #a8c8f0;color:var(--blue)}
+.note-green{background:var(--accent-l);border:1.5px solid var(--accent-m);color:var(--accent)}
+.note-red{background:var(--red-l);border:1.5px solid var(--red-m);color:var(--red)}
+
+/* DIVIDER */
+.divider{height:1.5px;background:var(--border);margin:16px 0}
 
 /* JOURNAL */
 .journal-entries{display:flex;flex-direction:column;gap:10px;max-height:320px;overflow-y:auto;margin-bottom:16px}
-.journal-entries::-webkit-scrollbar{width:4px}
-.journal-entries::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-.je{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px}
+.je{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:14px 16px}
 .je-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;flex-wrap:wrap;gap:6px}
 .je-date{font-size:11px;color:var(--text4);font-weight:500}
 .je-tag{font-size:11px;padding:2px 9px;border-radius:10px;font-weight:700;letter-spacing:0.04em}
-.je-tag.trade{background:var(--accent-light);color:var(--accent)}
-.je-tag.lesson{background:var(--purple-light);color:var(--purple)}
-.je-tag.idea{background:var(--blue-light);color:var(--blue)}
-.je-tag.note{background:var(--bg2);color:var(--text3)}
+.je-tag.trade{background:var(--accent-l);color:var(--accent)}.je-tag.lesson{background:var(--purple-l);color:var(--purple)}.je-tag.idea{background:var(--blue-l);color:var(--blue)}.je-tag.note{background:var(--bg2);color:var(--text3)}
 .je-text{font-size:14px;color:var(--text2);line-height:1.8}
 .je-del{background:none;border:none;cursor:pointer;color:var(--text4);font-size:14px;transition:color 0.15s;padding:0;line-height:1}
 .je-del:hover{color:var(--red)}
-.journal-form textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-family:var(--body);font-size:14px;color:var(--text);outline:none;resize:vertical;min-height:90px;line-height:1.8;transition:border-color 0.2s}
-.journal-form textarea:focus{border-color:var(--accent)}
-.journal-form-row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.sel{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;font-family:var(--body);font-size:13px;color:var(--text2);outline:none;cursor:pointer;font-weight:500}
+.j-textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:12px 14px;font-family:var(--body);font-size:14px;color:var(--text);outline:none;resize:vertical;min-height:90px;line-height:1.8;transition:border-color 0.2s}
+.j-textarea:focus{border-color:var(--accent)}
+.sel{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:8px 12px;font-family:var(--body);font-size:13px;color:var(--text2);outline:none;cursor:pointer;font-weight:500}
 .sel:focus{border-color:var(--accent)}
 
 /* MINDSET */
-.streak-box{text-align:center;background:linear-gradient(135deg,var(--accent-light),#fff);border:2px solid var(--accent-mid);border-radius:var(--radius);padding:22px;margin-bottom:14px}
-.streak-fire{font-size:36px;margin-bottom:6px}
-.streak-num{font-size:56px;font-weight:700;color:var(--accent);line-height:1;font-family:var(--body)}
+.streak-box{text-align:center;background:linear-gradient(135deg,var(--accent-l),#fff);border:2px solid var(--accent-m);border-radius:var(--r);padding:22px;margin-bottom:14px}
+.streak-num{font-size:56px;font-weight:700;color:var(--accent);line-height:1}
 .streak-lbl{font-size:13px;color:var(--text3);margin-top:4px;font-weight:500}
-.checklist{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
-.chk-item{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;padding:11px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg);transition:all 0.15s;user-select:none;line-height:1.5}
-.chk-item:hover{border-color:var(--accent);background:var(--accent-light)}
+.chk-item{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;padding:11px 14px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--bg);transition:all 0.15s;user-select:none;margin-bottom:8px;line-height:1.5}
+.chk-item:hover{border-color:var(--accent);background:var(--accent-l)}
 .chk-item.done{color:var(--text4);background:var(--bg2)}
 .chk-item.done .chkbox{background:var(--accent);border-color:var(--accent);color:#fff}
 .chkbox{width:20px;height:20px;border:2px solid var(--border2);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:all 0.15s}
-.quote-box{background:var(--purple-light);border-left:4px solid var(--purple);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 18px}
+.quote-box{background:var(--purple-l);border-left:4px solid var(--purple);border-radius:0 var(--rs) var(--rs) 0;padding:16px 18px}
 .quote-text{font-size:15px;color:var(--text);line-height:1.8;font-style:italic;font-weight:400;margin-bottom:6px}
 .quote-author{font-size:11px;color:var(--text3);font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
 
 /* PULSE */
 .pulse-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
-.pulse-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:13px 15px}
+.pulse-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:13px 15px}
 .pulse-lbl{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-weight:700}
 .pulse-val{font-size:20px;font-weight:700;color:var(--text);line-height:1}
 .pulse-sub{font-size:11px;margin-top:4px;color:var(--text3)}
-.fg-box{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px}
+.fg-box{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:14px 16px}
 .fg-lbl{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;font-weight:700}
 .fg-track{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;margin-bottom:7px}
 .fg-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--red),var(--warn),var(--accent));transition:width 0.8s ease}
 .fg-row{display:flex;justify-content:space-between;font-size:10px;color:var(--text4)}
 
-/* DIVIDER */
-.divider{height:1.5px;background:var(--border);margin:16px 0}
+/* ===== ACTION PLAN ===== */
+.ap-phase-track{display:flex;gap:0;margin-bottom:24px;border-radius:var(--r);overflow:hidden;border:1.5px solid var(--border)}
+.ap-phase{flex:1;padding:14px 12px;text-align:center;border-right:1.5px solid var(--border);background:var(--bg);cursor:pointer;transition:all 0.15s}
+.ap-phase:last-child{border-right:none}
+.ap-phase.active{background:var(--accent);color:#fff}
+.ap-phase.done{background:var(--accent-l)}
+.ap-phase-num{font-size:18px;font-weight:700;line-height:1;margin-bottom:4px}
+.ap-phase-lbl{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;opacity:0.8}
+.ap-phase-sub{font-size:10px;margin-top:3px;opacity:0.7}
 
-/* NOTE */
-.note{background:var(--warn-light);border:1.5px solid var(--warn-mid);border-radius:var(--radius-sm);padding:12px 16px;font-size:13px;color:var(--warn);line-height:1.7;font-weight:500}
-.note strong{font-weight:700}
+.ap-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+@media(max-width:600px){.ap-grid{grid-template-columns:1fr}}
+.ap-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);padding:18px}
+.ap-card-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.ap-card-title.green{color:var(--accent)}.ap-card-title.blue{color:var(--blue)}.ap-card-title.purple{color:var(--purple)}.ap-card-title.red{color:var(--red)}
+
+/* RISK CALCULATOR */
+.calc-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.calc-lbl{font-size:12px;color:var(--text2);font-weight:500;min-width:130px}
+.calc-inp{flex:1;min-width:80px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--rs);padding:7px 10px;font-family:var(--body);font-size:13px;color:var(--text);outline:none;font-weight:600;transition:border-color 0.2s}
+.calc-inp:focus{border-color:var(--accent)}
+.calc-result{background:var(--accent-l);border:2px solid var(--accent-m);border-radius:var(--r);padding:16px;margin-top:12px}
+.calc-result-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--accent-m);font-size:14px}
+.calc-result-row:last-child{border-bottom:none}
+.calc-result-lbl{color:var(--text3);font-weight:500}
+.calc-result-val{font-weight:700;color:var(--accent);font-size:16px}
+.calc-result-val.warn{color:var(--warn)}
+.calc-result-val.red{color:var(--red)}
+
+/* TRIGGER TOOL */
+.trigger-q{margin-bottom:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:12px 14px}
+.trigger-q-text{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.5}
+.trigger-opts{display:flex;gap:8px;flex-wrap:wrap}
+.trigger-opt{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--white);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:var(--body)}
+.trigger-opt:hover{border-color:var(--accent)}
+.trigger-opt.yes{border-color:var(--accent);background:var(--accent);color:#fff}
+.trigger-opt.no{border-color:var(--red);background:var(--red);color:#fff}
+.trigger-opt.neutral{border-color:var(--warn);background:var(--warn);color:#fff}
+.trigger-verdict{border-radius:var(--r);padding:18px 20px;margin-top:14px;text-align:center;display:none}
+.trigger-verdict.show{display:block}
+.trigger-verdict.go{background:var(--accent-l);border:2px solid var(--accent-m)}
+.trigger-verdict.wait{background:var(--warn-l);border:2px solid var(--warn-m)}
+.trigger-verdict.no-go{background:var(--red-l);border:2px solid var(--red-m)}
+.trigger-verdict-icon{font-size:32px;margin-bottom:8px}
+.trigger-verdict-title{font-size:18px;font-weight:700;margin-bottom:6px}
+.trigger-verdict-text{font-size:14px;line-height:1.7;color:var(--text2)}
+
+/* PNL TRACKER */
+.pnl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.pnl-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);padding:12px 14px;text-align:center}
+.pnl-val{font-size:22px;font-weight:700;line-height:1;margin-bottom:4px}
+.pnl-lbl{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);font-weight:600}
+.pnl-positive{color:var(--accent)}.pnl-negative{color:var(--red)}.pnl-neutral{color:var(--text)}
+.pnl-entry-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.pnl-entries{max-height:200px;overflow-y:auto;margin-bottom:12px}
+.pnl-entry{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:6px;font-size:13px;gap:8px;flex-wrap:wrap}
+.pnl-entry-ticker{font-weight:700;min-width:50px}
+.pnl-entry-desc{color:var(--text3);flex:1;font-size:12px}
+.pnl-entry-amount{font-weight:700}
+.pnl-entry-amount.pos{color:var(--accent)}.pnl-entry-amount.neg{color:var(--red)}
+.pnl-del{background:none;border:none;cursor:pointer;color:var(--text4);font-size:13px;transition:color 0.15s}
+.pnl-del:hover{color:var(--red)}
+
+/* RULES CARD */
+.rules-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.rule-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rs);font-size:14px;color:var(--text2);line-height:1.6}
+.rule-num{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.rule-del{background:none;border:none;cursor:pointer;color:var(--text4);font-size:13px;margin-left:auto;transition:color 0.15s;flex-shrink:0}
+.rule-del:hover{color:var(--red)}
 
 footer{margin-top:48px;padding-top:20px;border-top:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px;font-weight:500}
 .footer-brand{color:var(--accent);font-weight:700}
-
-@media(max-width:500px){
-  .focus-wrap{grid-template-columns:1fr}
-  .pulse-grid{grid-template-columns:1fr 1fr}
-  .header{flex-direction:column;align-items:flex-start}
-  .header-meta{align-items:flex-start}
-}
+@media(max-width:500px){.focus-wrap{grid-template-columns:1fr}.ap-grid{grid-template-columns:1fr}.pnl-grid{grid-template-columns:1fr 1fr}.header{flex-direction:column;align-items:flex-start}.header-meta{align-items:flex-start}}
 </style>
 </head>
 <body>
@@ -275,9 +302,9 @@ footer{margin-top:48px;padding-top:20px;border-top:2px solid var(--border);displ
 <header class="header">
   <div class="logo">
     <div class="logo-mark">⌘</div>
-    <div class="logo-text">
+    <div>
       <div class="eyebrow">Market Command Center</div>
-      <div class="title">Morning Briefing</div>
+      <div class="hdr-title">Morning Briefing</div>
     </div>
   </div>
   <div class="header-meta">
@@ -297,17 +324,28 @@ footer{margin-top:48px;padding-top:20px;border-top:2px solid var(--border);displ
   <div class="api-hint" id="apihint">Stored only in your browser — never uploaded anywhere</div>
 </div>
 
-<!-- TICKER SETUP -->
+<!-- TICKER + POSITIONS SETUP -->
 <div class="setup-grid">
+  <!-- WATCHLIST -->
   <div class="setup-card">
-    <div class="setup-card-title green">◈ Watchlist <span class="count-b" id="wlc">0</span></div>
+    <div class="sct green">◈ Watchlist <span class="count-b" id="wlc">0</span></div>
     <div class="tags" id="wltags"></div>
     <div class="irow"><input type="text" id="wlinp" placeholder="Add ticker (e.g. NVDA)" maxlength="6" onkeydown="if(event.key==='Enter')addWL()"><button class="badd" onclick="addWL()">+</button></div>
   </div>
+
+  <!-- OPEN POSITIONS (full detail) -->
   <div class="setup-card">
-    <div class="setup-card-title amber">◈ Open Trades <span class="count-b" id="otc">0</span></div>
-    <div class="tags" id="ottags"></div>
-    <div class="irow"><input type="text" id="otinp" placeholder="Add ticker (e.g. TSLA)" maxlength="6" class="wf" onkeydown="if(event.key==='Enter')addOT()"><button class="badd w" onclick="addOT()">+</button></div>
+    <div class="sct amber">◈ Open Positions <span class="count-b" id="otc">0</span></div>
+    <div class="pos-tags" id="pos-tags"></div>
+    <div class="pos-form" id="pos-form">
+      <input type="text" id="p-ticker" placeholder="Ticker (NVDA)" maxlength="6" style="text-transform:uppercase">
+      <select id="p-type"><option value="CALL">Call</option><option value="PUT">Put</option></select>
+      <input type="text" id="p-strike" placeholder="Strike ($210)">
+      <input type="text" id="p-expiry" placeholder="Expiry (Jun 20)">
+      <input type="text" id="p-contracts" placeholder="Contracts (5)">
+      <input type="text" id="p-entry" placeholder="Entry price ($3.20)">
+      <button class="btn-sm pos-form-full" onclick="addPosition()" style="padding:9px;font-size:13px;font-weight:600">+ Add Position</button>
+    </div>
   </div>
 </div>
 
@@ -315,14 +353,14 @@ footer{margin-top:48px;padding-top:20px;border-top:2px solid var(--border);displ
 <div class="whatnow-wrap">
   <button class="btn-whatnow" onclick="runWhatNow()" id="btn-whatnow">
     <span style="font-size:24px">⚡</span>
-    <div>
+    <div style="text-align:left">
       <div>What Do I Do Right Now?</div>
-      <div class="btn-whatnow-sub">Urgent scan — 60 second read, tells you exactly what matters this moment</div>
+      <div class="btn-whatnow-sub">Urgent scan — tells you exactly what matters this moment</div>
     </div>
   </button>
   <div id="out-whatnow" style="display:none;margin-top:12px">
     <div class="out-wrap">
-      <div class="out-head"><div class="out-status">Right Now — <span id="st-whatnow">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-whatnow','btn-speak-whatnow')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-whatnow" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-whatnow')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-whatnow','btn-whatnow')">Clear</button></div></div>
+      <div class="out-head"><div class="out-status">Right Now — <span id="st-whatnow">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-whatnow','bsp-whatnow')">▶ Read</button><button class="btn-sm" id="bsp-whatnow" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-whatnow')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-whatnow','btn-whatnow')">Clear</button></div></div>
       <div class="load-bar" id="lb-whatnow" style="display:none"><div class="load-bar-i"></div></div>
       <div class="out-body" id="ob-whatnow"></div>
     </div>
@@ -332,199 +370,303 @@ footer{margin-top:48px;padding-top:20px;border-top:2px solid var(--border);displ
 <!-- DASHBOARD -->
 <div class="dash">
 
-  <!-- CARD: MARKET PULSE -->
-  <div class="card" id="card-pulse">
-    <div class="card-head" onclick="toggleCard('card-pulse')">
-      <div class="card-head-left"><div class="card-icon green">📊</div><div><div class="card-label">Market Pulse</div><div class="card-sub">Key levels at a glance</div></div></div>
-      <div class="card-chevron">▼</div>
-    </div>
-    <div class="card-body">
-      <div class="pulse-grid">
-        <div class="pulse-card"><div class="pulse-lbl">S&P 500 / SPY</div><div class="pulse-val" id="p-spy">—</div><div class="pulse-sub">Check pre-market</div></div>
-        <div class="pulse-card"><div class="pulse-lbl">Nasdaq / QQQ</div><div class="pulse-val" id="p-qqq">—</div><div class="pulse-sub">Check pre-market</div></div>
-        <div class="pulse-card"><div class="pulse-lbl">VIX</div><div class="pulse-val" id="p-vix">—</div><div class="pulse-sub">Volatility index</div></div>
-        <div class="pulse-card"><div class="pulse-lbl">10Y Yield</div><div class="pulse-val" id="p-yield">—</div><div class="pulse-sub">US Treasury</div></div>
-        <div class="pulse-card"><div class="pulse-lbl">Gold</div><div class="pulse-val" id="p-gold">—</div><div class="pulse-sub">Safe haven</div></div>
-        <div class="pulse-card"><div class="pulse-lbl">Oil (WTI)</div><div class="pulse-val" id="p-oil">—</div><div class="pulse-sub">Crude</div></div>
-      </div>
-      <div class="fg-box">
-        <div class="fg-lbl">Fear &amp; Greed — <strong id="fg-word" style="color:var(--warn)">Run briefing for live data</strong></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="font-size:26px;font-weight:700;color:var(--text)" id="fg-score">—</span><div style="flex:1"><div class="fg-track"><div class="fg-fill" id="fg-fill" style="width:0%"></div></div></div></div>
-        <div class="fg-row"><span>😱 Fear</span><span>😐 Neutral</span><span>😄 Greed</span></div>
-      </div>
-      <div class="note" style="margin-top:12px">⚡ <strong>Live prices need a market data subscription.</strong> Run the Morning Briefing below for AI-sourced current levels, or check <strong>cnbc.com/markets</strong> for real-time data.</div>
-    </div>
+<!-- CARD: ACTION PLAN -->
+<div class="card open" id="card-action">
+  <div class="card-head" onclick="toggleCard('card-action')">
+    <div class="card-head-left"><div class="card-icon ci-green">🗺️</div><div><div class="card-label">My Action Plan</div><div class="card-sub">Road to $10k/month · Risk calculator · Trigger tool · P&L tracker</div></div></div>
+    <div class="card-chevron">▼</div>
   </div>
+  <div class="card-body">
 
-  <!-- CARD: MORNING BRIEFING -->
-  <div class="card open" id="card-brief">
-    <div class="card-head" onclick="toggleCard('card-brief')">
-      <div class="card-head-left"><div class="card-icon green">🗞️</div><div><div class="card-label">Morning Briefing</div><div class="card-sub">News · Macro · Earnings · Calendar</div></div></div>
-      <div class="card-chevron">▼</div>
+    <!-- PHASE TRACKER -->
+    <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:var(--text3);margin-bottom:10px">Your Phase — Road to $10k/month</div>
+    <div class="ap-phase-track" id="phase-track">
+      <div class="ap-phase" data-phase="0" onclick="setPhase(0)"><div class="ap-phase-num">1</div><div class="ap-phase-lbl">Survive</div><div class="ap-phase-sub">Under $5k</div></div>
+      <div class="ap-phase" data-phase="1" onclick="setPhase(1)"><div class="ap-phase-num">2</div><div class="ap-phase-lbl">Consistent</div><div class="ap-phase-sub">$5k–$15k</div></div>
+      <div class="ap-phase" data-phase="2" onclick="setPhase(2)"><div class="ap-phase-num">3</div><div class="ap-phase-lbl">Scale</div><div class="ap-phase-sub">$15k–$50k</div></div>
+      <div class="ap-phase" data-phase="3" onclick="setPhase(3)"><div class="ap-phase-num">4</div><div class="ap-phase-lbl">Income</div><div class="ap-phase-sub">$50k+</div></div>
     </div>
-    <div class="card-body">
-      <div class="focus-wrap">
-        <label class="fitem"><input type="checkbox" id="f1" checked><div class="fcheck">✓</div><span class="flbl">Macro &amp; Fed</span></label>
-        <label class="fitem"><input type="checkbox" id="f2" checked><div class="fcheck">✓</div><span class="flbl">Earnings</span></label>
-        <label class="fitem"><input type="checkbox" id="f3" checked><div class="fcheck">✓</div><span class="flbl">Geopolitical</span></label>
-        <label class="fitem"><input type="checkbox" id="f4" checked><div class="fcheck">✓</div><span class="flbl">Sector News</span></label>
-        <label class="fitem"><input type="checkbox" id="f5" checked><div class="fcheck">✓</div><span class="flbl">Economic Calendar</span></label>
-        <label class="fitem"><input type="checkbox" id="f6" checked><div class="fcheck">✓</div><span class="flbl">Options Flow</span></label>
-      </div>
-      <button class="btn btn-primary" onclick="runSection('brief')" id="btn-brief">⟳ Run Morning Briefing</button>
-      <div id="out-brief" style="display:none">
-        <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Briefing — <span id="st-brief">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-brief','btn-speak-brief')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-brief" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-brief')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-brief','btn-brief')">Clear</button></div></div>
-          <div class="load-bar" id="lb-brief" style="display:none"><div class="load-bar-i"></div></div>
-          <div class="out-body" id="ob-brief"></div>
+    <div class="note note-green" id="phase-note" style="margin-bottom:20px"></div>
+
+    <div class="ap-grid">
+
+      <!-- RISK CALCULATOR -->
+      <div class="ap-card">
+        <div class="ap-card-title green">⚖️ Position Size Calculator</div>
+        <div class="calc-row"><div class="calc-lbl">Account size ($)</div><input type="number" class="calc-inp" id="calc-account" placeholder="2500" oninput="calcRisk()"></div>
+        <div class="calc-row"><div class="calc-lbl">Risk per trade (%)</div><input type="number" class="calc-inp" id="calc-risk-pct" placeholder="2" oninput="calcRisk()"></div>
+        <div class="calc-row"><div class="calc-lbl">Option premium ($)</div><input type="number" class="calc-inp" id="calc-premium" placeholder="1.50" oninput="calcRisk()"></div>
+        <div class="calc-row"><div class="calc-lbl">Stop loss (%)</div><input type="number" class="calc-inp" id="calc-stop" placeholder="50" oninput="calcRisk()"></div>
+        <div class="calc-result" id="calc-result" style="display:none">
+          <div class="calc-result-row"><span class="calc-result-lbl">Max $ to risk</span><span class="calc-result-val" id="cr-maxrisk">—</span></div>
+          <div class="calc-result-row"><span class="calc-result-lbl">Contracts to buy</span><span class="calc-result-val" id="cr-contracts">—</span></div>
+          <div class="calc-result-row"><span class="calc-result-lbl">Total cost</span><span class="calc-result-val" id="cr-cost">—</span></div>
+          <div class="calc-result-row"><span class="calc-result-lbl">Stop loss at</span><span class="calc-result-val warn" id="cr-stop">—</span></div>
+          <div class="calc-result-row"><span class="calc-result-lbl">% of account</span><span class="calc-result-val" id="cr-pct">—</span></div>
         </div>
-        <div class="ask-wrap"><div class="ask-head">💬 Ask a question about this briefing</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-brief" placeholder="e.g. What does this mean for my NVDA calls? Explain IV crush simply..." onkeydown="if(event.key==='Enter')askQ('brief')"><button class="btn-sm" onclick="askQ('brief')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-brief-res"></div></div>
+        <div class="note note-warn" style="margin-top:10px;font-size:12px">💡 <strong>Phase 1 rule:</strong> Never risk more than 2% of your account on one trade. With $2,500 that is $50 max risk per trade.</div>
       </div>
-    </div>
-  </div>
 
-  <!-- CARD: MY POSITIONS -->
-  <div class="card open" id="card-pos">
-    <div class="card-head" onclick="toggleCard('card-pos')">
-      <div class="card-head-left"><div class="card-icon amber">🚨</div><div><div class="card-label">My Positions Alert</div><div class="card-sub">Risk · Catalysts · IV events per trade</div></div></div>
-      <div class="card-chevron">▼</div>
-    </div>
-    <div class="card-body">
-      <button class="btn btn-primary warn" onclick="runSection('pos')" id="btn-pos">⟳ Scan My Open Trades</button>
-      <div id="out-pos" style="display:none">
-        <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Positions — <span id="st-pos">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-pos','btn-speak-pos')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-pos" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-pos')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-pos','btn-pos')">Clear</button></div></div>
-          <div class="load-bar" id="lb-pos" style="display:none"><div class="load-bar-i"></div></div>
-          <div class="out-body" id="ob-pos"></div>
+      <!-- P&L TRACKER -->
+      <div class="ap-card">
+        <div class="ap-card-title blue">📈 Monthly P&L Tracker</div>
+        <div class="pnl-grid">
+          <div class="pnl-card"><div class="pnl-val pnl-positive" id="pnl-total">$0</div><div class="pnl-lbl">This Month</div></div>
+          <div class="pnl-card"><div class="pnl-val pnl-neutral" id="pnl-trades">0</div><div class="pnl-lbl">Trades</div></div>
+          <div class="pnl-card"><div class="pnl-val pnl-neutral" id="pnl-winrate">—</div><div class="pnl-lbl">Win Rate</div></div>
         </div>
-        <div class="ask-wrap"><div class="ask-head">💬 Ask about a specific position</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-pos" placeholder="e.g. Should I hedge my SWKS position? What's a protective put?" onkeydown="if(event.key==='Enter')askQ('pos')"><button class="btn-sm" onclick="askQ('pos')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-pos-res"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CARD: TRADE IDEA -->
-  <div class="card" id="card-idea">
-    <div class="card-head" onclick="toggleCard('card-idea')">
-      <div class="card-head-left"><div class="card-icon blue">💡</div><div><div class="card-label">Trade Idea of the Day</div><div class="card-sub">AI-generated options setups</div></div></div>
-      <div class="card-chevron">▼</div>
-    </div>
-    <div class="card-body">
-      <button class="btn btn-primary blue" onclick="runSection('idea')" id="btn-idea">⟳ Generate Trade Idea</button>
-      <div id="out-idea" style="display:none">
-        <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Idea — <span id="st-idea">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-idea','btn-speak-idea')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-idea" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-idea')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-idea','btn-idea')">Clear</button></div></div>
-          <div class="load-bar" id="lb-idea" style="display:none"><div class="load-bar-i"></div></div>
-          <div class="out-body" id="ob-idea"></div>
+        <div class="pnl-entries" id="pnl-entries"></div>
+        <div class="pnl-entry-row">
+          <input type="text" class="calc-inp" id="pnl-ticker-inp" placeholder="Ticker" style="width:70px;flex:none">
+          <input type="number" class="calc-inp" id="pnl-amount-inp" placeholder="P&L ($)" style="flex:1">
+          <input type="text" class="calc-inp" id="pnl-note-inp" placeholder="Note" style="flex:2">
+          <button class="btn-sm" onclick="addPnL()" style="flex-shrink:0">Add</button>
         </div>
-        <div class="ask-wrap"><div class="ask-head">💬 Ask about this trade idea</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-idea" placeholder="e.g. What's a bull call spread? How do I calculate max loss?" onkeydown="if(event.key==='Enter')askQ('idea')"><button class="btn-sm" onclick="askQ('idea')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-idea-res"></div></div>
+        <button class="btn-sm danger" onclick="resetMonthPnL()" style="font-size:11px;margin-top:6px">Reset Month</button>
       </div>
-    </div>
-  </div>
 
-  <!-- CARD: LEARN TODAY -->
-  <div class="card" id="card-learn">
-    <div class="card-head" onclick="toggleCard('card-learn')">
-      <div class="card-head-left"><div class="card-icon purple">🎓</div><div><div class="card-label">Learn Something Today</div><div class="card-sub">Options tip · Long-term stock idea · Wisdom</div></div></div>
-      <div class="card-chevron">▼</div>
     </div>
-    <div class="card-body">
-      <button class="btn btn-primary purple" onclick="runSection('learn')" id="btn-learn">⟳ Get Today's Lesson</button>
-      <div id="out-learn" style="display:none">
-        <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Education — <span id="st-learn">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-learn','btn-speak-learn')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-learn" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-learn')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-learn','btn-learn')">Clear</button></div></div>
-          <div class="load-bar" id="lb-learn" style="display:none"><div class="load-bar-i"></div></div>
-          <div class="out-body" id="ob-learn"></div>
-        </div>
-        <div class="ask-wrap"><div class="ask-head">💬 Ask anything — no question is too basic</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-learn" placeholder="e.g. What's the difference between a call and a put? Explain theta decay..." onkeydown="if(event.key==='Enter')askQ('learn')"><button class="btn-sm" onclick="askQ('learn')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-learn-res"></div></div>
-      </div>
-    </div>
-  </div>
 
-  <!-- CARD: ECONOMIC EVENTS -->
-  <div class="card" id="card-econ">
-    <div class="card-head" onclick="toggleCard('card-econ')">
-      <div class="card-head-left"><div class="card-icon green">📅</div><div><div class="card-label">Economic Events</div><div class="card-sub">Plain English — what it means for YOUR trades</div></div></div>
-      <div class="card-chevron">▼</div>
-    </div>
-    <div class="card-body">
-      <button class="btn btn-primary" onclick="runSection('econ')" id="btn-econ">⟳ Explain Today's Events</button>
-      <div id="out-econ" style="display:none">
-        <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Events — <span id="st-econ">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-econ','btn-speak-econ')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-econ" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-econ')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-econ','btn-econ')">Clear</button></div></div>
-          <div class="load-bar" id="lb-econ" style="display:none"><div class="load-bar-i"></div></div>
-          <div class="out-body" id="ob-econ"></div>
-        </div>
-        <div class="ask-wrap"><div class="ask-head">💬 Ask about any economic event</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-econ" placeholder="e.g. What is PCE and why does it matter? How does CPI affect options?" onkeydown="if(event.key==='Enter')askQ('econ')"><button class="btn-sm" onclick="askQ('econ')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-econ-res"></div></div>
+    <!-- TRIGGER TOOL -->
+    <div class="ap-card" style="margin-bottom:20px">
+      <div class="ap-card-title purple">🎯 Should I Take This Trade? — Decision Tool</div>
+      <div class="note note-blue" style="margin-bottom:16px;font-size:13px">Answer these questions honestly. One "No" on the first 3 questions = don't trade. Use this every single time before entering a position.</div>
+      <div id="trigger-questions"></div>
+      <div class="trigger-verdict" id="trigger-verdict">
+        <div class="trigger-verdict-icon" id="tv-icon"></div>
+        <div class="trigger-verdict-title" id="tv-title"></div>
+        <div class="trigger-verdict-text" id="tv-text"></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn-sm" onclick="resetTrigger()" style="flex:1">Reset</button>
       </div>
     </div>
-  </div>
 
-  <!-- CARD: SECTOR RANKINGS -->
-  <div class="card" id="card-sector">
-    <div class="card-head" onclick="toggleCard('card-sector')">
-      <div class="card-head-left"><div class="card-icon amber">🏆</div><div><div class="card-label">Sector Rankings</div><div class="card-sub">What's hot, what's not — rotation signals</div></div></div>
-      <div class="card-chevron">▼</div>
-    </div>
-    <div class="card-body">
-      <button class="btn btn-primary warn" onclick="runSection('sector')" id="btn-sector">⟳ Rank Today's Sectors</button>
-      <div id="out-sector" style="display:none">
-        <div class="out-wrap">
-          <div class="out-head"><div class="out-status">Sectors — <span id="st-sector">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-sector','btn-speak-sector')">▶ Read Aloud</button><button class="btn-sm" id="btn-speak-sector" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-sector')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-sector','btn-sector')">Clear</button></div></div>
-          <div class="load-bar" id="lb-sector" style="display:none"><div class="load-bar-i"></div></div>
-          <div class="out-body" id="ob-sector"></div>
-        </div>
-        <div class="ask-wrap"><div class="ask-head">💬 Ask about sectors or rotation</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-sector" placeholder="e.g. What is sector rotation? How do I trade XLE options?" onkeydown="if(event.key==='Enter')askQ('sector')"><button class="btn-sm" onclick="askQ('sector')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-sector-res"></div></div>
+    <!-- MY TRADING RULES -->
+    <div class="ap-card">
+      <div class="ap-card-title red">📋 My Trading Rules — Non-Negotiable</div>
+      <div class="note note-warn" style="margin-bottom:14px;font-size:13px">These are YOUR rules. Write them, own them. Read them every morning. Breaking your rules is the #1 cause of blown accounts.</div>
+      <div class="rules-list" id="rules-list"></div>
+      <div class="irow" style="gap:8px">
+        <input type="text" class="calc-inp" id="rule-inp" placeholder="Add a trading rule (e.g. Never hold through earnings)" style="flex:1;padding:9px 12px" onkeydown="if(event.key==='Enter')addRule()">
+        <button class="btn-sm" onclick="addRule()" style="flex-shrink:0;padding:9px 14px">Add Rule</button>
       </div>
     </div>
-  </div>
 
-  <!-- CARD: TRADE JOURNAL -->
-  <div class="card" id="card-journal">
-    <div class="card-head" onclick="toggleCard('card-journal')">
-      <div class="card-head-left"><div class="card-icon gray">📓</div><div><div class="card-label">Trade Journal</div><div class="card-sub">Log trades · Lessons · Ideas — saved in your browser</div></div></div>
-      <div class="card-chevron">▼</div>
-    </div>
-    <div class="card-body">
-      <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
-        <input type="text" class="ask-inp" id="jsearch" placeholder="Search your journal..." oninput="renderJournal()" style="flex:1;min-width:150px">
-        <select class="sel" id="jfilter" onchange="renderJournal()"><option value="">All entries</option><option value="trade">Trades</option><option value="lesson">Lessons</option><option value="idea">Ideas</option><option value="note">Notes</option></select>
-      </div>
-      <div class="journal-entries" id="journal-entries"></div>
-      <div class="divider"></div>
-      <div class="journal-form">
-        <textarea id="jtext" placeholder="One sentence is enough. 'Sold too early on NVDA — wait for the second push next time.'"></textarea>
-        <div class="journal-form-row">
-          <select class="sel" id="jtag"><option value="trade">📈 Trade</option><option value="lesson">🎓 Lesson</option><option value="idea">💡 Idea</option><option value="note">📌 Note</option></select>
-          <button class="btn btn-primary" onclick="addEntry()" style="flex:1;padding:9px 16px;font-size:14px">Save Entry</button>
-        </div>
-      </div>
-    </div>
   </div>
+</div>
 
-  <!-- CARD: TRADER MINDSET (SURPRISE) -->
-  <div class="card" id="card-mindset">
-    <div class="card-head" onclick="toggleCard('card-mindset')">
-      <div class="card-head-left"><div class="card-icon amber">🔥</div><div><div class="card-label">Trader Mindset</div><div class="card-sub">Streak · Pre-market checklist · Daily wisdom</div></div></div>
-      <div class="card-chevron">▼</div>
+<!-- CARD: MARKET PULSE -->
+<div class="card" id="card-pulse">
+  <div class="card-head" onclick="toggleCard('card-pulse')">
+    <div class="card-head-left"><div class="card-icon ci-green">📊</div><div><div class="card-label">Market Pulse</div><div class="card-sub">Key levels at a glance</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="pulse-grid">
+      <div class="pulse-card"><div class="pulse-lbl">S&P 500</div><div class="pulse-val">~5,850</div><div class="pulse-sub">Run briefing for live</div></div>
+      <div class="pulse-card"><div class="pulse-lbl">Nasdaq</div><div class="pulse-val">~19,200</div><div class="pulse-sub">Run briefing for live</div></div>
+      <div class="pulse-card"><div class="pulse-lbl">VIX</div><div class="pulse-val">~16–18</div><div class="pulse-sub">Volatility index</div></div>
+      <div class="pulse-card"><div class="pulse-lbl">10Y Yield</div><div class="pulse-val">~4.5%</div><div class="pulse-sub">US Treasury</div></div>
+      <div class="pulse-card"><div class="pulse-lbl">Gold</div><div class="pulse-val">~$3,300</div><div class="pulse-sub">Safe haven</div></div>
+      <div class="pulse-card"><div class="pulse-lbl">Oil WTI</div><div class="pulse-val">~$62</div><div class="pulse-sub">Crude</div></div>
     </div>
-    <div class="card-body">
-      <div class="streak-box">
-        <div class="streak-fire">🔥</div>
-        <div class="streak-num" id="streak-num">0</div>
-        <div class="streak-lbl">Day Streak — keep showing up</div>
-        <button class="btn-sm" onclick="markToday()" style="margin-top:12px;padding:8px 20px;font-size:13px">✓ Mark Today Complete</button>
+    <div class="note note-warn">⚡ <strong>Live prices need a market data subscription.</strong> Run Morning Briefing for AI-sourced current levels or check cnbc.com/markets</div>
+  </div>
+</div>
+
+<!-- CARD: MORNING BRIEFING -->
+<div class="card open" id="card-brief">
+  <div class="card-head" onclick="toggleCard('card-brief')">
+    <div class="card-head-left"><div class="card-icon ci-green">🗞️</div><div><div class="card-label">Morning Briefing</div><div class="card-sub">News · Macro · Earnings · Calendar</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="focus-wrap">
+      <label class="fitem"><input type="checkbox" id="f1" checked><div class="fcheck">✓</div><span class="flbl">Macro &amp; Fed</span></label>
+      <label class="fitem"><input type="checkbox" id="f2" checked><div class="fcheck">✓</div><span class="flbl">Earnings</span></label>
+      <label class="fitem"><input type="checkbox" id="f3" checked><div class="fcheck">✓</div><span class="flbl">Geopolitical</span></label>
+      <label class="fitem"><input type="checkbox" id="f4" checked><div class="fcheck">✓</div><span class="flbl">Sector News</span></label>
+      <label class="fitem"><input type="checkbox" id="f5" checked><div class="fcheck">✓</div><span class="flbl">Economic Calendar</span></label>
+      <label class="fitem"><input type="checkbox" id="f6" checked><div class="fcheck">✓</div><span class="flbl">Options Flow</span></label>
+    </div>
+    <button class="btn btn-p" onclick="runSection('brief')" id="btn-brief">⟳ Run Morning Briefing</button>
+    <div id="out-brief" style="display:none">
+      <div class="out-wrap">
+        <div class="out-head"><div class="out-status">Briefing — <span id="st-brief">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-brief','bsp-brief')">▶ Read</button><button class="btn-sm" id="bsp-brief" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-brief')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-brief','btn-brief')">Clear</button></div></div>
+        <div class="load-bar" id="lb-brief" style="display:none"><div class="load-bar-i"></div></div>
+        <div class="out-body" id="ob-brief"></div>
       </div>
-      <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);font-weight:700;margin-bottom:10px">Pre-Market Checklist</div>
-      <div class="checklist" id="checklist"></div>
-      <div class="quote-box" id="quote-box">
-        <div class="quote-text" id="qt"></div>
-        <div class="quote-author" id="qa"></div>
+      <div class="ask-wrap"><div class="ask-head">💬 Ask about today's briefing</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-brief" placeholder="e.g. What does this mean for my positions? Explain IV crush simply..." onkeydown="if(event.key==='Enter')askQ('brief')"><button class="btn-sm" onclick="askQ('brief')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-brief-res"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD: MY POSITIONS -->
+<div class="card open" id="card-pos">
+  <div class="card-head" onclick="toggleCard('card-pos')">
+    <div class="card-head-left"><div class="card-icon ci-amber">🚨</div><div><div class="card-label">My Positions Alert</div><div class="card-sub">Full contract details · Risk · IV events</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <button class="btn btn-p warn" onclick="runSection('pos')" id="btn-pos">⟳ Scan My Open Positions</button>
+    <div id="out-pos" style="display:none">
+      <div class="out-wrap">
+        <div class="out-head"><div class="out-status">Positions — <span id="st-pos">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-pos','bsp-pos')">▶ Read</button><button class="btn-sm" id="bsp-pos" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-pos')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-pos','btn-pos')">Clear</button></div></div>
+        <div class="load-bar" id="lb-pos" style="display:none"><div class="load-bar-i"></div></div>
+        <div class="out-body" id="ob-pos"></div>
+      </div>
+      <div class="ask-wrap"><div class="ask-head">💬 Ask about a position</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-pos" placeholder="e.g. Should I hedge my NVDA call? What's a protective put?" onkeydown="if(event.key==='Enter')askQ('pos')"><button class="btn-sm" onclick="askQ('pos')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-pos-res"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD: ASK CLAUDE ANYTHING -->
+<div class="card open" id="card-ask">
+  <div class="card-head" onclick="toggleCard('card-ask')">
+    <div class="card-head-left"><div class="card-icon ci-blue">💬</div><div><div class="card-label">Ask Claude Anything</div><div class="card-sub">Definitions · Strategies · No question too basic</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="note note-blue" style="margin-bottom:16px">💡 <strong>Ask anything, any time.</strong> No briefing needed first. Try tapping a quick topic below or type your own question.</div>
+    <div class="ask-form" style="padding:0;margin-bottom:12px">
+      <input type="text" class="ask-inp" id="ask-global" placeholder="Ask anything about markets, options, stocks, definitions..." onkeydown="if(event.key==='Enter')askGlobal()">
+      <button class="btn btn-p blue" onclick="askGlobal()" style="width:auto;padding:10px 18px;font-size:14px;flex-shrink:0">Ask ↗</button>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">
+      <button class="btn-sm" onclick="quickAsk('What is IV crush and how do I avoid it?')">IV Crush</button>
+      <button class="btn-sm" onclick="quickAsk('Explain theta decay simply with a real example')">Theta Decay</button>
+      <button class="btn-sm" onclick="quickAsk('What is a bull call spread and when should I use one?')">Bull Call Spread</button>
+      <button class="btn-sm" onclick="quickAsk('What does delta mean for my options position?')">Delta</button>
+      <button class="btn-sm" onclick="quickAsk('What is the VIX and why does it matter for options traders?')">VIX Explained</button>
+      <button class="btn-sm" onclick="quickAsk('When is the best time to buy options vs sell options?')">Buy vs Sell</button>
+      <button class="btn-sm" onclick="quickAsk('What is a protective put and how does it work as a hedge?')">Protective Put</button>
+      <button class="btn-sm" onclick="quickAsk('How do I know when to take profits on an options trade?')">Taking Profits</button>
+      <button class="btn-sm" onclick="quickAsk('What is the best options strategy for a swing trader with a small account?')">Small Account Strategy</button>
+    </div>
+    <div class="ask-responses" id="ask-global-res"></div>
+  </div>
+</div>
+
+<!-- CARD: TRADE IDEA -->
+<div class="card" id="card-idea">
+  <div class="card-head" onclick="toggleCard('card-idea')">
+    <div class="card-head-left"><div class="card-icon ci-blue">💡</div><div><div class="card-label">Trade Idea of the Day</div><div class="card-sub">AI-generated options setups based on today's market</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <button class="btn btn-p blue" onclick="runSection('idea')" id="btn-idea">⟳ Generate Trade Idea</button>
+    <div id="out-idea" style="display:none">
+      <div class="out-wrap">
+        <div class="out-head"><div class="out-status">Idea — <span id="st-idea">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-idea','bsp-idea')">▶ Read</button><button class="btn-sm" id="bsp-idea" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-idea')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-idea','btn-idea')">Clear</button></div></div>
+        <div class="load-bar" id="lb-idea" style="display:none"><div class="load-bar-i"></div></div>
+        <div class="out-body" id="ob-idea"></div>
+      </div>
+      <div class="ask-wrap"><div class="ask-head">💬 Ask about this idea</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-idea" placeholder="e.g. What's my max loss? How do I calculate break-even?" onkeydown="if(event.key==='Enter')askQ('idea')"><button class="btn-sm" onclick="askQ('idea')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-idea-res"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD: LEARN TODAY -->
+<div class="card" id="card-learn">
+  <div class="card-head" onclick="toggleCard('card-learn')">
+    <div class="card-head-left"><div class="card-icon ci-purple">🎓</div><div><div class="card-label">Learn Something Today</div><div class="card-sub">Options tip · Long-term stock idea · Market wisdom</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <button class="btn btn-p purple" onclick="runSection('learn')" id="btn-learn">⟳ Get Today's Lesson</button>
+    <div id="out-learn" style="display:none">
+      <div class="out-wrap">
+        <div class="out-head"><div class="out-status">Education — <span id="st-learn">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-learn','bsp-learn')">▶ Read</button><button class="btn-sm" id="bsp-learn" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-learn')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-learn','btn-learn')">Clear</button></div></div>
+        <div class="load-bar" id="lb-learn" style="display:none"><div class="load-bar-i"></div></div>
+        <div class="out-body" id="ob-learn"></div>
+      </div>
+      <div class="ask-wrap"><div class="ask-head">💬 Ask anything — no question is too basic</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-learn" placeholder="e.g. Explain theta decay again in simpler terms..." onkeydown="if(event.key==='Enter')askQ('learn')"><button class="btn-sm" onclick="askQ('learn')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-learn-res"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD: ECONOMIC EVENTS -->
+<div class="card" id="card-econ">
+  <div class="card-head" onclick="toggleCard('card-econ')">
+    <div class="card-head-left"><div class="card-icon ci-green">📅</div><div><div class="card-label">Economic Events</div><div class="card-sub">Plain English — what it means for YOUR trades</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <button class="btn btn-p" onclick="runSection('econ')" id="btn-econ">⟳ Explain Today's Events</button>
+    <div id="out-econ" style="display:none">
+      <div class="out-wrap">
+        <div class="out-head"><div class="out-status">Events — <span id="st-econ">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-econ','bsp-econ')">▶ Read</button><button class="btn-sm" id="bsp-econ" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-econ')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-econ','btn-econ')">Clear</button></div></div>
+        <div class="load-bar" id="lb-econ" style="display:none"><div class="load-bar-i"></div></div>
+        <div class="out-body" id="ob-econ"></div>
+      </div>
+      <div class="ask-wrap"><div class="ask-head">💬 Ask about any economic event</div><div class="ask-form"><input type="text" class="ask-inp" id="ask-econ" placeholder="e.g. What is PCE? How does CPI affect options prices?" onkeydown="if(event.key==='Enter')askQ('econ')"><button class="btn-sm" onclick="askQ('econ')" style="flex-shrink:0">Ask</button></div><div class="ask-responses" id="ask-econ-res"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD: SECTOR RANKINGS -->
+<div class="card" id="card-sector">
+  <div class="card-head" onclick="toggleCard('card-sector')">
+    <div class="card-head-left"><div class="card-icon ci-amber">🏆</div><div><div class="card-label">Sector Rankings</div><div class="card-sub">What's hot, what's not — rotation signals</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <button class="btn btn-p warn" onclick="runSection('sector')" id="btn-sector">⟳ Rank Today's Sectors</button>
+    <div id="out-sector" style="display:none">
+      <div class="out-wrap">
+        <div class="out-head"><div class="out-status">Sectors — <span id="st-sector">Ready</span></div><div class="out-actions"><button class="btn-sm" onclick="speakOut('ob-sector','bsp-sector')">▶ Read</button><button class="btn-sm" id="bsp-sector" onclick="stopSpeak()" style="display:none">■ Stop</button><button class="btn-sm" onclick="copyOut('ob-sector')">Copy</button><button class="btn-sm danger" onclick="clearOut('out-sector','btn-sector')">Clear</button></div></div>
+        <div class="load-bar" id="lb-sector" style="display:none"><div class="load-bar-i"></div></div>
+        <div class="out-body" id="ob-sector"></div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- CARD: TRADE JOURNAL -->
+<div class="card" id="card-journal">
+  <div class="card-head" onclick="toggleCard('card-journal')">
+    <div class="card-head-left"><div class="card-icon ci-gray">📓</div><div><div class="card-label">Trade Journal</div><div class="card-sub">Log trades · Lessons · Ideas — saved in your browser</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+      <input type="text" class="ask-inp" id="jsearch" placeholder="Search journal..." oninput="renderJournal()" style="flex:1;min-width:140px">
+      <select class="sel" id="jfilter" onchange="renderJournal()"><option value="">All</option><option value="trade">Trades</option><option value="lesson">Lessons</option><option value="idea">Ideas</option><option value="note">Notes</option></select>
+    </div>
+    <div class="journal-entries" id="journal-entries"></div>
+    <div class="divider"></div>
+    <textarea class="j-textarea" id="jtext" placeholder="One sentence is enough. 'Sold NVDA too early — wait for the second push next time.'"></textarea>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+      <select class="sel" id="jtag"><option value="trade">📈 Trade</option><option value="lesson">🎓 Lesson</option><option value="idea">💡 Idea</option><option value="note">📌 Note</option></select>
+      <button class="btn btn-p" onclick="addEntry()" style="flex:1;padding:9px 16px;font-size:14px">Save Entry</button>
+    </div>
+  </div>
+</div>
+
+<!-- CARD: TRADER MINDSET -->
+<div class="card" id="card-mindset">
+  <div class="card-head" onclick="toggleCard('card-mindset')">
+    <div class="card-head-left"><div class="card-icon ci-amber">🔥</div><div><div class="card-label">Trader Mindset</div><div class="card-sub">Streak · Pre-market checklist · Daily wisdom</div></div></div>
+    <div class="card-chevron">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="streak-box">
+      <div style="font-size:36px;margin-bottom:6px">🔥</div>
+      <div class="streak-num" id="streak-num">0</div>
+      <div class="streak-lbl">Day Streak — keep showing up</div>
+      <button class="btn-sm" onclick="markToday()" style="margin-top:12px;padding:9px 22px;font-size:13px">✓ Mark Today Complete</button>
+    </div>
+    <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);font-weight:700;margin-bottom:10px">Pre-Market Checklist</div>
+    <div id="checklist"></div>
+    <div class="quote-box" id="quote-box">
+      <div class="quote-text" id="qt"></div>
+      <div class="quote-author" id="qa"></div>
+    </div>
+  </div>
+</div>
 
 </div><!-- end dash -->
-
 <footer>
   <div><span class="footer-brand">Market Command Center</span> — Built for focus, built for you</div>
   <div>NYSE opens 9:30 AM ET</div>
@@ -534,20 +676,24 @@ footer{margin-top:48px;padding-top:20px;border-top:2px solid var(--border);displ
 <script>
 const WORKER='https://morning-market-briefing.cpettit01.workers.dev';
 let wl=JSON.parse(localStorage.getItem('mb_wl')||'["SPY","QQQ","TSLA","NVDA","AAPL"]');
-let ot=JSON.parse(localStorage.getItem('mb_ot')||'[]');
+let positions=JSON.parse(localStorage.getItem('mb_positions')||'[]');
 let journal=JSON.parse(localStorage.getItem('mb_journal')||'[]');
 let streak=JSON.parse(localStorage.getItem('mb_streak')||'{"count":0,"last":""}');
 let checks=JSON.parse(localStorage.getItem('mb_checks')||'{}');
+let pnlEntries=JSON.parse(localStorage.getItem('mb_pnl')||'[]');
+let tradingRules=JSON.parse(localStorage.getItem('mb_rules')||'["Never risk more than 2% of my account on one trade","Always set a stop loss before entering","No trading in the first 15 minutes of market open","If I am down 5% on the day, I stop trading","Never hold through earnings unless it is planned"]');
+let currentPhase=parseInt(localStorage.getItem('mb_phase')||'0');
+let triggerAnswers={};
 let currentUtterance=null;
 
 const QUOTES=[
   {t:"The stock market is a device for transferring money from the impatient to the patient.",a:"Warren Buffett"},
-  {t:"Risk comes from not knowing what you're doing.",a:"Warren Buffett"},
-  {t:"The four most dangerous words in investing are: this time it's different.",a:"Sir John Templeton"},
+  {t:"Risk comes from not knowing what you are doing.",a:"Warren Buffett"},
+  {t:"The four most dangerous words in investing are: this time it is different.",a:"Sir John Templeton"},
   {t:"Know what you own, and know why you own it.",a:"Peter Lynch"},
   {t:"Cut your losses short and let your winners run.",a:"Trading maxim"},
   {t:"In the short run the market is a voting machine. In the long run it is a weighing machine.",a:"Benjamin Graham"},
-  {t:"It's not whether you're right or wrong, but how much you make when right and lose when wrong.",a:"George Soros"},
+  {t:"It is not whether you are right or wrong, but how much you make when right and lose when wrong.",a:"George Soros"},
   {t:"The trend is your friend until the end when it bends.",a:"Ed Seykota"},
   {t:"Markets can remain irrational longer than you can remain solvent.",a:"John Maynard Keynes"},
   {t:"Never risk more than you can afford to lose emotionally — not just financially.",a:"Anonymous"},
@@ -559,21 +705,43 @@ const QUOTES=[
 
 const CHECKLIST=[
   "Checked pre-market futures direction",
-  "Reviewed open trades for overnight risk",
+  "Reviewed open positions for overnight risk",
   "Read today's economic calendar",
   "Set my max loss limit for today",
-  "Checked VIX — know today's volatility",
-  "Reviewed any earnings before open",
-  "Identified my 1-2 focus trades only",
-  "Clear head — no FOMO, no revenge trading today"
+  "Checked VIX — know today's volatility level",
+  "Reviewed earnings before open",
+  "Identified my 1 to 2 focus trades only",
+  "Read my trading rules before opening charts"
 ];
 
-function save(){localStorage.setItem('mb_wl',JSON.stringify(wl));localStorage.setItem('mb_ot',JSON.stringify(ot));}
+const PHASE_NOTES=[
+  "Phase 1 — Survive & Learn. Goal: Don't blow up. Target 3 to 5% monthly returns. Max 2% risk per trade. You are building the habit, not the income yet. This is where most traders quit — don't.",
+  "Phase 2 — Build Consistency. Goal: 3 profitable months in a row. Start tracking every trade in the journal. Increase position size only when rules are followed consistently.",
+  "Phase 3 — Scale Up. Goal: Grow account and systems together. Consider adding capital from other income. 5 to 10% monthly on a larger account starts feeling real.",
+  "Phase 4 — Income Stage. Goal: $10k/month is achievable here. At $100k account with 10% monthly that is $10k. Focus is capital preservation and consistent execution, not big swings."
+];
+
+const TRIGGER_QS=[
+  {q:"Does the chart setup match your trading plan?",hint:"Clear trend, pattern, or catalyst — not just a feeling",yes:"Yes, clear setup",no:"Not really",neutral:"Maybe"},
+  {q:"Do you know exactly where your stop loss is?",hint:"A specific price level, not just 'if it goes lower'",yes:"Yes, level set",no:"Not yet",neutral:"Roughly"},
+  {q:"Is the risk on this trade 2% or less of your account?",hint:"Use the calculator above to check",yes:"Yes, sized correctly",no:"Would be more than 2%",neutral:"Not sure"},
+  {q:"Is the market environment right for this trade?",hint:"VIX, trend, sector — does the macro support this?",yes:"Yes, conditions good",no:"Market feels off today",neutral:"Mixed signals"},
+  {q:"Are you trading from logic or from emotion?",hint:"Fear of missing out, revenge trading, or boredom are not reasons to trade",yes:"Logic — clear reason",no:"Honestly, emotion",neutral:"Bit of both"}
+];
+
+function saveAll(){
+  localStorage.setItem('mb_wl',JSON.stringify(wl));
+  localStorage.setItem('mb_positions',JSON.stringify(positions));
+  localStorage.setItem('mb_journal',JSON.stringify(journal));
+  localStorage.setItem('mb_pnl',JSON.stringify(pnlEntries));
+  localStorage.setItem('mb_rules',JSON.stringify(tradingRules));
+  localStorage.setItem('mb_phase',currentPhase.toString());
+}
 
 function init(){
   const now=new Date();
   document.getElementById('hdate').textContent=now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  updateStatus();renderWL();renderOT();loadKeyUI();renderJournal();initMindset();
+  updateStatus();renderWL();renderPositions();loadKeyUI();renderJournal();initMindset();renderPnL();renderRules();renderTrigger();setPhase(currentPhase,true);
   setInterval(updateStatus,60000);
 }
 
@@ -589,220 +757,193 @@ function updateStatus(){
   else{txt.textContent='Market Closed';}
 }
 
-// API Key
 function loadKeyUI(){
   const k=localStorage.getItem('mb_key')||'';
   const banner=document.getElementById('apibanner'),lbl=document.getElementById('apilbl'),inp=document.getElementById('apiinp'),hint=document.getElementById('apihint'),cb=document.getElementById('clearbtn');
-  if(k){banner.classList.add('set');lbl.classList.add('set');lbl.textContent='✓ API Key Active';inp.value='••••••••••••••••••••••••';inp.classList.add('set');inp.disabled=true;hint.textContent='Key saved in your browser only — never uploaded.';cb.style.display='inline-block';}
+  if(k){banner.classList.add('set');lbl.classList.add('set');lbl.textContent='✓ API Key Active';inp.value='••••••••••••••••••••••••';inp.classList.add('set');inp.disabled=true;hint.textContent='Key saved in your browser only.';cb.style.display='inline-block';}
   else{banner.classList.remove('set');lbl.classList.remove('set');lbl.textContent='⚠ API Key Required';inp.value='';inp.classList.remove('set');inp.disabled=false;hint.textContent='Stored only in your browser — never uploaded anywhere';cb.style.display='none';}
 }
-function saveKey(){const v=document.getElementById('apiinp').value.trim();if(!v||!v.startsWith('sk-ant-')){alert('Please paste a valid Anthropic API key. It starts with sk-ant-');return;}localStorage.setItem('mb_key',v);loadKeyUI();}
+function saveKey(){const v=document.getElementById('apiinp').value.trim();if(!v||!v.startsWith('sk-ant-')){alert('Please paste a valid Anthropic API key starting with sk-ant-');return;}localStorage.setItem('mb_key',v);loadKeyUI();}
 function clearKey(){if(!confirm('Remove saved API key?'))return;localStorage.removeItem('mb_key');loadKeyUI();}
 
-// Tickers
-function renderWL(){const c=document.getElementById('wltags');document.getElementById('wlc').textContent=wl.length;c.innerHTML=wl.length?wl.map(t=>`<span class="tag">${t}<button onclick="removeWL('${t}')">×</button></span>`).join(''):'<span class="empty-t">No tickers added yet</span>';}
-function renderOT(){const c=document.getElementById('ottags');document.getElementById('otc').textContent=ot.length;c.innerHTML=ot.length?ot.map(t=>`<span class="tag ot">${t}<button onclick="removeOT('${t}')">×</button></span>`).join(''):'<span class="empty-t">No open trades</span>';}
-function addWL(){const i=document.getElementById('wlinp'),v=i.value.trim().toUpperCase().replace(/[^A-Z]/g,'');if(v&&!wl.includes(v)&&v.length<=6){wl.push(v);save();renderWL();}i.value='';i.focus();}
-function addOT(){const i=document.getElementById('otinp'),v=i.value.trim().toUpperCase().replace(/[^A-Z]/g,'');if(v&&!ot.includes(v)&&v.length<=6){ot.push(v);save();renderOT();}i.value='';i.focus();}
-function removeWL(t){wl=wl.filter(x=>x!==t);save();renderWL();}
-function removeOT(t){ot=ot.filter(x=>x!==t);save();renderOT();}
+// Watchlist
+function renderWL(){const c=document.getElementById('wltags');document.getElementById('wlc').textContent=wl.length;c.innerHTML=wl.length?wl.map(t=>'<span class="tag">'+t+'<button onclick="removeWL(\''+t+'\')">×</button></span>').join(''):'<span class="empty-t">No tickers added yet</span>';}
+function addWL(){const i=document.getElementById('wlinp'),v=i.value.trim().toUpperCase().replace(/[^A-Z]/g,'');if(v&&!wl.includes(v)&&v.length<=6){wl.push(v);saveAll();renderWL();}i.value='';i.focus();}
+function removeWL(t){wl=wl.filter(x=>x!==t);saveAll();renderWL();}
 
+// Positions
+function renderPositions(){
+  const c=document.getElementById('pos-tags');
+  document.getElementById('otc').textContent=positions.length;
+  if(!positions.length){c.innerHTML='<span class="empty-t">No open positions — add full details for better AI analysis</span>';return;}
+  c.innerHTML=positions.map((p,i)=>'<div class="pos-tag"><div class="pos-tag-main"><span class="pos-ticker">'+p.ticker+'</span><span class="pos-detail">'+p.type+' $'+p.strike+' exp '+p.expiry+' · '+p.contracts+' contract'+(p.contracts!=1?'s':'')+' @ $'+p.entry+'</span></div><button onclick="removePosition('+i+')">×</button></div>').join('');
+}
+function addPosition(){
+  const ticker=document.getElementById('p-ticker').value.trim().toUpperCase().replace(/[^A-Z]/g,'');
+  const type=document.getElementById('p-type').value;
+  const strike=document.getElementById('p-strike').value.trim();
+  const expiry=document.getElementById('p-expiry').value.trim();
+  const contracts=document.getElementById('p-contracts').value.trim();
+  const entry=document.getElementById('p-entry').value.trim();
+  if(!ticker||!strike||!expiry||!contracts||!entry){alert('Please fill in all position details for the best AI analysis.');return;}
+  positions.push({ticker,type,strike,expiry,contracts,entry});
+  saveAll();renderPositions();
+  ['p-ticker','p-strike','p-expiry','p-contracts','p-entry'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('p-ticker').focus();
+}
+function removePosition(i){positions.splice(i,1);saveAll();renderPositions();}
+
+function positionsToString(){
+  if(!positions.length)return 'No open positions.';
+  return positions.map(p=>p.ticker+' '+p.type+' $'+p.strike+' expiring '+p.expiry+', '+p.contracts+' contract'+(p.contracts!=1?'s':'')+' entered at $'+p.entry+' per contract (total cost $'+(parseFloat(p.entry)*100*parseInt(p.contracts)).toFixed(0)+')').join('; ');
+}
+
+// Phase
+function setPhase(n,silent){
+  currentPhase=n;
+  document.querySelectorAll('.ap-phase').forEach((el,i)=>{
+    el.classList.remove('active','done');
+    if(i===n)el.classList.add('active');
+    else if(i<n)el.classList.add('done');
+  });
+  document.getElementById('phase-note').textContent=PHASE_NOTES[n];
+  if(!silent)saveAll();
+}
+
+// Risk Calculator
+function calcRisk(){
+  const account=parseFloat(document.getElementById('calc-account').value)||0;
+  const riskPct=parseFloat(document.getElementById('calc-risk-pct').value)||2;
+  const premium=parseFloat(document.getElementById('calc-premium').value)||0;
+  const stopPct=parseFloat(document.getElementById('calc-stop').value)||50;
+  if(!account||!premium){document.getElementById('calc-result').style.display='none';return;}
+  const maxRisk=account*(riskPct/100);
+  const stopLossAmount=premium*(stopPct/100);
+  const contracts=Math.max(1,Math.floor(maxRisk/(stopLossAmount*100)));
+  const totalCost=contracts*premium*100;
+  const stopPrice=(premium*(1-stopPct/100)).toFixed(2);
+  const pctAccount=((totalCost/account)*100).toFixed(1);
+  document.getElementById('cr-maxrisk').textContent='$'+maxRisk.toFixed(0);
+  document.getElementById('cr-contracts').textContent=contracts;
+  document.getElementById('cr-cost').textContent='$'+totalCost.toFixed(0);
+  document.getElementById('cr-stop').textContent='$'+stopPrice+' per contract';
+  const pctEl=document.getElementById('cr-pct');
+  pctEl.textContent=pctAccount+'%';
+  pctEl.className='calc-result-val'+(parseFloat(pctAccount)>10?' red':parseFloat(pctAccount)>5?' warn':'');
+  document.getElementById('calc-result').style.display='block';
+}
+
+// P&L
+function renderPnL(){
+  const month=new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  const monthEntries=pnlEntries.filter(e=>e.month===month);
+  const total=monthEntries.reduce((s,e)=>s+e.amount,0);
+  const wins=monthEntries.filter(e=>e.amount>0).length;
+  const wr=monthEntries.length?Math.round((wins/monthEntries.length)*100)+'%':'—';
+  const tv=document.getElementById('pnl-total');
+  tv.textContent=(total>=0?'+':'')+' $'+Math.abs(total).toFixed(0);
+  tv.className='pnl-val '+(total>0?'pnl-positive':total<0?'pnl-negative':'pnl-neutral');
+  document.getElementById('pnl-trades').textContent=monthEntries.length;
+  document.getElementById('pnl-winrate').textContent=wr;
+  const c=document.getElementById('pnl-entries');
+  if(!monthEntries.length){c.innerHTML='<div style="font-size:12px;color:var(--text4);padding:8px 0">No trades logged this month yet</div>';return;}
+  c.innerHTML=monthEntries.slice().reverse().map((e,i)=>'<div class="pnl-entry"><span class="pnl-entry-ticker">'+e.ticker+'</span><span class="pnl-entry-desc">'+e.note+'</span><span class="pnl-entry-amount '+(e.amount>=0?'pos':'neg')+'">'+(e.amount>=0?'+':'')+' $'+Math.abs(e.amount).toFixed(0)+'</span><button class="pnl-del" onclick="deletePnL('+e.id+')">✕</button></div>').join('');
+}
+function addPnL(){
+  const ticker=document.getElementById('pnl-ticker-inp').value.trim().toUpperCase()||'TRADE';
+  const amount=parseFloat(document.getElementById('pnl-amount-inp').value)||0;
+  const note=document.getElementById('pnl-note-inp').value.trim()||'';
+  const month=new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  pnlEntries.push({id:Date.now(),ticker,amount,note,month,date:new Date().toLocaleDateString()});
+  saveAll();renderPnL();
+  ['pnl-ticker-inp','pnl-amount-inp','pnl-note-inp'].forEach(id=>document.getElementById(id).value='');
+}
+function deletePnL(id){pnlEntries=pnlEntries.filter(e=>e.id!==id);saveAll();renderPnL();}
+function resetMonthPnL(){const month=new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});if(!confirm('Reset all P&L entries for '+month+'?'))return;pnlEntries=pnlEntries.filter(e=>e.month!==month);saveAll();renderPnL();}
+
+// Rules
+function renderRules(){
+  const c=document.getElementById('rules-list');
+  if(!tradingRules.length){c.innerHTML='<div style="font-size:13px;color:var(--text4);padding:8px 0">No rules yet. Add your first rule above.</div>';return;}
+  c.innerHTML=tradingRules.map((r,i)=>'<div class="rule-item"><div class="rule-num">'+(i+1)+'</div>'+r+'<button class="rule-del" onclick="deleteRule('+i+')">✕</button></div>').join('');
+}
+function addRule(){const inp=document.getElementById('rule-inp'),v=inp.value.trim();if(!v)return;tradingRules.push(v);saveAll();renderRules();inp.value='';inp.focus();}
+function deleteRule(i){if(!confirm('Remove this rule?'))return;tradingRules.splice(i,1);saveAll();renderRules();}
+
+// Trigger Tool
+function renderTrigger(){
+  const c=document.getElementById('trigger-questions');
+  c.innerHTML=TRIGGER_QS.map((q,i)=>{
+    const ans=triggerAnswers[i];
+    return'<div class="trigger-q"><div class="trigger-q-text">'+q.q+'<div style="font-size:11px;color:var(--text3);font-weight:400;margin-top:2px">'+q.hint+'</div></div><div class="trigger-opts"><button class="trigger-opt'+(ans==='yes'?' yes':'')+'" onclick="answerTrigger('+i+',\'yes\')">✓ '+q.yes+'</button><button class="trigger-opt'+(ans==='neutral'?' neutral':'')+'" onclick="answerTrigger('+i+',\'neutral\')">~ '+q.neutral+'</button><button class="trigger-opt'+(ans==='no'?' no':'')+'" onclick="answerTrigger('+i+',\'no\')">✗ '+q.no+'</button></div></div>';
+  }).join('');
+  checkTriggerVerdict();
+}
+function answerTrigger(i,ans){triggerAnswers[i]=ans;renderTrigger();}
+function checkTriggerVerdict(){
+  const answered=Object.keys(triggerAnswers).length;
+  if(answered<TRIGGER_QS.length){document.getElementById('trigger-verdict').classList.remove('show');return;}
+  const answers=Object.values(triggerAnswers);
+  const nos=answers.filter(a=>a==='no').length;
+  const neutrals=answers.filter(a=>a==='neutral').length;
+  const v=document.getElementById('trigger-verdict');
+  v.classList.add('show');
+  if(nos===0&&neutrals<=1){
+    v.className='trigger-verdict show go';
+    document.getElementById('tv-icon').textContent='✅';
+    document.getElementById('tv-title').textContent='TAKE THE TRADE';
+    document.getElementById('tv-text').textContent='Your checklist is clear. You have a setup, a stop loss, correct sizing, and a logical reason. Enter at the next candle close. Stop second-guessing — this is exactly the kind of trade you should be taking.';
+  }else if(nos===0&&neutrals>1){
+    v.className='trigger-verdict show wait';
+    document.getElementById('tv-icon').textContent='⏳';
+    document.getElementById('tv-title').textContent='WAIT FOR MORE CLARITY';
+    document.getElementById('tv-text').textContent='You have some doubts. That is fine — it means the setup is not fully formed yet. Watch it for another candle or two. If the setup clarifies, run the checklist again. If it does not, move on. There is always another trade.';
+  }else if(nos>=1&&nos<=2){
+    v.className='trigger-verdict show wait';
+    document.getElementById('tv-icon').textContent='⚠️';
+    document.getElementById('tv-title').textContent='NOT YET — FIX FIRST';
+    document.getElementById('tv-text').textContent='You answered No to at least one critical question. Do not enter until you can fix it — set your stop loss, resize the position, or wait for better conditions. Entering now is gambling, not trading.';
+  }else{
+    v.className='trigger-verdict show no-go';
+    document.getElementById('tv-icon').textContent='🛑';
+    document.getElementById('tv-title').textContent='DO NOT TAKE THIS TRADE';
+    document.getElementById('tv-text').textContent='Multiple red flags. Step back. If you are emotional right now, close the charts and come back later. There is no trade worth taking when you cannot answer yes to the basics. Protect your account — it is your most important tool.';
+  }
+}
+function resetTrigger(){triggerAnswers={};renderTrigger();document.getElementById('trigger-verdict').classList.remove('show');}
+
+// Cards
 function toggleCard(id){document.getElementById(id).classList.toggle('open');}
 
 // Prompts
 function getFocus(){
-  const m={f1:'macro events and Fed speakers',f2:'earnings reports and beats/misses',f3:'geopolitical events',f4:'sector news and rotation',f5:'economic calendar releases',f6:'unusual options activity and IV events'};
+  const m={f1:'macro events and Fed speakers',f2:'earnings reports',f3:'geopolitical events',f4:'sector news and rotation',f5:'economic calendar releases',f6:'unusual options activity and IV events'};
   return Object.keys(m).filter(k=>document.getElementById(k)?.checked).map(k=>m[k]).join(', ');
 }
 
-const PROMPTS={
-  whatnow:()=>{
-    const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    const otStr=ot.length?ot.join(', '):'no open trades';
-    const wlStr=wl.length?wl.join(', '):'SPY, QQQ';
-    return`Search the web for the most urgent market news right now for ${today}. My open trades are: ${otStr}. My watchlist: ${wlStr}.
-
-Give me ONLY the most important things I need to know RIGHT NOW as an options trader. Format like this:
-
-## ⚡ Bottom Line — Read This First
-Three bullet points max. What are the 3 most important things happening right now? One sentence each. Plain language, no jargon.
-
-## 🔴 Urgent — Act or Watch Now
-Anything that could hurt my open positions TODAY. Be direct. If nothing urgent, say "All clear on your positions."
-
-## ✅ One Thing To Do
-The single most useful action I can take in the next 30 minutes as a trader.
-
-Keep the entire response under 200 words. Simple language throughout. No walls of text.`;
-  },
-
-  brief:()=>{
-    const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    const otStr=ot.length?ot.join(', '):'none'; const wlStr=wl.length?wl.join(', '):'SPY, QQQ';
-    return`Morning market briefing for ${today}. Open trades: ${otStr}. Watchlist: ${wlStr}. Focus: ${getFocus()}.
-
-Search the web for today's current market information. Structure your response exactly like this:
-
-## ⚡ Bottom Line — Read This First
-Exactly 3 bullet points. The 3 most important things for today. One sentence each. Plain English.
-
-## 📰 Top News
-5 headlines that matter most for options traders today. For each: the headline, one sentence of context, and whether it is 🔴 Urgent / 🟡 Watch / 🟢 Fine for my positions.
-
-## 📊 Market Snapshot
-Futures direction, VIX level, overnight sentiment. Two sentences max.
-
-## 📅 Earnings & Events
-What reports today before and after bell. Any major economic data.
-
-## 🚨 My Positions
-Quick status on: ${otStr}. One line each. Red/amber/green.
-
-## 🎯 Watchlist
-One sentence on each: ${wlStr}
-
-## 👁 One Thing to Watch
-The single most important thing for today's session. One paragraph.
-
-Write in plain English. Short sentences. No jargon without explanation. I have dyslexia so keep paragraphs short and use clear structure.`;
-  },
-
-  pos:()=>{
-    if(!ot.length)return`I have no open trades currently. Search the web for today's market conditions and give me a general risk assessment: what could cause big market moves today, and what should an options swing trader be cautious about? Use plain English, short sentences, clear structure. Date: ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}.`;
-    return`Urgent position scan for ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}. My open trades: ${ot.join(', ')}.
-
-Search the web for the latest news on each of my tickers and give me:
-
-## ⚡ Bottom Line
-Three sentences max. Are my positions safe right now? Any urgent flags?
-
-## Position by Position
-For EACH ticker in my open trades, give me exactly this format:
-
-**[TICKER]** — 🔴 Urgent / 🟡 Watch / 🟢 Clear
-- What's happening: one sentence
-- IV situation: one sentence  
-- What I should think about: one sentence
-
-## Overall Action
-One paragraph. Should I be defensive or aggressive today? Any positions I should look to exit or hedge?
-
-Plain English throughout. Short sentences. I have dyslexia so no walls of text.`;
-  },
-
-  idea:()=>{
-    const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    return`Generate 2 specific options trade ideas for ${today} based on today's market conditions. My watchlist: ${wl.join(', ')||'SPY, QQQ, NVDA, TSLA'}. I am an intermediate options trader who understands calls, puts, and spreads. Search the web for current market conditions first.
-
-## ⚡ Bottom Line
-Which of the two ideas is stronger today and why? Two sentences.
-
-## Trade Idea 1 — Today's Play
-- **Ticker and strategy** (e.g. NVDA Bull Call Spread)
-- **The setup** — specific strikes and expiration
-- **Why this works today** — the catalyst or reason
-- **Max loss / Max gain** — clear numbers
-- **Biggest risk** — what could go wrong
-- **Wait for** — ideal entry condition
-
-## Trade Idea 2 — Swing (3 to 10 days)
-Same format.
-
-## Learn from These Ideas
-One options concept these trades teach me. Explain it simply — what is it, why does it matter, one real example.
-
-Plain English. Short sentences. These are educational ideas, not financial advice.`;
-  },
-
-  learn:()=>{
-    const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    return`I am an intermediate options trader and long-term investor. Today is ${today}. Search the web to make your answer relevant to current market conditions.
-
-## ⚡ Today's Single Most Important Lesson
-One sentence. What is the most useful thing I can learn today given what's happening in markets?
-
-## Options Tip of the Day
-Pick ONE options concept relevant to today's market. Teach it simply:
-- **What is it?** One paragraph, plain English, explain any jargon
-- **Why it matters TODAY** — tie it to something happening right now
-- **Real example** using a stock that is in the news
-- **The mistake to avoid** — what do intermediate traders get wrong about this?
-- **How to use it** — one practical takeaway
-
-## Long-Term Stock Idea
-One stock with a strong long-term thesis right now (1 to 3 year hold):
-- **What they do** — one sentence, plain English
-- **Why it's interesting** — the big picture case, two sentences
-- **The risk** — what could go wrong, one sentence
-- **What to watch** — key thing to track
-
-## This Week's Market Wisdom
-One insight about trading psychology or markets that applies to right now. Keep it practical and under 100 words.
-
-Short sentences throughout. Clear headings. I have dyslexia so keep it structured and avoid long paragraphs.`;
-  },
-
-  econ:()=>{
-    const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    return`Search the web for today's economic calendar for ${today}. Explain each event to me like I'm smart but not an economist. I trade options so focus on what each event means for my trades.
-
-## ⚡ Bottom Line
-Which event today matters most for options traders? One sentence.
-
-## Today's Events — Plain English
-
-For EACH economic event today use this exact format:
-
-**[Event Name] at [Time] ET** — Impact: 🔴 High / 🟡 Medium / 🟢 Low
-
-**What is this?** One sentence. What does this measure in plain English?
-
-**What markets expect:** The consensus number.
-
-**If higher than expected:** What happens to stocks and options? One sentence.
-
-**If lower than expected:** What happens? One sentence.
-
-**My options trader note:** Should I avoid holding positions through this? Is IV elevated before it? One sentence.
-
----
-
-## The Big Picture
-How do today's events fit into the bigger story — inflation, Fed, growth? Two short paragraphs max.
-
-Plain English throughout. Short sentences. No economics jargon without explanation. I have dyslexia.`;
-  },
-
-  sector:()=>{
-    const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-    return`Search the web for sector performance data for ${today}. Rank all 11 S&P 500 sectors and give me rotation signals.
-
-## ⚡ Bottom Line
-One sentence: where is money flowing today and what does that tell us?
-
-## Sector Rankings — Strongest to Weakest
-Rank these 11 sectors: XLK Tech, XLF Financials, XLV Healthcare, XLE Energy, XLI Industrials, XLY Consumer Discretionary, XLP Consumer Staples, XLU Utilities, XLRE Real Estate, XLB Materials, XLC Communications.
-
-For each sector give me one line: name, direction today, and the main reason why.
-
-## Rotation Signal
-- **Money is flowing INTO:** which sectors and why
-- **Money is leaving:** which sectors and why
-- **What this means:** one sentence on the macro story
-
-## Best Options Opportunity Today
-One sector ETF setup based on today's rotation. Keep it simple — ticker, direction, brief reason.
-
-Short sentences. Clear structure. Plain English. I have dyslexia so keep sections short.`;
+function getPrompt(sec){
+  const today=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  const wlStr=wl.join(', ')||'SPY, QQQ';
+  const posStr=positionsToString();
+  if(sec==='whatnow')return'Search the web for the most urgent market information right now for '+today+'. My open positions: '+posStr+'. My watchlist: '+wlStr+'.\n\nGive me ONLY what matters RIGHT NOW. Format exactly like this:\n\n## Bottom Line — Read This First\nThree bullet points max. What are the 3 most important things happening right now? One sentence each. Plain English.\n\n## Urgent — My Positions\nFor each of my positions, one line: is there any urgent risk right now? Use 🔴 urgent, 🟡 watch, 🟢 fine.\n\n## One Action\nThe single most useful thing I can do in the next 30 minutes. One sentence.\n\nTotal response under 200 words. Short sentences. Plain English.';
+  if(sec==='brief')return'Morning briefing for '+today+'. My positions: '+posStr+'. Watchlist: '+wlStr+'. Focus areas: '+getFocus()+'.\n\nSearch the web for current information. Structure exactly like this:\n\n## Bottom Line — Read This First\nExactly 3 bullet points. Most important things for today. One sentence each. Plain English.\n\n## Top News\n5 headlines that matter most for options traders. For each: headline, one sentence context, 🔴 Urgent / 🟡 Watch / 🟢 Fine.\n\n## Market Snapshot\nFutures, VIX, overnight sentiment. Two sentences.\n\n## Earnings and Events\nWhat reports today. Key economic data.\n\n## My Positions\nFor each position in: '+posStr+'. One line each with status 🔴/🟡/🟢 and one key thing to watch.\n\n## Watchlist\nOne sentence on each: '+wlStr+'\n\n## One Thing to Watch\nSingle most important thing today. One short paragraph.\n\nPlain English. Short sentences. No jargon without explanation. I have dyslexia — keep paragraphs short.';
+  if(sec==='pos'){
+    if(!positions.length)return'I have no open positions. Search the web for '+today+' and give me a general risk assessment for options swing traders today. Plain English, short sentences.';
+    return'Urgent position scan for '+today+'. My exact positions: '+posStr+'.\n\nSearch the web for the latest news on each ticker.\n\n## Bottom Line\nAre my positions safe right now? Two sentences max.\n\n## Position by Position\nFor EACH position give me exactly:\n**[TICKER] [TYPE] $[STRIKE] exp [EXPIRY]** — 🔴/🟡/🟢\n- News: one sentence\n- IV situation: one sentence\n- Days to expiry and what I need: one sentence\n- Action: hold, hedge, or consider exit?\n\n## Overall\nOne paragraph — should I be defensive or aggressive today?\n\nPlain English. Short sentences. I have dyslexia.';
   }
-};
+  if(sec==='idea')return'Generate 2 options trade ideas for '+today+' based on current market conditions. My watchlist: '+wlStr+'. Account size: roughly $2,500. I am an intermediate options trader. Search web for current conditions.\n\n## Bottom Line\nWhich idea is stronger today? Two sentences.\n\n## Trade Idea 1 — Today Play\n- Ticker and strategy (e.g. NVDA Bull Call Spread)\n- Specific strikes and expiration\n- Why today — the catalyst\n- Max loss and max gain\n- The biggest risk\n- What to wait for before entering\n\n## Trade Idea 2 — Swing (3 to 10 days)\nSame format.\n\n## Learn from These\nOne concept these trades teach. Explain simply.\n\nPlain English. Short sentences. Educational only, not financial advice.';
+  if(sec==='learn')return'I am an intermediate options trader and stock investor. Today is '+today+'. My account is around $2,500 for trading and $4,000 for long-term investing. Search the web to make this relevant to current market conditions.\n\n## Most Important Lesson Today\nOne sentence — what is the most useful thing to learn today?\n\n## Options Tip\nOne concept relevant to today\'s market. Explain it simply:\n- What is it? Plain English, explain any jargon\n- Why it matters TODAY — tie to something current\n- Real example using a current stock\n- The mistake to avoid\n- One practical takeaway\n\n## Long-Term Stock Idea\nOne stock with a strong 1 to 3 year thesis:\n- What they do — one sentence\n- Why interesting — two sentences\n- The risk — one sentence\n- What to watch\n\n## Market Wisdom\nOne insight about trading psychology relevant to right now. Under 80 words.\n\nShort sentences. Clear structure. I have dyslexia.';
+  if(sec==='econ')return'Search the web for today\'s economic calendar for '+today+'. Explain each event in plain English for an intermediate options trader.\n\n## Bottom Line\nWhich event matters most for options traders today? One sentence.\n\n## Each Event\nFor each economic event use exactly this format:\n\n**[Event] at [Time] ET** — 🔴 High / 🟡 Medium / 🟢 Low impact\nWhat is this? One sentence plain English.\nMarkets expect: [consensus]\nIf higher: what happens to stocks and my options?\nIf lower: what happens?\nOptions note: should I avoid holding through this?\n\n## Big Picture\nHow today fits the bigger macro story. Two short paragraphs.\n\nPlain English. No jargon without explanation. I have dyslexia.';
+  if(sec==='sector')return'Search web for sector performance for '+today+'. Rank all 11 S&P 500 sectors strongest to weakest.\n\n## Bottom Line\nOne sentence: where is money flowing and what does it mean?\n\n## Rankings\nFor each of the 11 sectors (XLK XLF XLV XLE XLI XLY XLP XLU XLRE XLB XLC): one line with name, direction, main reason.\n\n## Rotation Signal\n- Money flowing INTO: which sectors and why\n- Money leaving: which sectors and why\n- What this means: one sentence\n\n## Best Options Opportunity\nOne sector ETF setup today. Ticker, direction, brief reason.\n\nShort sentences. Plain English. I have dyslexia.';
+  return'';
+}
 
 // AI Runner
-async function runSection(sec,customPrompt,outIdOverride,stIdOverride,lbIdOverride,obIdOverride,btnIdOverride){
+async function runSection(sec){
   const key=localStorage.getItem('mb_key');
   if(!key){alert('Please save your Anthropic API key first.');return;}
-  const prompt=customPrompt||PROMPTS[sec]();
-  const btnId=btnIdOverride||`btn-${sec}`,outId=outIdOverride||`out-${sec}`,lbId=lbIdOverride||`lb-${sec}`,stId=stIdOverride||`st-${sec}`,obId=obIdOverride||`ob-${sec}`;
+  const prompt=getPrompt(sec);
+  const btnId='btn-'+sec,outId='out-'+sec,lbId='lb-'+sec,stId='st-'+sec,obId='ob-'+sec;
   const btn=document.getElementById(btnId),out=document.getElementById(outId),lb=document.getElementById(lbId),st=document.getElementById(stId),ob=document.getElementById(obId);
   if(btn)btn.disabled=true;
   if(out)out.style.display='block';
@@ -812,7 +953,7 @@ async function runSection(sec,customPrompt,outIdOverride,stIdOverride,lbIdOverri
   let full='';
   try{
     const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json','x-api-key':key},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:3000,stream:true,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:prompt}]})});
-    if(!res.ok){const e=await res.json();throw new Error(e.error?.message||`Error ${res.status}`);}
+    if(!res.ok){const e=await res.json();throw new Error(e.error?.message||'Error '+res.status);}
     if(lb)lb.style.display='none';
     if(st)st.textContent='Writing your briefing...';
     const reader=res.body.getReader(),dec=new TextDecoder();
@@ -826,47 +967,58 @@ async function runSection(sec,customPrompt,outIdOverride,stIdOverride,lbIdOverri
         const d=line.slice(6).trim();if(d==='[DONE]')continue;
         try{
           const ev=JSON.parse(d);
-          if(ev.type==='content_block_start'&&ev.content_block?.name==='web_search'){searches++;if(st)st.textContent=`Running ${searches} web search${searches>1?'es':''}...`;}
+          if(ev.type==='content_block_start'&&ev.content_block?.name==='web_search'){searches++;if(st)st.textContent='Running '+searches+' web search'+(searches>1?'es':'')+'...';}
           if(ev.type==='content_block_delta'&&ev.delta?.type==='text_delta'){full+=ev.delta.text;if(ob){ob.innerHTML=renderMD(full)+'<span class="cursor"></span>';ob.scrollTop=ob.scrollHeight;}}
         }catch(e){}
       }
     }
     if(ob)ob.innerHTML=renderMD(full);
-    if(st)st.textContent=`Done — ${searches} search${searches!==1?'es':''} run`;
+    if(st)st.textContent='Done — '+searches+' search'+(searches!==1?'es':'')+' run';
   }catch(e){
     if(lb)lb.style.display='none';
-    if(ob)ob.innerHTML=`<p style="color:var(--red);font-weight:600">Something went wrong: ${e.message}</p><p style="color:var(--text3);margin-top:8px;font-size:13px">Check your API key has credits at console.anthropic.com</p>`;
+    if(ob)ob.innerHTML='<p style="color:var(--red);font-weight:600">Something went wrong: '+e.message+'</p><p style="color:var(--text3);margin-top:8px;font-size:13px">Check your API key has credits at console.anthropic.com</p>';
     if(st)st.textContent='Error';
   }
   if(btn)btn.disabled=false;
 }
 
-async function runWhatNow(){
-  await runSection('whatnow',null,'out-whatnow','st-whatnow','lb-whatnow','ob-whatnow','btn-whatnow');
-}
+async function runWhatNow(){await runSection('whatnow');}
 
-// Ask Claude
+// Ask Q (card-specific)
 async function askQ(sec){
-  const key=localStorage.getItem('mb_key');
-  if(!key){alert('Please save your API key first.');return;}
-  const inp=document.getElementById(`ask-${sec}`);
+  const key=localStorage.getItem('mb_key');if(!key){alert('Please save your API key first.');return;}
+  const inp=document.getElementById('ask-'+sec);
   const q=inp.value.trim();if(!q)return;
   inp.value='';
-  const resWrap=document.getElementById(`ask-${sec}-res`);
-  const bubble=document.createElement('div');
-  bubble.className='ask-bubble';
-  bubble.innerHTML=`<div class="ask-q">You asked: ${q.replace(/</g,'&lt;')}</div><span class="cursor"></span>`;
+  const resWrap=document.getElementById('ask-'+sec+'-res');
+  const bubble=document.createElement('div');bubble.className='ask-bubble';
+  bubble.innerHTML='<div class="ask-q">You asked: '+q+'</div><span class="cursor"></span>';
   resWrap.prepend(bubble);
-  const context=document.getElementById(`ob-${sec}`)?.innerText||'';
-  const prompt=`I am an intermediate options trader. Today is ${new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}. My open trades: ${ot.join(', ')||'none'}. My watchlist: ${wl.join(', ')||'SPY, QQQ'}.
+  const ctx=document.getElementById('ob-'+sec)?.innerText||'';
+  const prompt='I am an intermediate options trader. Today: '+new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})+'. My positions: '+positionsToString()+'. Watchlist: '+wl.join(', ')+'.'+( ctx?'\n\nContext from my briefing:\n'+ctx.slice(0,600):'')+'.\n\nQuestion: '+q+'\n\nAnswer in plain English. Short sentences. Explain jargon. Under 200 words. I have dyslexia so use short paragraphs and clear structure. Search web if current info needed.';
+  await streamToElement(bubble,q,prompt);
+}
 
-${context?`Context from my morning briefing:\n${context.slice(0,800)}\n\n`:''}
+// Ask Global
+function quickAsk(q){document.getElementById('ask-global').value=q;askGlobal();}
+async function askGlobal(){
+  const key=localStorage.getItem('mb_key');if(!key){alert('Please save your API key first.');return;}
+  const inp=document.getElementById('ask-global');
+  const q=inp.value.trim();if(!q)return;
+  inp.value='';inp.disabled=true;
+  const resWrap=document.getElementById('ask-global-res');
+  const bubble=document.createElement('div');bubble.className='ask-bubble';
+  bubble.innerHTML='<div class="ask-q">You asked: '+q+'</div><span class="cursor"></span>';
+  resWrap.prepend(bubble);
+  const prompt='I am an intermediate options trader and stock investor. Today: '+new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})+'. My positions: '+positionsToString()+'. Watchlist: '+wl.join(', ')+'.\n\nQuestion: '+q+'\n\nAnswer in plain English. Short sentences. Explain all jargon. Use a real example. Under 200 words unless more is genuinely needed. I have dyslexia so use clear structure and short paragraphs. If about current market conditions, search the web.';
+  await streamToElement(bubble,q,prompt);
+  inp.disabled=false;inp.focus();
+}
 
-My question: ${q}
-
-Answer in plain English. Short sentences. No jargon without explanation. Keep it under 150 words if possible. I have dyslexia so use clear structure. If relevant, search the web for current information.`;
+async function streamToElement(bubble,q,prompt){
+  const key=localStorage.getItem('mb_key');
   try{
-    const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json','x-api-key':key},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:800,stream:true,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:prompt}]})});
+    const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json','x-api-key':key},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,stream:true,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:prompt}]})});
     if(!res.ok)throw new Error('API error');
     const reader=res.body.getReader(),dec=new TextDecoder();
     let buf='',full='';
@@ -877,69 +1029,47 @@ Answer in plain English. Short sentences. No jargon without explanation. Keep it
       for(const line of lines){
         if(!line.startsWith('data: '))continue;
         const d=line.slice(6).trim();if(d==='[DONE]')continue;
-        try{const ev=JSON.parse(d);if(ev.type==='content_block_delta'&&ev.delta?.type==='text_delta'){full+=ev.delta.text;bubble.innerHTML=`<div class="ask-q">You asked: ${q.replace(/</g,'&lt;')}</div>${renderMD(full)}<span class="cursor"></span>`;}}catch(e){}
+        try{const ev=JSON.parse(d);if(ev.type==='content_block_delta'&&ev.delta?.type==='text_delta'){full+=ev.delta.text;bubble.innerHTML='<div class="ask-q">You asked: '+q+'</div>'+renderMD(full)+'<span class="cursor"></span>';}}catch(e){}
       }
     }
-    bubble.innerHTML=`<div class="ask-q">You asked: ${q.replace(/</g,'&lt;')}</div>${renderMD(full)}`;
-  }catch(e){bubble.innerHTML=`<div class="ask-q">You asked: ${q.replace(/</g,'&lt;')}</div><p style="color:var(--red)">Something went wrong. Try again.</p>`;}
+    bubble.innerHTML='<div class="ask-q">You asked: '+q+'</div>'+renderMD(full);
+  }catch(e){bubble.innerHTML='<div class="ask-q">You asked: '+q+'</div><p style="color:var(--red)">Something went wrong. Try again.</p>';}
 }
 
 // Read Aloud
 function speakOut(obId,stopBtnId){
   if(!window.speechSynthesis){alert('Read Aloud is not supported in your browser. Try Chrome.');return;}
   stopSpeak();
-  const text=document.getElementById(obId)?.innerText||'';
-  if(!text)return;
+  const text=document.getElementById(obId)?.innerText||'';if(!text)return;
   currentUtterance=new SpeechSynthesisUtterance(text);
-  currentUtterance.rate=0.9;currentUtterance.pitch=1;currentUtterance.lang='en-US';
-  currentUtterance.onend=()=>{if(stopBtnId){const b=document.getElementById(stopBtnId);if(b)b.style.display='none';}};
+  currentUtterance.rate=0.88;currentUtterance.pitch=1;currentUtterance.lang='en-US';
+  currentUtterance.onend=()=>{const b=document.getElementById(stopBtnId);if(b)b.style.display='none';};
   window.speechSynthesis.speak(currentUtterance);
-  if(stopBtnId){const b=document.getElementById(stopBtnId);if(b)b.style.display='inline-flex';}
+  const b=document.getElementById(stopBtnId);if(b)b.style.display='inline-flex';
 }
-function stopSpeak(){if(window.speechSynthesis)window.speechSynthesis.cancel();document.querySelectorAll('[id^="btn-speak-"]').forEach(b=>b.style.display='none');}
-
-// Copy
-function copyOut(obId){
-  const text=document.getElementById(obId)?.innerText||'';
-  navigator.clipboard.writeText(text).then(()=>{const b=event.target;b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy',2000);});
-}
-
-function clearOut(outId,btnId){
-  const out=document.getElementById(outId);if(out)out.style.display='none';
-  const ob=out?.querySelector('.out-body');if(ob)ob.innerHTML='';
-  const btn=document.getElementById(btnId);if(btn)btn.disabled=false;
-}
+function stopSpeak(){if(window.speechSynthesis)window.speechSynthesis.cancel();document.querySelectorAll('[id^="bsp-"]').forEach(b=>b.style.display='none');}
+function copyOut(obId){navigator.clipboard.writeText(document.getElementById(obId)?.innerText||'').then(()=>{const b=event.target;b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy',2000);});}
+function clearOut(outId,btnId){const out=document.getElementById(outId);if(out)out.style.display='none';const ob=out?.querySelector('.out-body');if(ob)ob.innerHTML='';const btn=document.getElementById(btnId);if(btn)btn.disabled=false;}
 
 // Markdown
 function renderMD(t){
   return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
-    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
-    .replace(/^# (.+)$/gm,'<h2>$1</h2>')
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/^---$/gm,'<hr>')
-    .replace(/^[\-\*] (.+)$/gm,'<li>$1</li>')
-    .replace(/(<li>[^<]*<\/li>\n?)+/g,m=>`<ul>${m}</ul>`)
-    .replace(/\n\n+/g,'</p><p>')
-    .replace(/^(?!<[hpuolhr])(.+)$/gm,'<p>$1</p>');
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h2>$1</h2>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/^---$/gm,'<hr>')
+    .replace(/^[\-\*] (.+)$/gm,'<li>$1</li>').replace(/(<li>[^<]*<\/li>\n?)+/g,m=>'<ul>'+m+'</ul>')
+    .replace(/\n\n+/g,'</p><p>').replace(/^(?!<[hpuolhr])(.+)$/gm,'<p>$1</p>');
 }
 
 // Journal
-function addEntry(){
-  const txt=document.getElementById('jtext').value.trim();if(!txt)return;
-  const tag=document.getElementById('jtag').value;
-  journal.unshift({id:Date.now(),text:txt,tag,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'})});
-  localStorage.setItem('mb_journal',JSON.stringify(journal));
-  document.getElementById('jtext').value='';renderJournal();
-}
+function addEntry(){const txt=document.getElementById('jtext').value.trim();if(!txt)return;const tag=document.getElementById('jtag').value;journal.unshift({id:Date.now(),text:txt,tag,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'})});saveAll();localStorage.setItem('mb_journal',JSON.stringify(journal));document.getElementById('jtext').value='';renderJournal();}
 function delEntry(id){journal=journal.filter(e=>e.id!==id);localStorage.setItem('mb_journal',JSON.stringify(journal));renderJournal();}
 function renderJournal(){
   const search=document.getElementById('jsearch')?.value.toLowerCase()||'';
   const filter=document.getElementById('jfilter')?.value||'';
   const filtered=journal.filter(e=>(!filter||e.tag===filter)&&(!search||e.text.toLowerCase().includes(search)));
   const c=document.getElementById('journal-entries');
-  if(!filtered.length){c.innerHTML=`<div style="font-size:13px;color:var(--text4);text-align:center;padding:20px">${journal.length?'No entries match your search.':'No entries yet. Log your first trade or lesson below — even one sentence counts.'}</div>`;return;}
-  c.innerHTML=filtered.map(e=>`<div class="je"><div class="je-meta"><span class="je-date">${e.date}</span><div style="display:flex;align-items:center;gap:8px"><span class="je-tag ${e.tag}">${{trade:'📈 Trade',lesson:'🎓 Lesson',idea:'💡 Idea',note:'📌 Note'}[e.tag]}</span><button class="je-del" onclick="delEntry(${e.id})" title="Delete entry">✕</button></div></div><div class="je-text">${e.text.replace(/</g,'&lt;')}</div></div>`).join('');
+  if(!filtered.length){c.innerHTML='<div style="font-size:13px;color:var(--text4);text-align:center;padding:16px">'+(journal.length?'No entries match.':'No entries yet. One sentence is enough — log your first trade or lesson.'  )+'</div>';return;}
+  c.innerHTML=filtered.map(e=>'<div class="je"><div class="je-meta"><span class="je-date">'+e.date+'</span><div style="display:flex;align-items:center;gap:8px"><span class="je-tag '+e.tag+'">'+({trade:'📈 Trade',lesson:'🎓 Lesson',idea:'💡 Idea',note:'📌 Note'}[e.tag])+'</span><button class="je-del" onclick="delEntry('+e.id+')">✕</button></div></div><div class="je-text">'+e.text.replace(/</g,'&lt;')+'</div></div>').join('');
 }
 
 // Mindset
@@ -948,27 +1078,21 @@ function initMindset(){
   const q=QUOTES[new Date().getDate()%QUOTES.length];
   document.getElementById('qt').textContent=q.t;
   document.getElementById('qa').textContent='— '+q.a;
-  renderChecklist();
-}
-function renderChecklist(){
   const today=new Date().toDateString();
-  document.getElementById('checklist').innerHTML=CHECKLIST.map((item,i)=>{
-    const key=`${today}-${i}`,done=checks[key];
-    return`<div class="chk-item${done?' done':''}" onclick="toggleCheck('${key}',this)"><div class="chkbox">${done?'✓':''}</div>${item}</div>`;
-  }).join('');
+  document.getElementById('checklist').innerHTML=CHECKLIST.map((item,i)=>{const key=today+'-'+i,done=checks[key];return'<div class="chk-item'+(done?' done':'')+'" onclick="toggleCheck(\''+key+'\',this)"><div class="chkbox">'+(done?'✓':'')+'</div>'+item+'</div>';}).join('');
 }
 function toggleCheck(key,el){checks[key]=!checks[key];localStorage.setItem('mb_checks',JSON.stringify(checks));el.classList.toggle('done');el.querySelector('.chkbox').textContent=checks[key]?'✓':'';}
 function markToday(){
   const today=new Date().toDateString();
-  if(streak.last===today){alert('Already marked for today! Keep the streak going tomorrow. 🔥');return;}
+  if(streak.last===today){alert('Already marked today! Keep going tomorrow. 🔥');return;}
   const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
   streak.count=streak.last===yesterday.toDateString()?streak.count+1:1;
   streak.last=today;
   localStorage.setItem('mb_streak',JSON.stringify(streak));
   document.getElementById('streak-num').textContent=streak.count;
-  if(streak.count>=7)alert(`🔥 ${streak.count} day streak! You are building real habits. This is how traders improve.`);
-  else if(streak.count>=3)alert(`${streak.count} days in a row! Keep going. 🔥`);
-  else alert(`Day ${streak.count} marked. Come back tomorrow to build your streak!`);
+  if(streak.count>=7)alert('🔥 '+streak.count+' day streak! You are building real habits.');
+  else if(streak.count>=3)alert(streak.count+' days in a row! Keep going. 🔥');
+  else alert('Day '+streak.count+' marked. Come back tomorrow!');
 }
 
 init();
